@@ -27,6 +27,21 @@ def rgb_led_on_demo():
     led.clear()
 
 
+def sense_led_on():
+    red = [255, 0, 0]
+    green = [0, 255, 0]
+    blue = [0, 0, 255]
+    white = [255, 255, 255]
+    print(sense.temp_c)
+    print(sense.humidity)
+    print(sense.pressure)
+    sense.led_1(red)
+    sleep(5)
+    sense.led_1(blue)
+    sleep(5)
+    sense.clear()
+    rpi.clean_up()
+
 def get_temperature_demo():
     tempc = Temperature(sense)      # theoretically this should return the temperature in celsius from the sensehat
     print(tempc.temperature_c())    # it is untested however.
@@ -34,6 +49,7 @@ def get_temperature_demo():
 
 rpi = Board()
 sense = _SenseHat(rpi)
+sense_led_on()
 # led_on_demo() # calls led_on_demo function in main.py to turn on LED
 # rgb_led_on_demo() # calls rgb_led_on_demo function in main.py to turn on red led then off and turn on white.
 # get_temperature_demo() # demo of temperature get from the Temperature class

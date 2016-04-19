@@ -35,17 +35,3 @@ class RGBLED:
     def clear(self):
         for pin in self.pins:
             self.GPIO.output(pin, self.GPIO.LOW)
-
-"""
-if __name__ == "__name__":
-    from board import Board
-    from time import sleep
-    rpi = Board()
-    led = RGBLED(rpi, 18, 19, 20)
-    led.red_turn_on()
-    sleep(2)
-    led.clear()
-    led.white_turn_on()
-    sleep(5)
-    led.clear()
-"""
