@@ -4,6 +4,7 @@ from led import LED
 from rgbled import RGBLED
 from temperature import Temperature
 from time import sleep
+import pygame
 from pygame.locals import *
 
 
@@ -48,17 +49,18 @@ def sense_led():
     white = [255, 255, 255]
     sense.led_all(white)
     sleep(5)
-    for event in pygame.event.get():
-        if event.type == KEYDOWN:
-            if event.key == K_DOWN and y < 7:
-                key = "own"
-            elif event.key == K_UP and y > 0:
-                key = "up"
-            elif event.key == K_RIGHT and x < 7:
-                key = "right"
-            elif event.key == K_LEFT and x > 0:
-                key = "left"
-        print("Key pressed: " + key)
+    while True:
+        for event in pygame.event.get():
+            if event.type == KEYDOWN:
+                if event.key == K_DOWN and y < 7:
+                    key = "own"
+                elif event.key == K_UP and y > 0:
+                    key = "up"
+                elif event.key == K_RIGHT and x < 7:
+                    key = "right"
+                elif event.key == K_LEFT and x > 0:
+                    key = "left"
+            print("Key pressed: " + key)
     sense.clear()
     rpi.clean_up()
 
