@@ -47,7 +47,8 @@ def sense_demo():
 
 def sense_led():
     white = [255, 255, 255]
-    foff = [0, 0, 0]
+    black = [0, 0, 0]
+    state = "off"
     #sense.led_all(white)
     #sleep(5)
     """
@@ -78,7 +79,7 @@ def sense_led():
                 if state == "on":
                     sense.led_all(white)
                 elif state == "off":
-                    sense.led_all(foff)
+                    sense.led_all(black)
 
     sense.clear()
     rpi.clean_up()
