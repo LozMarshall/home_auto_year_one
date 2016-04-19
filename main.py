@@ -47,8 +47,10 @@ def sense_demo():
 
 def sense_led():
     white = [255, 255, 255]
-    sense.led_all(white)
-    sleep(5)
+    foff = [0, 0, 0]
+    #sense.led_all(white)
+    #sleep(5)
+    """
     while True:
         for event in pygame.event.get():
             if event.type == KEYDOWN:
@@ -60,7 +62,24 @@ def sense_led():
                     key = "right"
                 elif event.key == K_LEFT:
                     key = "left"
+                elif event.key == K_RETURN:
+                    key = "enter"
             print("Key pressed: " + key)
+    """
+    while True:
+        for event in pygame.event.get():
+            if event.type == KEYDOWN:
+                if event.key == K_RETURN:
+                    if state == "on":
+                        state = "off"
+                    elif state == "off":
+                        state = "on"
+
+                if state == "on":
+                    sense.led_all(white)
+                elif state == "off":
+                    sense.led_all(foff)
+
     sense.clear()
     rpi.clean_up()
 
