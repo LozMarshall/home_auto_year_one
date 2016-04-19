@@ -4,7 +4,7 @@ from led import LED
 from rgbled import RGBLED
 from temperature import Temperature
 from time import sleep
-from msvcrt import getch
+from pygame.locals import *
 
 
 def led_on_demo():
@@ -48,9 +48,17 @@ def sense_led():
     white = [255, 255, 255]
     sense.led_all(white)
     sleep(5)
-    while True:
-        key = getch()
-        print("key pressed: " + key)
+    for event in pygame.event.get():
+        if event.type == KEYDOWN:
+            if event.key == K_DOWN and y < 7:
+                key = "own"
+            elif event.key == K_UP and y > 0:
+                key = "up"
+            elif event.key == K_RIGHT and x < 7:
+                key = "right"
+            elif event.key == K_LEFT and x > 0:
+                key = "left"
+        print("Key pressed: " + key)
     sense.clear()
     rpi.clean_up()
 
@@ -62,6 +70,10 @@ def get_temperature_demo():
 
 rpi = Board()
 sense = _SenseHat(rpi)
+pygame.init()
+pygame.display.set_mode((640, 480))
+
+
 sense_led()
 
 
