@@ -52,13 +52,13 @@ def sense_led():
     while True:
         for event in pygame.event.get():
             if event.type == KEYDOWN:
-                if event.key == K_DOWN
+                if event.key == K_DOWN:
                     key = "own"
-                elif event.key == K_UP
+                elif event.key == K_UP:
                     key = "up"
-                elif event.key == K_RIGHT
+                elif event.key == K_RIGHT:
                     key = "right"
-                elif event.key == K_LEFT
+                elif event.key == K_LEFT:
                     key = "left"
             print("Key pressed: " + key)
     sense.clear()
