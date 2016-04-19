@@ -4,6 +4,7 @@ from led import LED
 from rgbled import RGBLED
 from temperature import Temperature
 from time import sleep
+from msvcrt import getch
 
 
 def led_on_demo():
@@ -47,6 +48,9 @@ def sense_led():
     white = [255, 255, 255]
     sense.led_all(white)
     sleep(5)
+    while True:
+        key = getch()
+        print("key pressed: " + key)
     sense.clear()
     rpi.clean_up()
 
@@ -59,6 +63,7 @@ def get_temperature_demo():
 rpi = Board()
 sense = _SenseHat(rpi)
 sense_led()
+
 
 # sense_demo()
 # led_on_demo() # calls led_on_demo function in main.py to turn on LED
