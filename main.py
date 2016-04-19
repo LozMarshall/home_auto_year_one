@@ -45,7 +45,7 @@ def sense_demo():
 
 def sense_led():
     white = [255, 255, 255]
-    sense.sense.set_pixels(white)
+    sense.led_all(white)
     sleep(5)
     sense.clear()
     rpi.clean_up()

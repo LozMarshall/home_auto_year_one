@@ -19,6 +19,11 @@ class _SenseHat:
     def __humidity(self):
         return self.sense.humidity
 
+    def led_all(self, colour):
+        for i in range(0, 63):
+            lcd = lcd + (colour + ", ")
+            self.sense.set_pixel(lcd)
+
     def led_1(self, colour):
         self.sense.set_pixel(0, 0, colour)
         self.sense.set_pixel(0, 1, colour)
