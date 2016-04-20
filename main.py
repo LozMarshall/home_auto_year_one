@@ -30,10 +30,6 @@ def rgb_led_on_demo():
 
 
 def sense_demo():
-    red = [255, 0, 0]
-    green = [0, 255, 0]
-    blue = [0, 0, 255]
-    white = [255, 255, 255]
     print(sense.temp_c)
     print(sense.humidity)
     print(sense.pressure)
@@ -45,28 +41,8 @@ def sense_demo():
     rpi.clean_up()
 
 
-def sense_led():
-    white = [255, 255, 255]
-    black = [0, 0, 0]
+def sense_led(white, black):
     state = "off"
-    #sense.led_all(white)
-    #sleep(5)
-    """
-    while True:
-        for event in pygame.event.get():
-            if event.type == KEYDOWN:
-                if event.key == K_DOWN:
-                    key = "own"
-                elif event.key == K_UP:
-                    key = "up"
-                elif event.key == K_RIGHT:
-                    key = "right"
-                elif event.key == K_LEFT:
-                    key = "left"
-                elif event.key == K_RETURN:
-                    key = "enter"
-            print("Key pressed: " + key)
-    """
     while True:
         for event in pygame.event.get():
             if event.type == KEYDOWN:
@@ -89,6 +65,11 @@ def get_temperature_demo():
     tempc = Temperature(sense)      # theoretically this should return the temperature in celsius from the sensehat
     print(tempc.temperature_c())    # it is untested however.
 
+red = [255, 0, 0]
+green = [0, 255, 0]
+blue = [0, 0, 255]
+white = [255, 255, 255]
+black = [0, 0, 0]
 
 rpi = Board()
 sense = _SenseHat(rpi)
@@ -96,7 +77,7 @@ pygame.init()
 pygame.display.set_mode((640, 480))
 
 
-sense_led()
+sense_led(white, black)
 
 
 # sense_demo()
