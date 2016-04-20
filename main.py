@@ -54,8 +54,10 @@ def sense_led(white, black):
 
                 if state == "on":
                     sense.led_all(white)
+                    print("LED on")
                 elif state == "off":
                     sense.led_all(black)
+                    print("LED off")
 
     sense.clear()
     rpi.clean_up()
