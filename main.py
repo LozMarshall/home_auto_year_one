@@ -63,6 +63,12 @@ def sense_led(white, black):
     rpi.clean_up()
 
 
+def compass():
+    sense.magnetometer_on()
+    while True:
+        print(sense.sense.compass)
+
+
 def get_temperature_demo():
     tempc = Temperature(sense)      # theoretically this should return the temperature in celsius from the sensehat
     print(tempc.temperature_c())    # it is untested however.
@@ -80,6 +86,8 @@ pygame.display.set_mode((640, 480))
 
 
 sense_led(white, black)
+compass()
+
 
 
 # sense_demo()
