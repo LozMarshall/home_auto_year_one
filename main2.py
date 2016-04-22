@@ -92,6 +92,7 @@ app = App(root)
 
 root.mainloop()
 root.destroy()
+#scsd
 
 
 #sense_led(white, black)
