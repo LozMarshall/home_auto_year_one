@@ -11,6 +11,12 @@ class App:
     def __init__(self, master):
         frame = Frame(master)
         frame.pack()
+        master.config(cursor="none")
+        w, h = master.winfo_screenwidth(), master.winfo_screenheight()
+        master.overrideredirect(1)
+        master.geometry("%dx%d+0+0" % (w, h))
+
+
 
         self.button = Button(
             frame, text="quit", fg="red", command=frame.quit
@@ -101,12 +107,12 @@ rpi = Board()
 sense = _SenseHat(rpi)
 root = Tk()
 
-root.config(cursor="none")
+#root.config(cursor="none")
 
 # make it cover the entire screen
-w, h = root.winfo_screenwidth(), root.winfo_screenheight()
-root.overrideredirect(1)
-root.geometry("%dx%d+0+0" % (w, h))
+#w, h = root.winfo_screenwidth(), root.winfo_screenheight()
+#root.overrideredirect(1)
+#root.geometry("%dx%d+0+0" % (w, h))
 
 app = App(root)
 
