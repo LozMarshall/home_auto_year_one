@@ -11,22 +11,23 @@ class App:
     def __init__(self, master):
         frame = Frame(master)
         frame.pack()
-        master.config(cursor="none")
-        w, h = master.winfo_screenwidth(), master.winfo_screenheight()
-        master.overrideredirect(1)
-        master.geometry("%dx%d+0+0" % (w, h))
-
-
 
         self.button = Button(
             frame, text="quit", fg="red", command=frame.quit
         )
+
         self.button.pack(side=LEFT)
 
         self.hi_there = Button(
             frame, text="hello", command=self.say_hi
         )
+
         self.hi_there.pack(side=LEFT)
+
+        master.config(cursor="none")
+        w, h = master.winfo_screenwidth(), master.winfo_screenheight()
+        master.overrideredirect(1)
+        master.geometry("%dx%d+0+0" % (w, h))
 
     def say_hi(self):
         print("hello")
