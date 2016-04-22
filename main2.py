@@ -4,7 +4,13 @@ from led import LED
 from rgbled import RGBLED
 from temperature import Temperature
 from time import sleep
-from Tkinter import *
+from tkinter import *
+
+
+class App:
+    def __init__(self, master):
+        frame = Frame(master)
+        frame.pack()
 
 
 def led_on_demo():
@@ -80,12 +86,12 @@ black = [0, 0, 0]
 
 rpi = Board()
 sense = _SenseHat(rpi)
-window = Tk()
+root = Tk()
 
-button1 = Button(window, text="exit program", command=exit())
+app = App(root)
 
-button1.pack()
-window.mainloop()
+root.mainloop()
+root.destroy()
 
 
 #sense_led(white, black)
