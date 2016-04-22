@@ -101,6 +101,7 @@ rpi = Board()
 sense = _SenseHat(rpi)
 root = Tk()
 
+root.config(cursor="none")
 
 # make it cover the entire screen
 w, h = root.winfo_screenwidth(), root.winfo_screenheight()
