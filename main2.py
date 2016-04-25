@@ -5,13 +5,24 @@ from rgbled import RGBLED
 from temperature import Temperature
 from time import sleep
 from tkinter import *
+from tkinter import ttk
 
 
 class App:
     def __init__(self, master):
         frame = Frame(master)
-        """
-        frame.pack()
+        master.config(cursor="none")
+        w, h = master.winfo_screenwidth(), master.winfo_screenheight()
+        master.overrideredirect(1)
+        master.geometry("%dx%d+0+0" % (w, h))
+
+        self.label = Label(
+           frame, text="item1"
+        ).grid(row=0, pady=10, padx=10, sticky=W)
+
+        self.label2 = Label(
+            frame, text="item2"
+        ).grid(row=1, pady=10, padx=10, sticky=W)
 
         self.button = Button(
             frame, text="quit", fg="red", height=100, width=50, command=frame.quit
@@ -23,21 +34,7 @@ class App:
             frame, text="hello", height=100, width=50, command=self.say_hi
         )
 
-        self.hi_there.pack(side=LEFT)
-        """
-
-        self.label = Label(
-            master, text="item1"
-        ).grid(row=0, pady=10, padx=10, sticky=W)
-
-        self.label2 = Label(
-            master, text="item2"
-        ).grid(row=1, pady=10, padx=10, sticky=W)
-
-        master.config(cursor="none")
-        w, h = master.winfo_screenwidth(), master.winfo_screenheight()
-        master.overrideredirect(1)
-        master.geometry("%dx%d+0+0" % (w, h))
+        #self.hi_there.pack(side=LEFT)
 
     def say_hi(self):
         print("hello")
