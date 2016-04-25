@@ -10,9 +10,9 @@ from tkinter import *
 class App:
     def __init__(self, master):
         frame = Frame(master)
+        """
         frame.pack()
 
-        """
         self.button = Button(
             frame, text="quit", fg="red", height=100, width=50, command=frame.quit
         )
@@ -28,11 +28,11 @@ class App:
 
         self.label = Label(
             master, text="item1"
-        ).grid(row=0, sticky=W)
+        ).grid(row=0, pady=10, padx=10, sticky=W)
 
         self.label2 = Label(
             master, text="item2"
-        ).grid(row=1, sticky=W)
+        ).grid(row=1, pady=10, padx=10, sticky=W)
 
         master.config(cursor="none")
         w, h = master.winfo_screenwidth(), master.winfo_screenheight()
