@@ -13,13 +13,13 @@ class App:
         frame.pack()
 
         self.button = Button(
-            frame, text="quit", fg="red", command=frame.quit
+            frame, text="quit", fg="red", height=100, width=50, command=frame.quit
         )
 
         self.button.pack(side=LEFT)
 
         self.hi_there = Button(
-            frame, text="hello", command=self.say_hi
+            frame, text="hello", height=100, width=50, command=self.say_hi
         )
 
         self.hi_there.pack(side=LEFT)
