@@ -10,4 +10,3 @@ bottom = Label(m, text="bottom pane")
 m.add(bottom)
 
 mainloop()
-#
