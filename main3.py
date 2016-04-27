@@ -5,12 +5,10 @@ class App(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
         container = tk.Frame(self)
-        
-        container.config(cursor="none")
-        w, h = container.winfo_screenwidth(), container.winfo_screenheight()
-        container.overrideredirect(1)
-        container.geometry("%dx%d+0+0" % (w, h))
-        
+        self.config(cursor="none")
+        w, h = self.winfo_screenwidth(), self.winfo_screenheight()
+        self.overrideredirect(1)
+        self.geometry("%dx%d+0+0" % (w, h))
 
         container.pack(side="top", fill="both", expand=True)
 
