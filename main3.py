@@ -20,7 +20,7 @@ class App(tk.Tk):
         container = tk.Frame(self)
 
         # container.pack(side="top", fill="both", expand=True)
-        container.grid(rowspan=4, columnspan=4, sticky="nsew")
+        container.grid(rowspan=5, columnspan=2, sticky="nsew")
 
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
@@ -40,12 +40,15 @@ class App(tk.Tk):
         frame = self.frames[cont]
         frame.tkraise()
 
+    def update_temp(self):
+        while True:
+            return str(temperature())
 
 class HomePage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
 
-        label = tk.Label(self, text="thermostat: "+str(temperature()))
+        label = tk.Label(self, text="thermostat: " + controller.update_temp())
         label2 = tk.Label(self, text="heating: ")
         label3 = tk.Label(self, text="temperature: ")
 
