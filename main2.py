@@ -17,24 +17,24 @@ class App:
         master.geometry("%dx%d+0+0" % (w, h))
 
         self.label = Label(
-           frame, text="item1"
+            master, text="item1"
         ).grid(row=0, pady=10, padx=10, sticky=W)
 
         self.label2 = Label(
-            frame, text="item2"
+            master, text="item2"
         ).grid(row=1, pady=10, padx=10, sticky=W)
 
         self.button = Button(
-            frame, text="quit", fg="red", height=100, width=50, command=frame.quit
-        )
+            master, text="quit", command=master.quit
+        ).grid(row=2)
 
-        self.button.pack(side=LEFT)
+        # self.button.pack(side=LEFT)
 
         self.hi_there = Button(
-            frame, text="hello", height=100, width=50, command=self.say_hi
-        )
+            master, text="hello", command=self.say_hi
+        ).grid(row=3, column=2)
 
-        #self.hi_there.pack(side=LEFT)
+        # self.hi_there.pack(side=LEFT)
 
     def say_hi(self):
         print("hello")
