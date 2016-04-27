@@ -2,7 +2,6 @@ from board import Board
 from sensehat import _SenseHat
 from temperature import Temperature
 import tkinter as tk
-from time import sleep
 
 
 def temperature():
@@ -41,16 +40,12 @@ class App(tk.Tk):
         frame = self.frames[cont]
         frame.tkraise()
 
-    def update_temp(self):
-        while True:
-            return str(temperature())
-            sleep(1)
 
 class HomePage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
 
-        label = tk.Label(self, text="thermostat: " + controller.update_temp())
+        label = tk.Label(self, text="thermostat: " + str(temperature()))
         label2 = tk.Label(self, text="heating: ")
         label3 = tk.Label(self, text="temperature: ")
 
