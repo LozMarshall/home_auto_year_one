@@ -2,6 +2,7 @@ from board import Board
 from sensehat import _SenseHat
 from temperature import Temperature
 import tkinter as tk
+from time import sleep
 
 
 def temperature():
@@ -43,6 +44,7 @@ class App(tk.Tk):
     def update_temp(self):
         while True:
             return str(temperature())
+            sleep(1)
 
 class HomePage(tk.Frame):
     def __init__(self, parent, controller):
