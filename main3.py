@@ -4,11 +4,12 @@ import tkinter as tk
 class App(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
-        container = tk.Frame(self)
         self.config(cursor="none")
         w, h = self.winfo_screenwidth(), self.winfo_screenheight()
         self.overrideredirect(1)
         self.geometry("%dx%d+0+0" % (w, h))
+
+        container = tk.Frame(self)
 
         container.pack(side="top", fill="both", expand=True)
 
@@ -33,8 +34,13 @@ class App(tk.Tk):
 class StartPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        label = tk.Label(self, text="this is text")
-        label.pack(pady=10, padx=10)
+        label = tk.Label(self, text="thermostat: ")
+        label2 = tk.Label(self, text="heating: ")
+        label3 = tk.Label(self, text="temperature: ")
+
+        label.grid(row=0, column=0, pady=10, padx=10)
+        label2.grid(row=1, column=0, pady=10, padx=10)
+        label3.grid(row=2, column=0, pady=10, padx=10)
 
 
 app = App()
