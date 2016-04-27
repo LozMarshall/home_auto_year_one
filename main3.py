@@ -45,7 +45,7 @@ class StartPage(tk.Frame):
         label2.grid(row=1, column=0, pady=10, padx=10, sticky="w")
         label3.grid(row=2, column=0, pady=10, padx=10, sticky="w")
 
-        button_quit.grid(row=0, column=1, pady=10, padx=10, sticky="se")
+        button_quit.grid(row=3, column=1, pady=10, padx=10, fill="both", expand=True, sticky="se")
 
 
 app = App()
