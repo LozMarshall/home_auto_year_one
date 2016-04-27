@@ -18,20 +18,22 @@ class App(tk.Tk):
 
         self.frames = {}
 
-        frame = StartPage(container, self)
+        for F in (HomePage, HelpPage):
 
-        self.frames[StartPage] = frame
+            frame = F(container, self)
 
-        frame.grid(row=0, column=0, sticky="nsew")
+            self.frames[F] = frame
 
-        self.show_frame(StartPage)
+            frame.grid(row=0, column=0, sticky="nsew")
+
+        self.show_frame(HomePage)
 
     def show_frame(self, cont):
         frame = self.frames[cont]
         frame.tkraise()
 
 
-class StartPage(tk.Frame):
+class HomePage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
 
@@ -39,14 +41,32 @@ class StartPage(tk.Frame):
         label2 = tk.Label(self, text="heating: ")
         label3 = tk.Label(self, text="temperature: ")
 
+        button_page = tk.Button(self, text="go to help page", anchor="sw",
+                                command=lambda: controller.show_frame(HelpPage))
         button_quit = tk.Button(self, text="quit", anchor="sw", command=self.quit)
 
         label.grid(row=0, column=0, pady=10, padx=10, sticky="w")
         label2.grid(row=1, column=0, pady=10, padx=10, sticky="w")
         label3.grid(row=2, column=0, pady=10, padx=10, sticky="w")
 
+        button_page.grid(row=4, column=1, pady=10, padx=10, sticky="se")
         button_quit.grid(row=3, column=1, pady=10, padx=10, sticky="se")
 
+
+class HelpPage(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+
+        label = tk.Label(self, text="help page for all the penises: ")
+
+        button_page = tk.Button(self, text="go to help page", anchor="sw",
+                                command=lambda: controller.show_frame(HomePage))
+        button_quit = tk.Button(self, text="quit", anchor="sw", command=self.quit)
+
+        label.grid(row=0, column=0, pady=10, padx=10, sticky="w")
+
+        button_quit.grid(row=3, column=1, pady=10, padx=10, sticky="se")
+        button_page.grid(row=4, column=1, pady=10, padx=10, sticky="se")
 
 app = App()
 app.mainloop()
