@@ -6,7 +6,7 @@ import tkinter as tk
 
 def temperature():
     tempc = Temperature(sense)      # theoretically this should return the temperature in celsius from the sensehat
-    print(tempc.temperature_c())    # it is untested however.
+    return tempc.temperature_c()    # it is untested however.
 
 
 class App(tk.Tk):
@@ -45,7 +45,7 @@ class HomePage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
 
-        label = tk.Label(self, text="thermostat: "+temperature())
+        label = tk.Label(self, text="thermostat: "+str(temperature()))
         label2 = tk.Label(self, text="heating: ")
         label3 = tk.Label(self, text="temperature: ")
 
