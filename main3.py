@@ -19,7 +19,6 @@ class App(tk.Tk):
         self.frames = {}
 
         for F in (HomePage, HelpPage):
-
             frame = F(container, self)
 
             self.frames[F] = frame
@@ -49,8 +48,8 @@ class HomePage(tk.Frame):
         label2.grid(row=1, column=0, pady=10, padx=10, sticky="w")
         label3.grid(row=2, column=0, pady=10, padx=10, sticky="w")
 
-        button_page.grid(row=4, column=1, pady=10, padx=10, sticky="se")
-        button_quit.grid(row=3, column=1, pady=10, padx=10, sticky="se")
+        button_page.grid(row=3, column=1, pady=10, padx=10, sticky="se")
+        button_quit.grid(row=15, column=1, pady=10, padx=10, sticky="se")
 
 
 class HelpPage(tk.Frame):
