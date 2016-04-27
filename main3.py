@@ -38,9 +38,9 @@ class StartPage(tk.Frame):
         label2 = tk.Label(self, text="heating: ")
         label3 = tk.Label(self, text="temperature: ")
 
-        label.grid(row=0, column=0, pady=10, padx=10)
-        label2.grid(row=1, column=0, pady=10, padx=10)
-        label3.grid(row=2, column=0, pady=10, padx=10)
+        label.grid(row=0, column=0, pady=10, padx=10, sticky="w")
+        label2.grid(row=1, column=0, pady=10, padx=10, sticky="w")
+        label3.grid(row=2, column=0, pady=10, padx=10, sticky="w")
 
 
 app = App()
