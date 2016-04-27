@@ -39,13 +39,13 @@ class StartPage(tk.Frame):
         label2 = tk.Label(self, text="heating: ")
         label3 = tk.Label(self, text="temperature: ")
 
-        button_quit = tk.Button(self, text="quit", command=self.quit)
+        button_quit = tk.Button(self, text="quit", anchor="sw", command=self.quit)
 
         label.grid(row=0, column=0, pady=10, padx=10, sticky="w")
         label2.grid(row=1, column=0, pady=10, padx=10, sticky="w")
         label3.grid(row=2, column=0, pady=10, padx=10, sticky="w")
 
-        button_quit.grid(row=3, column=1, pady=10, padx=10, fill="both", expand=True, sticky="se")
+        button_quit.grid(row=3, column=1, pady=10, padx=10, sticky="se")
 
 
 app = App()
