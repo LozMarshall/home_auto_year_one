@@ -1,4 +1,12 @@
+from board import Board
+from sensehat import _SenseHat
+from temperature import Temperature
 import tkinter as tk
+
+
+def temperature():
+    tempc = Temperature(sense)      # theoretically this should return the temperature in celsius from the sensehat
+    print(tempc.temperature_c())    # it is untested however.
 
 
 class App(tk.Tk):
@@ -37,7 +45,7 @@ class HomePage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
 
-        label = tk.Label(self, text="thermostat: ")
+        label = tk.Label(self, text="thermostat: "+temperature())
         label2 = tk.Label(self, text="heating: ")
         label3 = tk.Label(self, text="temperature: ")
 
@@ -67,6 +75,9 @@ class HelpPage(tk.Frame):
 
         button_quit.grid(row=3, column=1, pady=10, padx=10, sticky="se")
         button_page.grid(row=4, column=1, pady=10, padx=10, sticky="se")
+
+rpi = Board()
+sense = _SenseHat(rpi)
 
 app = App()
 app.mainloop()
