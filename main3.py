@@ -45,12 +45,12 @@ class HomePage(tk.Frame):
                                 command=lambda: controller.show_frame(HelpPage))
         button_quit = tk.Button(self, text="quit", anchor="sw", command=self.quit)
 
-        label.grid(row=0, column=0, pady=10, padx=200, sticky="w")
-        label2.grid(row=1, column=0, pady=10, padx=200, sticky="w")
-        label3.grid(row=2, column=0, pady=10, padx=200, sticky="w")
+        label.grid(row=0, column=0, pady=10, padx=10, sticky="w")
+        label2.grid(row=1, column=0, pady=10, padx=10, sticky="w")
+        label3.grid(row=2, column=0, pady=10, padx=10, sticky="w")
 
-        button_page.grid(row=3, column=1, pady=10, padx=600, sticky="se")
-        button_quit.grid(row=15, column=1, pady=10, padx=600, sticky="se")
+        button_page.grid(row=3, column=1, pady=10, padx=10, sticky="se")
+        button_quit.grid(row=15, column=1, pady=10, padx=10, sticky="se")
 
 
 class HelpPage(tk.Frame):
