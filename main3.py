@@ -1,47 +1,37 @@
-from tkinter import *
+import tkinter as tk
 
 
-class App:
-    def __init__(self, master):
-        master.config(cursor="none")
-        w, h = master.winfo_screenwidth(), master.winfo_screenheight()
-        master.overrideredirect(1)
-        master.geometry("%dx%d+0+0" % (w, h))
+class App(tk.TK):
+    def __init__(self):
+        tk.Tk.__init__(self)
+        container = tk.Frame(self)
 
-        content = Frame(master, padding=(3, 3, 12, 12))
-        frame = Frame(content, borderwidth=5, relief="sunken", width=200, height=100)
+        container.pack(side="top", fill="both", expand=True)
 
-        content.grid(column=0, row=0, sticky=(N, S, E, W))
-        frame.grid(column=0, row=0, columnspan=3, rowspan=2, sticky=(N, S, E, W))
+        container.grid_rowconfigure(0, weight=1)
+        container.grid_columnconfigure(0, weight=1)
 
+        self.frames = {}
 
-        self.label = Label(
-            content, text="item1"
-        ).grid(row=0, pady=10, padx=10, sticky=W)
+        frame = StartPage(container, self)
 
-        self.label2 = Label(
-            content, text="item2"
-        ).grid(row=1, pady=10, padx=10, sticky=W)
+        self.frames[StartPage] = frame
 
-        self.button = Button(
-            content, text="quit", command=content.quit
-        ).grid(row=2)
+        frame.grid(row=0, column=0, sticky="nsew")
 
-        # self.button.pack(side=LEFT)
+        self.show_frame(StartPage)
 
-        self.hi_there = Button(
-            content, text="hello", command=self.say_hi
-        ).grid(row=3, column=2)
-
-        # self.hi_there.pack(side=LEFT)
-
-    def say_hi(self):
-        print("hello")
+    def show_frame(self, cont):
+        frame = self.frames[cont]
+        frame.tkraise()
 
 
-root = Tk()
+class StartPage(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        label = tk.Label(self, text="this is text")
+        label.pack(pady=10, padx=10)
 
-app = App(root)
 
-root.mainloop()
-
+app = App()
+app.mainloop()
