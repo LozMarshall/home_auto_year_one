@@ -8,6 +8,7 @@ def temperature():
     tempc = Temperature(sense)
     return tempc.temperature_c()
 
+
 class App(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
@@ -28,12 +29,13 @@ class App(tk.Tk):
 
         for F in (HomePage, HelpPage):
             frame = F(container, self)
-
+            print("break point 4")
             self.frames[F] = frame
 
             frame.grid(row=0, column=0, sticky="nsew")
 
         self.show_frame(HomePage)
+        print("break point 1")
 
     def show_frame(self, cont):
         frame = self.frames[cont]
@@ -46,6 +48,7 @@ class HomePage(tk.Frame):
 
         label = tk.Label(self, text="thermostat: " + str(temperature()))
         self.update_idletasks()
+        print("break point 2")
         label2 = tk.Label(self, text="heating: ")
         label3 = tk.Label(self, text="temperature: ")
 
@@ -73,11 +76,12 @@ class HelpPage(tk.Frame):
 
         label.grid(row=0, column=0, pady=10, padx=10, sticky="w")
 
-        button_quit.grid(row=3, column=1, pady=10, padx=10, sticky="se")
-        button_page.grid(row=4, column=1, pady=10, padx=10, sticky="se")
+        button_page.grid(row=3, column=1, pady=10, padx=10, sticky="se")
+        button_quit.grid(row=4, column=1, pady=10, padx=10, sticky="se")
 
 
 rpi = Board()
 sense = _SenseHat(rpi)
 app = App()
+print("break point 3")
 app.mainloop()
