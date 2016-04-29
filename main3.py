@@ -40,12 +40,16 @@ class App(tk.Tk):
         tempc = Temperature(sense)
         return tempc.temperature_c()
 
+    def event_method(self):
+        temp = Temperature(sense)
+        temp_var = temp.temperature_c()
+
 
 class HomePage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
 
-        label = tk.Label(self, text="thermostat: " + str(App.temperature()))
+        self.label = tk.Label(self, text="thermostat: " + str(controller.temperature()))
         # self.update_idletasks()
         print("break point 2")
         label2 = tk.Label(self, text="heating: ")
@@ -55,12 +59,20 @@ class HomePage(tk.Frame):
                                 command=lambda: controller.show_frame(HelpPage))
         button_quit = tk.Button(self, text="quit", anchor="sw", command=self.quit)
 
-        label.grid(row=0, column=0, pady=10, padx=10, sticky="w")
+        self.label.grid(row=0, column=0, pady=10, padx=10, sticky="w")
         label2.grid(row=1, column=0, pady=10, padx=10, sticky="w")
         label3.grid(row=2, column=0, pady=10, padx=10, sticky="w")
 
         button_page.grid(row=3, column=1, pady=10, padx=10, sticky="se")
         button_quit.grid(row=15, column=1, pady=10, padx=10, sticky="se")
+
+        self.update_method()
+
+    def update_method(self):
+        temp_new = App.temperature()
+        self.label.configure(text="thermostat: " + str(temp_new))
+        self.after(1000, self.update_method)
+
 
 
 class HelpPage(tk.Frame):
