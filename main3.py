@@ -36,20 +36,12 @@ class App(tk.Tk):
         frame = self.frames[cont]
         frame.tkraise()
 
-    def temperature(self):
-        tempc = Temperature(sense)
-        return tempc.temperature_c()
-
-    def event_method(self):
-        temp = Temperature(sense)
-        temp_var = temp.temperature_c()
-
 
 class HomePage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
 
-        self.label = tk.Label(self, text="thermostat: " + str(controller.temperature()))
+        self.label = tk.Label(self, text="thermostat: ")
         # self.update_idletasks()
         print("break point 2")
         label2 = tk.Label(self, text="heating: ")
@@ -72,9 +64,8 @@ class HomePage(tk.Frame):
         tempc = Temperature(sense)
         temp_new = tempc.temperature_c()
         self.label.configure(text="thermostat: " + str(temp_new))
-        print("update is initialising")
+        print("update pushed")
         self.after(1000, self.update_method)
-        #
 
 
 class HelpPage(tk.Frame):
