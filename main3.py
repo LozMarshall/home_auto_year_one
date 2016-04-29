@@ -40,7 +40,7 @@ class HomePage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
 
-        label = tk.Label(self, textvariable="thermostat: " + str(Temperature(sense)))
+        label = tk.Label(self, text="thermostat: " + str(Temperature(sense)))
         self.update_idletasks()
         label2 = tk.Label(self, text="heating: ")
         label3 = tk.Label(self, text="temperature: ")
