@@ -4,6 +4,10 @@ from temperature import Temperature
 import tkinter as tk
 
 
+def temperature():
+    tempc = Temperature(sense)
+    return tempc
+
 class App(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
@@ -40,7 +44,7 @@ class HomePage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
 
-        label = tk.Label(self, text="thermostat: " + str(Temperature(sense)))
+        label = tk.Label(self, text="thermostat: " + str(temperature()))
         self.update_idletasks()
         label2 = tk.Label(self, text="heating: ")
         label3 = tk.Label(self, text="temperature: ")
