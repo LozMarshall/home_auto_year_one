@@ -2,11 +2,6 @@ from board import Board
 from sensehat import _SenseHat
 from temperature import Temperature
 import tkinter as tk
-from time import sleep
-
-def temperature():
-    tempc = Temperature(sense)      # theoretically this should return the temperature in celsius from the sensehat
-    return tempc.temperature_c()    # it is untested however.
 
 
 class App(tk.Tk):
@@ -44,15 +39,13 @@ class App(tk.Tk):
 class HomePage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        tempur = tk.StringVar()
-        global tempur
 
-        label = tk.Label(self, textvariable="thermostat: " + str(tempur))
+        label = tk.Label(self, textvariable="thermostat: " + str(Temperature(sense)))
         self.update_idletasks()
         label2 = tk.Label(self, text="heating: ")
         label3 = tk.Label(self, text="temperature: ")
 
-        button_page = tk.Button(self, text="go to help page", anchor="sw",
+        button_page = tk.Button(self, text="Help", anchor="sw",
                                 command=lambda: controller.show_frame(HelpPage))
         button_quit = tk.Button(self, text="quit", anchor="sw", command=self.quit)
 
@@ -70,7 +63,7 @@ class HelpPage(tk.Frame):
 
         label = tk.Label(self, text="help page for all the penises: ")
 
-        button_page = tk.Button(self, text="go to help page", anchor="sw",
+        button_page = tk.Button(self, text="Home", anchor="sw",
                                 command=lambda: controller.show_frame(HomePage))
         button_quit = tk.Button(self, text="quit", anchor="sw", command=self.quit)
 
@@ -80,15 +73,7 @@ class HelpPage(tk.Frame):
         button_page.grid(row=4, column=1, pady=10, padx=10, sticky="se")
 
 
-def main():
-    while True:
-        tempur.set(temperature())
-        sleep(1)
-        app.update()
-
 rpi = Board()
 sense = _SenseHat(rpi)
 app = App()
 app.mainloop()
-
-main()
