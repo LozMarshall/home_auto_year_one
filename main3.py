@@ -45,7 +45,7 @@ class HomePage(tk.Frame):
         # self.update_idletasks()
         print("break point 2")
         label2 = tk.Label(self, text="heating: ")
-        label3 = tk.Label(self, text="temperature: ")
+        self.label3 = tk.Label(self, text="temperature: ")
 
         button_page = tk.Button(self, text="Help", anchor="sw",
                                 command=lambda: controller.show_frame(HelpPage))
@@ -53,7 +53,7 @@ class HomePage(tk.Frame):
 
         self.label.grid(row=0, column=0, pady=10, padx=10, sticky="w")
         label2.grid(row=1, column=0, pady=10, padx=10, sticky="w")
-        label3.grid(row=2, column=0, pady=10, padx=10, sticky="w")
+        self.label3.grid(row=2, column=0, pady=10, padx=10, sticky="w")
 
         button_page.grid(row=3, column=1, pady=10, padx=10, sticky="se")
         button_quit.grid(row=15, column=1, pady=10, padx=10, sticky="se")
