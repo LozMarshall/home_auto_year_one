@@ -66,15 +66,14 @@ class HomePage(tk.Frame):
         button_page.grid(row=3, column=1, pady=10, padx=10, sticky="se")
         button_quit.grid(row=15, column=1, pady=10, padx=10, sticky="se")
 
-        self.update_method(controller)
+        self.update_method()
 
-    def update_method(self, controller):
-        temp_new = controller.temperature()
+    def update_method(self):
+        tempc = Temperature(sense)
+        temp_new = tempc.temperature_c()
         self.label.configure(text="thermostat: " + str(temp_new))
         print("update is initialising")
         self.after(1000, self.update_method)
-        #
-
 
 
 class HelpPage(tk.Frame):
