@@ -41,19 +41,21 @@ class HomePage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
 
-        self.label = tk.Label(self, text="thermostat: ")
-        # self.update_idletasks()
-        print("break point 2")
-        label2 = tk.Label(self, text="heating: ")
-        self.label3 = tk.Label(self, text="temperature: ")
+        self.label = tk.Label(self, text="temperature: ")
+        self.label2 = tk.Label(self, text="pressure: ")
+        self.label3 = tk.Label(self, text="humidity: ")
+        self.label4 = tk.Label(self, text="thermostat: ")
+        self.label5 = tk.Label(self, text="heating: ")
 
         button_page = tk.Button(self, text="Help", anchor="sw",
                                 command=lambda: controller.show_frame(HelpPage))
         button_quit = tk.Button(self, text="quit", anchor="sw", command=self.quit)
 
         self.label.grid(row=0, column=0, pady=10, padx=10, sticky="w")
-        label2.grid(row=1, column=0, pady=10, padx=10, sticky="w")
+        self.label2.grid(row=1, column=0, pady=10, padx=10, sticky="w")
         self.label3.grid(row=2, column=0, pady=10, padx=10, sticky="w")
+        self.label4.grid(row=3, column=0, pady=10, padx=10, sticky="w")
+        self.label5.grid(row=4, column=0, pady=10, padx=10, sticky="w")
 
         button_page.grid(row=3, column=1, pady=10, padx=10, sticky="se")
         button_quit.grid(row=15, column=1, pady=10, padx=10, sticky="se")
@@ -63,7 +65,7 @@ class HomePage(tk.Frame):
     def update_method(self):
         tempc = Temperature(sense)
         temp_new = tempc.temperature_c()
-        self.label3.configure(text="temperature: " + str(round(temp_new, 1)) + " \u2103")
+        self.label.configure(text="temperature: " + str(round(temp_new, 1)) + " \u2103")
         print("update pushed")
         self.after(2000, self.update_method)
 
