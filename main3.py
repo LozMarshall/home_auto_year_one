@@ -63,7 +63,7 @@ class HomePage(tk.Frame):
     def update_method(self):
         tempc = Temperature(sense)
         temp_new = tempc.temperature_c()
-        self.label.configure(text="thermostat: " + str(temp_new))
+        self.label3.configure(text="temperature: " + str(temp_new))
         print("update pushed")
         self.after(1000, self.update_method)
 
