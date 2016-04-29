@@ -4,11 +4,6 @@ from temperature import Temperature
 import tkinter as tk
 
 
-def temperature():
-    tempc = Temperature(sense)
-    return tempc.temperature_c()
-
-
 class App(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
@@ -41,13 +36,17 @@ class App(tk.Tk):
         frame = self.frames[cont]
         frame.tkraise()
 
+    def temperature(self):
+        tempc = Temperature(sense)
+        return tempc.temperature_c()
+
 
 class HomePage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
 
-        label = tk.Label(self, text="thermostat: " + str(temperature()))
-        self.update_idletasks()
+        label = tk.Label(self, text="thermostat: " + str(App.temperature()))
+        # self.update_idletasks()
         print("break point 2")
         label2 = tk.Label(self, text="heating: ")
         label3 = tk.Label(self, text="temperature: ")
