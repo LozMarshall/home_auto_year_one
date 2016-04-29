@@ -46,6 +46,7 @@ class HomePage(tk.Frame):
         tk.Frame.__init__(self, parent)
 
         label = tk.Label(self, text="thermostat: " + str(temperature()))
+        self.update_idletasks()
         label2 = tk.Label(self, text="heating: ")
         label3 = tk.Label(self, text="temperature: ")
 
@@ -80,4 +81,5 @@ rpi = Board()
 sense = _SenseHat(rpi)
 
 app = App()
-app.mainloop()
+#app.mainloop()
+app.update()
