@@ -6,7 +6,7 @@ import tkinter as tk
 
 def temperature():
     tempc = Temperature(sense)
-    return tempc
+    return tempc.temperature_c()
 
 class App(tk.Tk):
     def __init__(self):
