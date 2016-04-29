@@ -73,6 +73,7 @@ class HomePage(tk.Frame):
         self.label.configure(text="thermostat: " + str(temp_new))
         print("update is initialising")
         self.after(1000, self.update_method)
+        #
 
 
 
