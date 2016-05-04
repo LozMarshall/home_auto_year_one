@@ -72,8 +72,8 @@ class HomePage(tk.Frame):
 
         button_page.grid(row=14, column=1, pady=10, padx=10, sticky="se")
         button_quit.grid(row=15, column=1, pady=10, padx=10, sticky="se")
-        global t
-        self.update_method()
+        t = 0
+        self.update_method(t)
 
     def update_method(self, t):
         sense = _SenseHat(rpi)
