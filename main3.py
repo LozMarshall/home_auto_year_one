@@ -51,7 +51,7 @@ class HomePage(tk.Frame):
         self.label = tk.Label(self, text="temperature: ")
         self.label2 = tk.Label(self, text="pressure: ")
         self.label3 = tk.Label(self, text="humidity: ")
-        self.label4 = tk.Label(self, text="thermostat: ")
+        self.label4 = tk.Label(self, text="thermostat temperature: ")
         self.label5 = tk.Label(self, text="heating: ")
 
         number = 24
@@ -77,12 +77,27 @@ class HomePage(tk.Frame):
 
     def update_method(self):
         sense = _SenseHat(rpi)
+        temperature = round(sense.temp_c, 1)
+        thermostat_temp = self.tempscale.get()
 
-        self.label.configure(text="temperature: " + str(round(sense.temp_c, 1)) + " \u2103")
+        self.label.configure(text="temperature: " + str(temperature) + " \u2103")
         self.label2.configure(text="pressure: " + str(round(sense.pressure, 2)) + " mbar")
         self.label3.configure(text="humidity: " + str(round(sense.humidity, 1)) + " %")
+        self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
+
+        # self.heating(temperature, thermostat_temp)
+
+        self.label5.configure(text="heating: " + str(self.heating(temperature, thermostat_temp)))
+
         self.after(2000, self.update_method)
 
+    def heating(self, temperature, thermostat_temp):
+        thermostat = self.tempscale.get()
+
+        if thermostat <= temperature:
+            return "OFF"
+        else:
+            return "ON"
 
 class HelpPage(tk.Frame):
     def __init__(self, parent, controller):
