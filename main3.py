@@ -72,8 +72,8 @@ class HomePage(tk.Frame):
 
         button_page.grid(row=14, column=1, pady=10, padx=10, sticky="se")
         button_quit.grid(row=15, column=1, pady=10, padx=10, sticky="se")
-        t = int
-        self.update_method(t)
+        global t
+        self.update_method()
 
     def update_method(self, t):
         sense = _SenseHat(rpi)
@@ -84,25 +84,22 @@ class HomePage(tk.Frame):
         # self.label2.configure(text="pressure: " + str(round(sense.pressure, 2)) + " mbar")
         # self.label3.configure(text="humidity: " + str(round(sense.humidity, 1)) + " %")
         self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
-
-        # self.heating(temperature, thermostat_temp)
-
         self.label5.configure(text="heating: " + str(self.heating(temperature, thermostat_temp)))
+
         if t == 10:
-            self.slow_update(sense, temperature)
-            t == 0
+            self.update_slow()
+            t = 0
         else:
             t += 1
 
         self.after(200, self.update_method)
 
-    def slow_update(self, sense, temperature):
+    def update_slow(self):
         self.label.configure(text="temperature: " + str(temperature) + " \u2103")
         self.label2.configure(text="pressure: " + str(round(sense.pressure, 2)) + " mbar")
         self.label3.configure(text="humidity: " + str(round(sense.humidity, 1)) + " %")
 
     def heating(self, temperature, thermostat_temp):
-        # thermostat = self.tempscale.get()
 
         if thermostat_temp <= temperature:
             return "OFF"
