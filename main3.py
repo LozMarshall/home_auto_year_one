@@ -33,6 +33,7 @@ class App(tk.Tk):
             frame.grid(row=0, column=0, sticky="nsew")
             frame.columnconfigure(0, weight=1)
             frame.rowconfigure(0, weight=1)
+            frame.columnconfigure(1, weight=1)
 
         self.show_frame(HomePage)
 
@@ -51,9 +52,9 @@ class HomePage(tk.Frame):
         self.label4 = tk.Label(self, text="thermostat: ")
         self.label5 = tk.Label(self, text="heating: ")
 
-        button_page = tk.Button(self, text="Help", anchor="sw",
+        button_page = tk.Button(self, text="Help", anchor="w",
                                 command=lambda: controller.show_frame(HelpPage))
-        button_quit = tk.Button(self, text="quit", anchor="sw", command=self.quit)
+        button_quit = tk.Button(self, text="quit", anchor="w", command=self.quit)
 
         self.label.grid(row=0, column=0, pady=10, padx=10, sticky="w")
         self.label2.grid(row=1, column=0, pady=10, padx=10, sticky="w")
