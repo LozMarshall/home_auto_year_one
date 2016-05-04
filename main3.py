@@ -80,24 +80,31 @@ class HomePage(tk.Frame):
         temperature = round(sense.temp_c, 1)
         thermostat_temp = self.tempscale.get()
 
-        self.label.configure(text="temperature: " + str(temperature) + " \u2103")
-        self.label2.configure(text="pressure: " + str(round(sense.pressure, 2)) + " mbar")
-        self.label3.configure(text="humidity: " + str(round(sense.humidity, 1)) + " %")
+        # self.label.configure(text="temperature: " + str(temperature) + " \u2103")
+        # self.label2.configure(text="pressure: " + str(round(sense.pressure, 2)) + " mbar")
+        # self.label3.configure(text="humidity: " + str(round(sense.humidity, 1)) + " %")
         self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
 
         # self.heating(temperature, thermostat_temp)
 
         self.label5.configure(text="heating: " + str(self.heating(temperature, thermostat_temp)))
 
-        self.after(2000, self.update_method)
+        self.after(2000, self.slow_update(sense, temperature))
+        self.after(200, self.update_method)
+
+    def slow_update(self, sense, temperature):
+        self.label.configure(text="temperature: " + str(temperature) + " \u2103")
+        self.label2.configure(text="pressure: " + str(round(sense.pressure, 2)) + " mbar")
+        self.label3.configure(text="humidity: " + str(round(sense.humidity, 1)) + " %")
 
     def heating(self, temperature, thermostat_temp):
-        thermostat = self.tempscale.get()
+        # thermostat = self.tempscale.get()
 
-        if thermostat <= temperature:
+        if thermostat_temp <= temperature:
             return "OFF"
         else:
             return "ON"
+
 
 class HelpPage(tk.Frame):
     def __init__(self, parent, controller):
