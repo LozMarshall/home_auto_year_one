@@ -66,12 +66,13 @@ class HomePage(tk.Frame):
         # tempc = Temperature(sense)
         # temp_new = tempc.temperature_c()
 
-        temp_new = sense.temp_c
         # accessing temp_c property doesnt work because its already been initialised at the start
         # it will continue to return the same value over and over regardless
         # as the instance is not being recreated each time.
 
-        self.label.configure(text="temperature: " + str(round(temp_new, 1)) + " \u2103")
+        self.label.configure(text="temperature: " + str(round(sense.temp_c, 1)) + " \u2103")
+        self.label2.configure(text="pressure: " + str(sense.pressure))
+        self.label3.configure(text="humidity: " + str(sense.humidity))
         self.after(2000, self.update_method)
 
 
