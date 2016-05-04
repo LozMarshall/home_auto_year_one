@@ -24,13 +24,12 @@ class App(tk.Tk):
 
         for F in (HomePage, HelpPage):
             frame = F(container, self)
-            print("break point 4")
+
             self.frames[F] = frame
 
             frame.grid(row=0, column=0, sticky="nsew")
 
         self.show_frame(HomePage)
-        print("break point 1")
 
     def show_frame(self, cont):
         frame = self.frames[cont]
@@ -66,7 +65,6 @@ class HomePage(tk.Frame):
         tempc = Temperature(sense)
         temp_new = tempc.temperature_c()
         self.label.configure(text="temperature: " + str(round(temp_new, 1)) + " \u2103")
-        print("update pushed")
         self.after(2000, self.update_method)
 
 
@@ -89,5 +87,4 @@ class HelpPage(tk.Frame):
 rpi = Board()
 sense = _SenseHat(rpi)
 app = App()
-print("break point 3")
 app.mainloop()
