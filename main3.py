@@ -55,7 +55,8 @@ class HomePage(tk.Frame):
         self.label5 = tk.Label(self, text="heating: ")
 
         number = 24
-        self.tempscale = tk.Scale(self, from_=10, to=30, orient="horizontal", showvalue=number)
+        self.tempscale = tk.Scale(self, from_=10, to=30, orient="horizontal")
+        self.tempscale.set(number)
 
         button_page = tk.Button(self, text="Help", anchor="w",
                                 command=lambda: controller.show_frame(HelpPage))
