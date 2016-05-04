@@ -71,8 +71,8 @@ class HomePage(tk.Frame):
         # as the instance is not being recreated each time.
 
         self.label.configure(text="temperature: " + str(round(sense.temp_c, 1)) + " \u2103")
-        self.label2.configure(text="pressure: " + str(round(sense.pressure), 2) + " mbar")
-        self.label3.configure(text="humidity: " + str(round(sense.humidity), 1) + " %")
+        self.label2.configure(text="pressure: " + str(round(sense.pressure, 2)) + " mbar")
+        self.label3.configure(text="humidity: " + str(round(sense.humidity, 1)) + " %%")
         self.after(2000, self.update_method)
 
 
