@@ -54,7 +54,8 @@ class HomePage(tk.Frame):
         self.label4 = tk.Label(self, text="thermostat: ")
         self.label5 = tk.Label(self, text="heating: ")
 
-        self.tempscale = tk.Scale(self, from_=10, to=30, orient="HORIZONTAL")
+        number = 24
+        self.tempscale = tk.Scale(self, from_=10, to=30, orient="HORIZONTAL", showvalue=number)
 
         button_page = tk.Button(self, text="Help", anchor="w",
                                 command=lambda: controller.show_frame(HelpPage))
@@ -79,14 +80,7 @@ class HomePage(tk.Frame):
         self.label.configure(text="temperature: " + str(round(sense.temp_c, 1)) + " \u2103")
         self.label2.configure(text="pressure: " + str(round(sense.pressure, 2)) + " mbar")
         self.label3.configure(text="humidity: " + str(round(sense.humidity, 1)) + " %")
-        self.heating()
         self.after(2000, self.update_method)
-
-    def heating(self):
-
-
-
-    def
 
 
 class HelpPage(tk.Frame):
