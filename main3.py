@@ -45,6 +45,8 @@ class App(tk.Tk):
 class HomePage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
+        self.columnconfigure(0, weight=1)
+        self.columnconfigure(1, weight=4)
 
         self.label = tk.Label(self, text="temperature: ")
         self.label2 = tk.Label(self, text="pressure: ")
