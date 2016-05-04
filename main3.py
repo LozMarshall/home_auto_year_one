@@ -72,10 +72,10 @@ class HomePage(tk.Frame):
 
         button_page.grid(row=14, column=1, pady=10, padx=10, sticky="se")
         button_quit.grid(row=15, column=1, pady=10, padx=10, sticky="se")
+        t = int
+        self.update_method(t)
 
-        self.update_method()
-
-    def update_method(self):
+    def update_method(self, t):
         sense = _SenseHat(rpi)
         temperature = round(sense.temp_c, 1)
         thermostat_temp = self.tempscale.get()
@@ -88,8 +88,12 @@ class HomePage(tk.Frame):
         # self.heating(temperature, thermostat_temp)
 
         self.label5.configure(text="heating: " + str(self.heating(temperature, thermostat_temp)))
+        if t == 10:
+            self.slow_update(sense, temperature)
+            t == 0
+        else:
+            t += 1
 
-        self.after(2000, self.slow_update(sense, temperature))
         self.after(200, self.update_method)
 
     def slow_update(self, sense, temperature):
@@ -124,4 +128,5 @@ class HelpPage(tk.Frame):
 
 rpi = Board()
 app = App()
+
 app.mainloop()
