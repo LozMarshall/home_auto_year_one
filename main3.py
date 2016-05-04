@@ -62,8 +62,15 @@ class HomePage(tk.Frame):
         self.update_method()
 
     def update_method(self):
-        tempc = Temperature(sense)
-        temp_new = tempc.temperature_c()
+        sense = _SenseHat(rpi)
+        # tempc = Temperature(sense)
+        # temp_new = tempc.temperature_c()
+
+        temp_new = sense.temp_c
+        # accessing temp_c property doesnt work because its already been initialised at the start
+        # it will continue to return the same value over and over regardless
+        # as the instance is not being recreated each time.
+
         self.label.configure(text="temperature: " + str(round(temp_new, 1)) + " \u2103")
         self.after(2000, self.update_method)
 
@@ -85,6 +92,6 @@ class HelpPage(tk.Frame):
 
 
 rpi = Board()
-sense = _SenseHat(rpi)
+# sense = _SenseHat(rpi)
 app = App()
 app.mainloop()
