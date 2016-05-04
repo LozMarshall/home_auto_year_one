@@ -72,32 +72,21 @@ class HomePage(tk.Frame):
 
         button_page.grid(row=14, column=1, pady=10, padx=10, sticky="se")
         button_quit.grid(row=15, column=1, pady=10, padx=10, sticky="se")
-        t = 0
-        self.update_method(t)
 
-    def update_method(self, t):
+        self.update_method()
+
+    def update_method(self):
         sense = _SenseHat(rpi)
         temperature = round(sense.temp_c, 1)
         thermostat_temp = self.tempscale.get()
 
-        # self.label.configure(text="temperature: " + str(temperature) + " \u2103")
-        # self.label2.configure(text="pressure: " + str(round(sense.pressure, 2)) + " mbar")
-        # self.label3.configure(text="humidity: " + str(round(sense.humidity, 1)) + " %")
-        self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
-        self.label5.configure(text="heating: " + str(self.heating(temperature, thermostat_temp)))
-
-        if t == 10:
-            self.update_slow()
-            t = 0
-        else:
-            t += 1
-
-        self.after(200, self.update_method)
-
-    def update_slow(self):
         self.label.configure(text="temperature: " + str(temperature) + " \u2103")
         self.label2.configure(text="pressure: " + str(round(sense.pressure, 2)) + " mbar")
         self.label3.configure(text="humidity: " + str(round(sense.humidity, 1)) + " %")
+        self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
+        self.label5.configure(text="heating: " + str(self.heating(temperature, thermostat_temp)))
+
+        self.after(200, self.update_method)
 
     def heating(self, temperature, thermostat_temp):
 
