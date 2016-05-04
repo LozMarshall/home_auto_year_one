@@ -17,8 +17,11 @@ class App(tk.Tk):
         # container.pack(side="top", fill="both", expand=True)
         container.grid(rowspan=5, columnspan=2, sticky="nsew")
 
-        container.grid_rowconfigure(0, weight=1)
-        container.grid_columnconfigure(0, weight=1)
+        container.columnconfigure(0, weight=1)
+        container.columnconfigure(1, weight=1)
+
+        # container.grid_rowconfigure(0, weight=1)
+        # container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
 
@@ -63,16 +66,10 @@ class HomePage(tk.Frame):
 
     def update_method(self):
         sense = _SenseHat(rpi)
-        # tempc = Temperature(sense)
-        # temp_new = tempc.temperature_c()
-
-        # accessing temp_c property doesnt work because its already been initialised at the start
-        # it will continue to return the same value over and over regardless
-        # as the instance is not being recreated each time.
 
         self.label.configure(text="temperature: " + str(round(sense.temp_c, 1)) + " \u2103")
         self.label2.configure(text="pressure: " + str(round(sense.pressure, 2)) + " mbar")
-        self.label3.configure(text="humidity: " + str(round(sense.humidity, 1)) + " %%")
+        self.label3.configure(text="humidity: " + str(round(sense.humidity, 1)) + " %")
         self.after(2000, self.update_method)
 
 
@@ -93,6 +90,5 @@ class HelpPage(tk.Frame):
 
 
 rpi = Board()
-# sense = _SenseHat(rpi)
 app = App()
 app.mainloop()
