@@ -1,7 +1,7 @@
 from board import Board
 from sensehat import _SenseHat
-from temperature import Temperature
 import tkinter as tk
+import pygame
 
 
 class App(tk.Tk):
@@ -90,13 +90,29 @@ class HomePage(tk.Frame):
         self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
         self.label5.configure(text="heating: " + str(heating(temperature, thermostat_temp)))
 
-        self.bind("<Enter>", light())
+        self.bind("<Enter>", self.light(sense))
 
         self.after(200, self.update_method)
 
+    def sense_led(self, sense):
+        state = "off"
+        white = [255, 255, 255]
+        black = [0, 0, 0]
+        while True:
+            for event in pygame.event.get():
+                if event.type == KEYDOWN:
+                    if event.key == K_RETURN:
+                        if state == "on":
+                            state = "off"
+                        elif state == "off":
+                            state = "on"
 
-def light():
-    print("turn on the lights brah")
+                    if state == "on":
+                        sense.led_all(white)
+                        print("LED on")
+                    elif state == "off":
+                        sense.led_all(black)
+                        print("LED off")
 
 
 def heating(temperature, thermostat_temp):
