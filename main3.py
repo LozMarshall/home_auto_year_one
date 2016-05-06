@@ -3,6 +3,24 @@ from sensehat import _SenseHat
 import tkinter as tk
 
 
+def update_method(cont):
+
+    sense = _SenseHat(rpi)
+    temperature = round(sense.temp_c, 1)
+    thermostat_temp = cont.tempscale.get()
+
+    cont.label.configure(text="temperature: " + str(temperature) + " \u2103")
+    cont.label2.configure(text="pressure: " + str(round(sense.pressure, 2)) + " mbar")
+    cont.label3.configure(text="humidity: " + str(round(sense.humidity, 1)) + " %")
+    cont.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
+    cont.label5.configure(text="heating: " + str(heating(temperature, thermostat_temp)))
+    print("update method run")
+    print(sense.humidity)
+    print(sense.pressure)
+    print(thermostat_temp)
+    print(cont.label.cget("text"))
+
+
 class App(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
@@ -40,29 +58,12 @@ class App(tk.Tk):
         # the new one instead of the old one
         # access the instance with frame[HomePage]
 
-        self.update_method(self.frames[HomePage])
-        # self.after(200, self.update_method(self.frames[HomePage]))
+        update_method(self.frames[HomePage])
+        self.after(200, self.update_method(self.frames[HomePage]))
 
     def show_frame(self, cont):
         frame = self.frames[cont]
         frame.tkraise()
-
-    def update_method(self, cont):
-
-        sense = _SenseHat(rpi)
-        temperature = round(sense.temp_c, 1)
-        thermostat_temp = cont.tempscale.get()
-
-        cont.label.configure(text="temperature: " + str(temperature) + " \u2103")
-        cont.label2.configure(text="pressure: " + str(round(sense.pressure, 2)) + " mbar")
-        cont.label3.configure(text="humidity: " + str(round(sense.humidity, 1)) + " %")
-        cont.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
-        cont.label5.configure(text="heating: " + str(heating(temperature, thermostat_temp)))
-        print("update method run")
-        print(sense.humidity)
-        print(sense.pressure)
-        print(thermostat_temp)
-        print(cont.label.cget("text"))
 
 
 class HomePage(tk.Frame):
@@ -101,7 +102,7 @@ class HomePage(tk.Frame):
         button_quit.grid(row=15, column=3, pady=10, padx=10, sticky="se")
 
         # self.update_method()
-        self.after(200, App.update_method())
+        # self.after(200, update_method())
 
         print("idle here")
     """
