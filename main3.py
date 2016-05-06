@@ -78,7 +78,6 @@ class HomePage(tk.Frame):
         button_quit.grid(row=15, column=3, pady=10, padx=10, sticky="se")
 
         self.update_method()
-        print("does this call more than once")
 
     def update_method(self):
         sense = _SenseHat(rpi)
@@ -89,16 +88,23 @@ class HomePage(tk.Frame):
         self.label2.configure(text="pressure: " + str(round(sense.pressure, 2)) + " mbar")
         self.label3.configure(text="humidity: " + str(round(sense.humidity, 1)) + " %")
         self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
-        self.label5.configure(text="heating: " + str(self.heating(temperature, thermostat_temp)))
+        self.label5.configure(text="heating: " + str(heating(temperature, thermostat_temp)))
+
+        self.bind("<Enter>", light())
 
         self.after(200, self.update_method)
 
-    def heating(self, temperature, thermostat_temp):
 
-        if thermostat_temp <= temperature:
-            return "OFF"
-        else:
-            return "ON"
+def light():
+    print("turn on the lights brah")
+
+
+def heating(temperature, thermostat_temp):
+
+    if thermostat_temp <= temperature:
+        return "OFF"
+    else:
+        return "ON"
 
 
 class HelpPage(tk.Frame):
