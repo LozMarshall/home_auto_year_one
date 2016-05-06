@@ -36,10 +36,13 @@ class App(tk.Tk):
 
         self.show_frame(HomePage)
         print("break one")
-        homlel = HomePage()
-        # self.update_method(homlel)
-        #self.update_method(homlel)
+        # homlel = HomePage() # this is creating a whole new instance of the homepage and i was trying to update
+        # the new one instead of the old one
+        # access the instance with frame[HomePage]
 
+
+        # self.update_method(homlel)
+        self.update_method(frame[HomePage])
 
     def show_frame(self, cont):
         frame = self.frames[cont]
@@ -61,13 +64,6 @@ class App(tk.Tk):
         print(sense.pressure)
         print(thermostat_temp)
         print(cont.label.cget("text"))
-
-
-while True:
-    # self.after(200, self.update_method(homlel))
-    # the last thing happens here
-    App.update_method(App.homlel)
-    print("finished?")
 
 
 class HomePage(tk.Frame):
