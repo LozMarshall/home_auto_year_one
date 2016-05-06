@@ -76,7 +76,9 @@ class HomePage(tk.Frame):
         button_page.grid(row=14, column=3, pady=10, padx=10, sticky="se")
         button_quit.grid(row=15, column=3, pady=10, padx=10, sticky="se")
 
-        self.update_method()
+        #self.update_method()
+
+        print("idle here")
 
         #self.update_method()
 
@@ -124,3 +126,5 @@ rpi = Board()
 app = App()
 
 app.mainloop()
+while True:
+    app.after(200, HomePage.update_method())
