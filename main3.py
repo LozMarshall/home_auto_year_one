@@ -38,11 +38,8 @@ class App(tk.Tk):
         print("break one")
         homlel = HomePage()
         # self.update_method(homlel)
-        while True:
-            #self.after(200, self.update_method(homlel))
-            # the last thing happens here
-            self.update_method(homlel)
-            print("finished?")
+        #self.update_method(homlel)
+
 
     def show_frame(self, cont):
         frame = self.frames[cont]
@@ -64,6 +61,13 @@ class App(tk.Tk):
         print(sense.pressure)
         print(thermostat_temp)
         print(cont.label.cget("text"))
+
+
+while True:
+    # self.after(200, self.update_method(homlel))
+    # the last thing happens here
+    App.update_method(App.homlel)
+    print("finished?")
 
 
 class HomePage(tk.Frame):
