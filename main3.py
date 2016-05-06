@@ -40,13 +40,14 @@ class App(tk.Tk):
         # self.update_method(homlel)
         self.after(200, self.update_method(homlel))
         # the last thing happens here
+        print("finished?")
 
     def show_frame(self, cont):
         frame = self.frames[cont]
         frame.tkraise()
 
     def update_method(self, cont):
-        print("update method run")
+
         sense = _SenseHat(rpi)
         temperature = round(sense.temp_c, 1)
         thermostat_temp = cont.tempscale.get()
@@ -56,6 +57,7 @@ class App(tk.Tk):
         cont.label3.configure(text="humidity: " + str(round(sense.humidity, 1)) + " %")
         cont.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
         cont.label5.configure(text="heating: " + str(heating(temperature, thermostat_temp)))
+        print("update method run")
 
 
 class HomePage(tk.Frame):
