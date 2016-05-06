@@ -61,6 +61,7 @@ class App(tk.Tk):
         update_method(self.frames[HomePage])
         self.after(200, self.update_method(self.frames[HomePage]))
 
+
     def show_frame(self, cont):
         frame = self.frames[cont]
         frame.tkraise()
