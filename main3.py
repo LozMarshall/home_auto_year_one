@@ -63,6 +63,7 @@ class App(tk.Tk):
         while True:
             update_method(self.frames[HomePage])
 
+
         # self.after(200, self.update_method(self.frames[HomePage])) # this doesnt fucking work ffs cunts
 
     def show_frame(self, cont):
