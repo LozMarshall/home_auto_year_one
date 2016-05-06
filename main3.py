@@ -40,7 +40,6 @@ class App(tk.Tk):
         # the new one instead of the old one
         # access the instance with frame[HomePage]
 
-
         self.update_method(self.frames[HomePage])
         # self.after(200, self.update_method(self.frames[HomePage]))
 
