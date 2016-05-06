@@ -79,7 +79,8 @@ class HomePage(tk.Frame):
 
         while True:
             print("this is mainloop now")
-            self.after(200, self.update_method())
+            #self.after(200, self.update_method())
+            self.update_method()
 
         #self.update_method()
 
