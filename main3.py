@@ -76,11 +76,9 @@ class HomePage(tk.Frame):
         button_page.grid(row=14, column=3, pady=10, padx=10, sticky="se")
         button_quit.grid(row=15, column=3, pady=10, padx=10, sticky="se")
 
-        #self.update_method()
+        self.update_method()
 
         print("idle here")
-
-        #self.update_method()
 
     def update_method(self):
         sense = _SenseHat(rpi)
@@ -92,8 +90,6 @@ class HomePage(tk.Frame):
         self.label3.configure(text="humidity: " + str(round(sense.humidity, 1)) + " %")
         self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
         self.label5.configure(text="heating: " + str(heating(temperature, thermostat_temp)))
-
-
 
         #self.after(200, self.update_method)
 
@@ -128,3 +124,4 @@ app = App()
 app.mainloop()
 while True:
     app.after(200, HomePage.update_method())
+    print("updating..")
