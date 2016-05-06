@@ -40,9 +40,8 @@ class App(tk.Tk):
         # the new one instead of the old one
         # access the instance with frame[HomePage]
 
-
-        # self.update_method(homlel)
-        self.update_method(frame[HomePage])
+        self.update_method(self.frames[HomePage])
+        # self.after(200, self.update_method(self.frames[HomePage]))
 
     def show_frame(self, cont):
         frame = self.frames[cont]
@@ -102,6 +101,7 @@ class HomePage(tk.Frame):
         button_quit.grid(row=15, column=3, pady=10, padx=10, sticky="se")
 
         # self.update_method()
+        self.after(200, App.update_method())
 
         print("idle here")
     """
