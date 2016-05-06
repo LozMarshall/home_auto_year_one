@@ -37,13 +37,11 @@ class App(tk.Tk):
 
         self.show_frame(HomePage)
         print("break one")
+        # the last thing happens here
 
     def show_frame(self, cont):
         frame = self.frames[cont]
         frame.tkraise()
-        print("break two")
-
-    print("break three")
 
 
 class HomePage(tk.Frame):
