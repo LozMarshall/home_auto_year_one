@@ -33,6 +33,7 @@ class App(tk.Tk):
             frame.columnconfigure(0, weight=1)
             frame.rowconfigure(0, weight=1)
             frame.columnconfigure(1, weight=1)
+            print("break zero")
 
         self.show_frame(HomePage)
         print("break one")
