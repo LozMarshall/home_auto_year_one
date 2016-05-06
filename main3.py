@@ -77,7 +77,11 @@ class HomePage(tk.Frame):
         button_page.grid(row=14, column=3, pady=10, padx=10, sticky="se")
         button_quit.grid(row=15, column=3, pady=10, padx=10, sticky="se")
 
-        self.update_method()
+        while True:
+            print("this is mainloop now")
+            self.after(200, self.update_method())
+
+        #self.update_method()
 
     def update_method(self):
         sense = _SenseHat(rpi)
@@ -90,29 +94,9 @@ class HomePage(tk.Frame):
         self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
         self.label5.configure(text="heating: " + str(heating(temperature, thermostat_temp)))
 
-        self.bind("<Enter>", self.light(sense))
 
-        self.after(200, self.update_method)
 
-    def sense_led(self, sense):
-        state = "off"
-        white = [255, 255, 255]
-        black = [0, 0, 0]
-        while True:
-            for event in pygame.event.get():
-                if event.type == KEYDOWN:
-                    if event.key == K_RETURN:
-                        if state == "on":
-                            state = "off"
-                        elif state == "off":
-                            state = "on"
-
-                    if state == "on":
-                        sense.led_all(white)
-                        print("LED on")
-                    elif state == "off":
-                        sense.led_all(black)
-                        print("LED off")
+        #self.after(200, self.update_method)
 
 
 def heating(temperature, thermostat_temp):
