@@ -34,16 +34,17 @@ class App(tk.Tk):
             frame.rowconfigure(0, weight=1)
             frame.columnconfigure(1, weight=1)
             print("break zero")
+            print(frame)
 
         self.show_frame(HomePage)
         print("break one")
-        self.update_method(HomePage)
+        # self.update_method(HomePage)
         # the last thing happens here
 
     def show_frame(self, cont):
         frame = self.frames[cont]
         frame.tkraise()
-
+"""
     def update_method(self, cont):
         print("update method run")
         sense = _SenseHat(rpi)
@@ -54,7 +55,7 @@ class App(tk.Tk):
         cont.label2.configure(text="pressure: " + str(round(sense.pressure, 2)) + " mbar")
         cont.label3.configure(text="humidity: " + str(round(sense.humidity, 1)) + " %")
         cont.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
-        cont.label5.configure(text="heating: " + str(heating(temperature, thermostat_temp)))
+        cont.label5.configure(text="heating: " + str(heating(temperature, thermostat_temp)))"""
 
 
 class HomePage(tk.Frame):
