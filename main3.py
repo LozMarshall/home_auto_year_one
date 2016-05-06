@@ -37,7 +37,8 @@ class App(tk.Tk):
         self.show_frame(HomePage)
         print("break one")
         homlel = HomePage()
-        self.update_method(homlel)
+        # self.update_method(homlel)
+        self.after(200, self.update_method(homlel))
         # the last thing happens here
 
     def show_frame(self, cont):
