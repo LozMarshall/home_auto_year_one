@@ -1,7 +1,6 @@
 from board import Board
 from sensehat import _SenseHat
 import tkinter as tk
-import pygame
 
 
 class App(tk.Tk):
@@ -78,7 +77,7 @@ class HomePage(tk.Frame):
         button_quit.grid(row=15, column=3, pady=10, padx=10, sticky="se")
 
         while True:
-            print("this is mainloop now")
+            #print("this is mainloop now")
             #self.after(200, self.update_method())
             self.update_method()
 
