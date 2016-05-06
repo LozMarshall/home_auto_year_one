@@ -70,14 +70,15 @@ class HomePage(tk.Frame):
         self.label4.grid(row=3, column=0, pady=10, padx=10, sticky="w")
         self.label5.grid(row=4, column=0, pady=10, padx=10, sticky="w")
 
-        self.label6.grid(row=0, column=1, pady=10, padx=10, sticky="W")
+        self.label6.grid(row=0, column=1, pady=10, padx=10, sticky="SW")
 
-        self.tempscale.grid(row=0, column=2, pady=10, padx=10, sticky="se")
+        self.tempscale.grid(row=0, column=2, pady=10, padx=10, sticky="W")
 
         button_page.grid(row=14, column=3, pady=10, padx=10, sticky="se")
         button_quit.grid(row=15, column=3, pady=10, padx=10, sticky="se")
 
         self.update_method()
+        print("does this call more than once")
 
     def update_method(self):
         sense = _SenseHat(rpi)
