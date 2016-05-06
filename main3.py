@@ -35,10 +35,24 @@ class App(tk.Tk):
             frame.columnconfigure(1, weight=1)
 
         self.show_frame(HomePage)
+        self.update_method()
 
     def show_frame(self, cont):
         frame = self.frames[cont]
         frame.tkraise()
+
+    def update_method(self):
+        sense = _SenseHat(rpi)
+        temperature = round(sense.temp_c, 1)
+        thermostat_temp = self.tempscale.get()
+
+        self.label.configure(text="temperature: " + str(temperature) + " \u2103")
+        self.label2.configure(text="pressure: " + str(round(sense.pressure, 2)) + " mbar")
+        self.label3.configure(text="humidity: " + str(round(sense.humidity, 1)) + " %")
+        self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
+        self.label5.configure(text="heating: " + str(heating(temperature, thermostat_temp)))
+
+        # self.after(200, self.update_method)
 
 
 class HomePage(tk.Frame):
@@ -76,10 +90,10 @@ class HomePage(tk.Frame):
         button_page.grid(row=14, column=3, pady=10, padx=10, sticky="se")
         button_quit.grid(row=15, column=3, pady=10, padx=10, sticky="se")
 
-        self.update_method()
+        # self.update_method()
 
         print("idle here")
-
+    """
     def update_method(self):
         sense = _SenseHat(rpi)
         temperature = round(sense.temp_c, 1)
@@ -91,7 +105,7 @@ class HomePage(tk.Frame):
         self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
         self.label5.configure(text="heating: " + str(heating(temperature, thermostat_temp)))
 
-        #self.after(200, self.update_method)
+        #self.after(200, self.update_method)"""
 
 
 def heating(temperature, thermostat_temp):
