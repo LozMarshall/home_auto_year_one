@@ -7,9 +7,9 @@ class App(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
         self.config(cursor="none")
-        w, h = self.winfo_screenwidth(), self.winfo_screenheight()
-        self.overrideredirect(1)
-        self.geometry("%dx%d+0+0" % (w, h))
+        #w, h = self.winfo_screenwidth(), self.winfo_screenheight()
+        #self.overrideredirect(1)
+        #self.geometry("%dx%d+0+0" % (w, h))
 
         container = tk.Frame(self)
 
