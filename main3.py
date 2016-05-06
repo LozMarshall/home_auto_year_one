@@ -58,6 +58,9 @@ class App(tk.Tk):
         cont.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
         cont.label5.configure(text="heating: " + str(heating(temperature, thermostat_temp)))
         print("update method run")
+        print(sense.humidity)
+        print(sense.pressure)
+        print(thermostat_temp)
 
 
 class HomePage(tk.Frame):
