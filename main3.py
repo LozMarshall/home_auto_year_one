@@ -58,7 +58,7 @@ class App(tk.Tk):
 
 
 class HomePage(tk.Frame):
-    def __init__(self, parent, controller):
+    def __init__(self, parent='', controller=''):
         tk.Frame.__init__(self, parent)
         self.columnconfigure(0, weight=1)
         self.columnconfigure(1, weight=4)
