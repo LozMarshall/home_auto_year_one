@@ -39,8 +39,9 @@ class App(tk.Tk):
         homlel = HomePage()
         # self.update_method(homlel)
         while True:
-            self.after(200, self.update_method(homlel))
+            #self.after(200, self.update_method(homlel))
             # the last thing happens here
+            self.update_method(homlel)
             print("finished?")
 
     def show_frame(self, cont):
