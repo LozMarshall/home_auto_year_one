@@ -1,6 +1,7 @@
 from board import Board
 from sensehat import _SenseHat
 import tkinter as tk
+from time import sleep
 
 
 def update_method(cont):
@@ -57,6 +58,10 @@ class App(tk.Tk):
             frame.columnconfigure(1, weight=1)
 
         self.show_frame(HomePage)
+        sleep(2)
+        self.show_frame(HomePage)
+        sleep(2)
+        self.show_frame(HomePage)
 
         # access the instance with frame[HomePage]
         update_method(self.frames[HomePage])
@@ -64,7 +69,7 @@ class App(tk.Tk):
         #    update_method(self.frames[HomePage])
 
         # self.after(200, self.update_method(self.frames[HomePage])) # this doesnt fucking work ffs cunts
-        print("last thing")
+        #print("last thing")
 
     def show_frame(self, cont):
         frame = self.frames[cont]
