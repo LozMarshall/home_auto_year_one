@@ -24,7 +24,6 @@ def update_method(cont):
     print(thermostat_temp)
     print(cont.label.cget("text"))
     # end of diagnostics of what is going on in this method
-    cont.after(200, update_method(App.frames[HomePage]))
 
 
 class App(tk.Tk):
@@ -61,7 +60,11 @@ class App(tk.Tk):
         self.show_frame(HomePage)
 
         # access the instance with frame[HomePage]
-        update_method(self.frames[HomePage])
+        #update_method(self.frames[HomePage])
+        self.after(500, self.update_method(self.frames[HomePage]))  # this doesnt fucking work ffs cunts
+        self.after(1000, self.update_method(self.frames[HomePage]))  # this doesnt fucking work ffs cunts
+        self.after(1500, self.update_method(self.frames[HomePage]))  # this doesnt fucking work ffs cunts
+        self.after(2000, self.update_method(self.frames[HomePage]))  # this doesnt fucking work ffs cunts
 
         print("going and going yeah no yeah")
         # while True:
