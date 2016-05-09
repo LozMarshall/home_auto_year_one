@@ -82,7 +82,7 @@ class HomePage(tk.Frame):
         self.tempscale = tk.Scale(self, from_=10, to=30, orient="horizontal")
         self.tempscale.set(number)
 
-        self.button_light = tk.Button(self, text="Lights on", height=5, width=25, anchor="w")
+        self.button_light = tk.Button(self, text="Lights on", width=25, anchor="w")
 
         button_page = tk.Button(self, text="Help", anchor="w",
                                 command=lambda: controller.show_frame(HelpPage))
