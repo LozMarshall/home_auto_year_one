@@ -119,8 +119,6 @@ class HomePage(tk.Frame):
         self.update_interface()
         # self.update_sensing()
         print("this is happpening")
-        sleep(0.2)
-        print("more is happening")
 
         #self.after(500, self.update_method)
 
@@ -137,25 +135,6 @@ class HomePage(tk.Frame):
         print("doing it")
 
         self.after(500, self.update_method)
-
-    def update_sensing(self):
-        state = "off"
-        while True:
-            for event in pygame.event.get():
-                if event.type == KEYDOWN:
-                    if event.key == K_RETURN:
-                        if state == "on":
-                            state = "off"
-                        elif state == "off":
-                            state = "on"
-
-                    if state == "on":
-                        sense.led_all(white)
-                        print("LED on")
-                    elif state == "off":
-                        sense.led_all(black)
-                        print("LED off")
-
 
 def heating(temperature, thermostat_temp):
 
