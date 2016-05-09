@@ -33,8 +33,6 @@ class App(tk.Tk):
         w, h = self.winfo_screenwidth(), self.winfo_screenheight()
         self.overrideredirect(1)
         self.geometry("%dx%d+0+0" % (w, h))
-        self.bind('<Left>', self.leftKey)
-        self.bind('<Right>', self.rightKey)
 
         container = tk.Frame(self)
 
@@ -61,12 +59,6 @@ class App(tk.Tk):
 
         self.show_frame(HomePage)
 
-    def leftKey(event):
-        print("Left key pressed")
-
-    def rightKey(event):
-        print("Right key pressed")
-
     def show_frame(self, cont):
         frame = self.frames[cont]
         frame.tkraise()
@@ -90,6 +82,8 @@ class HomePage(tk.Frame):
         self.tempscale = tk.Scale(self, from_=10, to=30, orient="horizontal")
         self.tempscale.set(number)
 
+        self.button_light = tk.Button(self, text="Lights on", height=15, width=50, anchor="w")
+
         button_page = tk.Button(self, text="Help", anchor="w",
                                 command=lambda: controller.show_frame(HelpPage))
         button_quit = tk.Button(self, text="quit", anchor="w", command=self.quit)
@@ -103,6 +97,8 @@ class HomePage(tk.Frame):
         self.label6.grid(row=0, column=1, pady=10, padx=10, sticky="SW")
 
         self.tempscale.grid(row=0, column=2, pady=10, padx=10, sticky="W")
+
+        self.button_light.grid(row=1, column=2, pady=10, padx=10, sticky="W")
 
         button_page.grid(row=14, column=3, pady=10, padx=10, sticky="se")
         button_quit.grid(row=15, column=3, pady=10, padx=10, sticky="se")
