@@ -118,10 +118,10 @@ class HomePage(tk.Frame):
         button_page.grid(row=14, column=3, pady=10, padx=10, sticky="se")
         button_quit.grid(row=15, column=3, pady=10, padx=10, sticky="se")
 
-        while True:
-            update_method(self)
+        #while True:
+         #   update_method(self)
 
-        # self.update_method()
+        self.after(500,self.update_method)
 
 """
     def update_method(self):
