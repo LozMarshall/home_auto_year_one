@@ -71,9 +71,7 @@ class App(tk.Tk):
             sleep(1)
         """ # this kinda works but the gui lags like fuck
 
-        while True:
-            print("this is going on ")
-            sleep(1)
+
 
         # self.after(200, self.update_method(self.frames[HomePage])) # this doesnt fucking work ffs cunts
         #print("last thing")
