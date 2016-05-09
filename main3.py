@@ -65,9 +65,9 @@ class App(tk.Tk):
         print("going and going yeah no yeah")
         while True:
             update_method(self.frames[HomePage])
-            sleep(0.5)
             self.update_idletasks()
             self.update()
+            sleep(1)
 
         # self.after(200, self.update_method(self.frames[HomePage])) # this doesnt fucking work ffs cunts
         #print("last thing")
