@@ -59,23 +59,6 @@ class App(tk.Tk):
 
         self.show_frame(HomePage)
 
-        # access the instance with frame[HomePage]
-        #update_method(self.frames[HomePage])
-
-        print("going and going yeah no yeah")
-        """
-        while True:
-            update_method(self.frames[HomePage])
-            self.update_idletasks()
-            self.update()
-            sleep(1)
-        """ # this kinda works but the gui lags like fuck
-
-
-
-        # self.after(200, self.update_method(self.frames[HomePage])) # this doesnt fucking work ffs cunts
-        #print("last thing")
-
     def show_frame(self, cont):
         frame = self.frames[cont]
         frame.tkraise()
@@ -118,9 +101,6 @@ class HomePage(tk.Frame):
 
         self.update_interface()
         self.update_sensing()
-        print("this is happpening")
-
-        #self.after(500, self.update_method)
 
     def update_interface(self):
         sense = _SenseHat(rpi)
@@ -138,6 +118,9 @@ class HomePage(tk.Frame):
 
     def update_sensing(self):
         print("updating at the same time")
+        self.bind('<Left>', print("left"))
+        self.bind('<Right>', print("right"))
+
         self.after(500, self.update_sensing)
 
 
