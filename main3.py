@@ -83,7 +83,7 @@ class HomePage(tk.Frame):
         self.tempscale.set(number)
 
         self.sense = "off"
-        self.button_light = tk.Button(self, text="Lights on", width=25, anchor="w",
+        self.button_light = tk.Button(self, width=25, anchor="w",
                                       command=lambda: self.light())
 
         button_page = tk.Button(self, text="Help", anchor="w",
@@ -130,9 +130,9 @@ class HomePage(tk.Frame):
     def light(self):
         self.sense = sense_led(self.sense)
         if self.sense == "off":
-            self.button_light.configure(text="lights on")
+            self.button_light.configure(text="Lights on")
         elif self.sense == "on":
-            self.button_light.configure(text="lights off")
+            self.button_light.configure(text="Lights off")
 
 
 def sense_led(state):
