@@ -82,7 +82,9 @@ class HomePage(tk.Frame):
         self.tempscale = tk.Scale(self, from_=10, to=30, orient="horizontal")
         self.tempscale.set(number)
 
-        self.button_light = tk.Button(self, text="Lights on", width=25, anchor="w")
+        self.sense = "off"
+        self.button_light = tk.Button(self, text="Lights on", width=25, anchor="w",
+                                      command=self.light())
 
         button_page = tk.Button(self, text="Help", anchor="w",
                                 command=lambda: controller.show_frame(HelpPage))
@@ -124,6 +126,24 @@ class HomePage(tk.Frame):
         print("updating at the same time")
 
         self.after(500, self.update_sensing)
+
+    def light(self):
+            self.sense = sense_led(self.sense)
+
+
+def sense_led(state):
+    sense = _SenseHat(rpi)
+    white = [255, 255, 255]
+    black = [0, 0, 0]
+
+    if state == "on":
+        sense.led_all(black)
+        print("LED off")
+        return "off"
+    elif state == "off":
+        sense.led_all(white)
+        print("LED on")
+        return "on"
 
 
 def heating(temperature, thermostat_temp):
