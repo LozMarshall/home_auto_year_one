@@ -60,11 +60,11 @@ class App(tk.Tk):
 
         # access the instance with frame[HomePage]
         update_method(self.frames[HomePage])
-        while True:
-            update_method(self.frames[HomePage])
+        # while True:
+        #    update_method(self.frames[HomePage])
 
         # self.after(200, self.update_method(self.frames[HomePage])) # this doesnt fucking work ffs cunts
-
+        print("last thing")
 
     def show_frame(self, cont):
         frame = self.frames[cont]
