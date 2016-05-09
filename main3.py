@@ -79,7 +79,7 @@ class HomePage(tk.Frame):
         self.label6 = tk.Label(self, text="Set thermostat temperature: ")
 
         number = 24
-        self.tempscale = tk.Scale(self, from_=10, to=30, orient="horizontal")
+        self.tempscale = tk.Scale(self, from_=10, to=35, orient="horizontal")
         self.tempscale.set(number)
 
         self.sense = "off"
