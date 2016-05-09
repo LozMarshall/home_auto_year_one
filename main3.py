@@ -121,9 +121,8 @@ class HomePage(tk.Frame):
         #while True:
          #   update_method(self)
 
-        self.after(500,self.update_method)
+        self.after(500, self.update_method)
 
-"""
     def update_method(self):
         sense = _SenseHat(rpi)
         temperature = round(sense.temp_c, 1)
@@ -137,8 +136,6 @@ class HomePage(tk.Frame):
         print("doing it")
 
         self.after(500, self.update_method)
-        """
-
 
 
 def heating(temperature, thermostat_temp):
