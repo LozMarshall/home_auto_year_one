@@ -11,7 +11,9 @@ def rightKey(event):
     print("Right key pressed")
 
 frame = Frame(main, width=100, height=100)
-frame.bind('<Left>', leftKey)
-frame.bind('<Right>', rightKey)
+main.bind('<Left>', leftKey)
+main.bind('<Right>', rightKey)
 frame.pack()
 frame.mainloop()
+
+from Tkinter import *
