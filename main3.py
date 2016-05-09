@@ -61,14 +61,12 @@ class App(tk.Tk):
 
         # access the instance with frame[HomePage]
         #update_method(self.frames[HomePage])
-        self.after(500, update_method(self.frames[HomePage]))  # this doesnt fucking work ffs cunts
-        self.after(1000, update_method(self.frames[HomePage]))  # this doesnt fucking work ffs cunts
-        self.after(1500, update_method(self.frames[HomePage]))  # this doesnt fucking work ffs cunts
-        self.after(2000, update_method(self.frames[HomePage]))  # this doesnt fucking work ffs cunts
 
         print("going and going yeah no yeah")
-        # while True:
-        #    update_method(self.frames[HomePage])
+        while True:
+            update_method(self.frames[HomePage])
+            self.update_idletasks()
+            self.update()
 
         # self.after(200, self.update_method(self.frames[HomePage])) # this doesnt fucking work ffs cunts
         #print("last thing")
