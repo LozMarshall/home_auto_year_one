@@ -84,7 +84,7 @@ class HomePage(tk.Frame):
 
         self.sense = "off"
         self.button_light = tk.Button(self, text="Lights on", width=25, anchor="w",
-                                      command=self.light())
+                                      command=lambda: self.light())
 
         button_page = tk.Button(self, text="Help", anchor="w",
                                 command=lambda: controller.show_frame(HelpPage))
