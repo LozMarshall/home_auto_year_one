@@ -27,14 +27,14 @@ def update_method(cont):
 
 
 class App(tk.Tk):
-    def __init__(self, master):
-        tk.Tk.__init__(self, master)
+    def __init__(self):
+        tk.Tk.__init__(self)
         self.config(cursor="none")
         w, h = self.winfo_screenwidth(), self.winfo_screenheight()
         self.overrideredirect(1)
         self.geometry("%dx%d+0+0" % (w, h))
-        self.master.bind('<Left>', self.leftKey)
-        self.master.bind('<Right>', self.rightKey)
+        self.bind('<Left>', self.leftKey)
+        self.bind('<Right>', self.rightKey)
 
         container = tk.Frame(self)
 
