@@ -1,29 +1,6 @@
 from board import Board
 from sensehat import _SenseHat
 import tkinter as tk
-from time import sleep
-
-
-def update_method(cont):
-    sense = _SenseHat(rpi) # create instance of sensehat
-    temperature = round(sense.temp_c, 1) # pull temperature method from sensehat
-    thermostat_temp = cont.tempscale.get() # get thermostat temp from GUI scale
-
-    # begin  of functions to post updates to labels
-    cont.label.configure(text="temperature: " + str(temperature) + " \u2103")
-    cont.label2.configure(text="pressure: " + str(round(sense.pressure, 2)) + " mbar")
-    cont.label3.configure(text="humidity: " + str(round(sense.humidity, 1)) + " %")
-    cont.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
-    cont.label5.configure(text="heating: " + str(heating(temperature, thermostat_temp)))
-    # end of functions to post updates to labels
-
-    # begin of diagnostics of what is going on in this method
-    print("update method run")
-    print(sense.humidity)
-    print(sense.pressure)
-    print(thermostat_temp)
-    print(cont.label.cget("text"))
-    # end of diagnostics of what is going on in this method
 
 
 class App(tk.Tk):
@@ -70,31 +47,42 @@ class HomePage(tk.Frame):
         self.columnconfigure(0, weight=1)
         self.columnconfigure(1, weight=4)
 
+        self.sense = "off"
+        number = 24
+
+        ##########COLUMN 0 START - INITIALISING LABELS#########
         self.label = tk.Label(self, text="temperature: ")
         self.label2 = tk.Label(self, text="pressure: ")
         self.label3 = tk.Label(self, text="humidity: ")
         self.label4 = tk.Label(self, text="thermostat temperature: ")
         self.label5 = tk.Label(self, text="heating: ")
+        ##########COLUMN 0 END###########
 
+        ##########COLUMN 1 START - INITIALISING LABELS#########
         self.label6 = tk.Label(self, text="Set thermostat temperature: ")
+        ##########COLUMN 1 END###########
 
-        number = 24
-        self.tempscale = tk.Scale(self, from_=10, to=35, orient="horizontal")
+        ##########COLUMN 2 START - INITIALISING#########
+        self.tempscale = tk.Scale(self, from_=10, to=30, orient="horizontal")
         self.tempscale.set(number)
 
-        self.sense = "off"
-        self.button_light = tk.Button(self, width=25, anchor="w",
+        self.button_light = tk.Button(self, text="Lights on", width=25, anchor="w",
                                       command=lambda: self.light())
+        ##########COLUMN 2 END#########
 
+        ##########COLUMN 100 START#####
         button_page = tk.Button(self, text="Help", anchor="w",
                                 command=lambda: controller.show_frame(HelpPage))
         button_quit = tk.Button(self, text="quit", anchor="w", command=self.quit)
+        ##########COLUMN 100 END#######
 
+        ##########COLUMN 0 START - LABEL SETUP#########
         self.label.grid(row=0, column=0, pady=10, padx=10, sticky="w")
         self.label2.grid(row=1, column=0, pady=10, padx=10, sticky="w")
         self.label3.grid(row=2, column=0, pady=10, padx=10, sticky="w")
         self.label4.grid(row=3, column=0, pady=10, padx=10, sticky="w")
         self.label5.grid(row=4, column=0, pady=10, padx=10, sticky="w")
+        ##########COLUMN 0 END#########################
 
         self.label6.grid(row=0, column=1, pady=10, padx=10, sticky="SW")
 
@@ -118,9 +106,9 @@ class HomePage(tk.Frame):
         self.label3.configure(text="humidity: " + str(round(sense.humidity, 1)) + " %")
         self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
         self.label5.configure(text="heating: " + str(heating(temperature, thermostat_temp)))
-        # print("doing it")
 
-        self.after(500, self.update_interface)
+        self.after(500, self.update_interface)  # METHOD UPDATES EVERY HALF SECOND WITHIN EVENT HANDLER
+                                                # THIS IS NOT PROCEDURAL ANYTHING ELSE CAN RUN TOO
 
     def update_sensing(self):
         print("updating at the same time")
