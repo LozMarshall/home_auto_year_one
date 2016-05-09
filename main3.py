@@ -109,7 +109,8 @@ class HomePage(tk.Frame):
         button_page.grid(row=14, column=3, pady=10, padx=10, sticky="se")
         button_quit.grid(row=15, column=3, pady=10, padx=10, sticky="se")
 
-        self.update_method()
+        while True:
+            self.update_method()
 
     def update_method(self):
         sense = _SenseHat(rpi)
@@ -123,7 +124,7 @@ class HomePage(tk.Frame):
         self.label5.configure(text="heating: " + str(heating(temperature, thermostat_temp)))
         print("doing it")
 
-        self.after(500, self.update_method)
+        #self.after(500, self.update_method)
 
 
 def heating(temperature, thermostat_temp):
