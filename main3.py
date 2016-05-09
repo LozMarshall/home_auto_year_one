@@ -58,13 +58,17 @@ class App(tk.Tk):
             frame.columnconfigure(1, weight=1)
 
         self.show_frame(HomePage)
-        sleep(2)
-        self.show_frame(HomePage)
-        sleep(2)
-        self.show_frame(HomePage)
 
         # access the instance with frame[HomePage]
         update_method(self.frames[HomePage])
+        sleep(2)
+        update_method(self.frames[HomePage])
+        sleep(2)
+        update_method(self.frames[HomePage])
+        sleep(2)
+        update_method(self.frames[HomePage])
+        sleep(2)
+
         # while True:
         #    update_method(self.frames[HomePage])
 
