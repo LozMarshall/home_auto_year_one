@@ -24,7 +24,7 @@ def update_method(cont):
     print(thermostat_temp)
     print(cont.label.cget("text"))
     # end of diagnostics of what is going on in this method
-    cont.after(200, update_method(cont.frames[HomePage]))
+    cont.after(200, update_method(App.frames[HomePage]))
 
 
 class App(tk.Tk):
