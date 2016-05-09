@@ -137,7 +137,7 @@ class HomePage(tk.Frame):
         print("doing it")
 
         self.after(500, self.update_method)
-        """"
+        """
 
 
 
