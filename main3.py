@@ -111,21 +111,27 @@ class HomePage(tk.Frame):
     def update_interface(self):
         sense = _SenseHat(rpi)
         temperature = round(sense.temp_c, 1)
-        thermostat_temp = self.tempscale.get()
+        # thermostat_temp = self.tempscale.get()
 
         self.label.configure(text="temperature: " + str(temperature) + " \u2103")
         self.label2.configure(text="pressure: " + str(round(sense.pressure, 2)) + " mbar")
         self.label3.configure(text="humidity: " + str(round(sense.humidity, 1)) + " %")
-        self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
-        self.label5.configure(text="heating: " + str(heating(temperature, thermostat_temp)))
-        print("doing it")
+        # self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
+        # self.label5.configure(text="heating: " + str(heating(temperature, thermostat_temp)))
+        # print("doing it")
 
         self.after(500, self.update_interface)
 
     def update_sensing(self):
+        sense = _SenseHat(rpi)
+        temperature = round(sense.temp_c, 1)
+        thermostat_temp = self.tempscale.get()
+
+        self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
+        self.label5.configure(text="heating: " + str(heating(temperature, thermostat_temp)))
         print("updating at the same time")
 
-        self.after(500, self.update_sensing)
+        self.after(100, self.update_sensing)
 
     def light(self):
             self.sense = sense_led(self.sense)
