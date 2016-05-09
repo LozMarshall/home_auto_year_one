@@ -61,7 +61,7 @@ class App(tk.Tk):
         self.show_frame(HomePage)
 
         # access the instance with frame[HomePage]
-        # self.after(200, update_method(self.frames[HomePage]))
+        update_method(self.frames[HomePage])
 
         print("going and going yeah no yeah")
         # while True:
