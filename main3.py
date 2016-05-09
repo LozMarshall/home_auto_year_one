@@ -3,7 +3,7 @@ from sensehat import _SenseHat
 import tkinter as tk
 from time import sleep
 
-"""
+
 def update_method(cont):
     sense = _SenseHat(rpi) # create instance of sensehat
     temperature = round(sense.temp_c, 1) # pull temperature method from sensehat
@@ -24,7 +24,8 @@ def update_method(cont):
     print(thermostat_temp)
     print(cont.label.cget("text"))
     # end of diagnostics of what is going on in this method
-"""
+    cont.after(200, update_method(cont.frames[HomePage]))
+
 
 class App(tk.Tk):
     def __init__(self):
@@ -109,9 +110,8 @@ class HomePage(tk.Frame):
         button_page.grid(row=14, column=3, pady=10, padx=10, sticky="se")
         button_quit.grid(row=15, column=3, pady=10, padx=10, sticky="se")
 
-        while True:
-            self.update_method()
-
+        # self.update_method()
+"""
     def update_method(self):
         sense = _SenseHat(rpi)
         temperature = round(sense.temp_c, 1)
@@ -125,6 +125,7 @@ class HomePage(tk.Frame):
         print("doing it")
 
         #self.after(500, self.update_method)
+        """
 
 
 def heating(temperature, thermostat_temp):
