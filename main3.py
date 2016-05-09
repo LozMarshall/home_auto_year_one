@@ -65,6 +65,7 @@ class App(tk.Tk):
         print("going and going yeah no yeah")
         while True:
             update_method(self.frames[HomePage])
+            sleep(0.5)
             self.update_idletasks()
             self.update()
 
