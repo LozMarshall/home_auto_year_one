@@ -118,8 +118,12 @@ class HomePage(tk.Frame):
         button_page.grid(row=14, column=3, pady=10, padx=10, sticky="se")
         button_quit.grid(row=15, column=3, pady=10, padx=10, sticky="se")
 
-        self.update_method()
+        while True:
+            update_method(self)
 
+        # self.update_method()
+
+"""
     def update_method(self):
         sense = _SenseHat(rpi)
         temperature = round(sense.temp_c, 1)
@@ -133,6 +137,7 @@ class HomePage(tk.Frame):
         print("doing it")
 
         self.after(500, self.update_method)
+        """"
 
 
 
