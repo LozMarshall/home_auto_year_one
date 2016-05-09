@@ -1,18 +1,17 @@
-import pygame
+from tkinter import *
 
-from pygame.locals import *
-from sense_hat import SenseHat
+main = Tk()
 
-pygame.init()
-pygame.display.set_mode((640, 480))
-sense = SenseHat()
-sense.clear()
 
-running = True
+def leftKey(event):
+    print("Left key pressed")
 
-while running:
-    for event in pygame.event.get():
-        print(event)
-        if event.type == QUIT:
-            running = False
-            print("BYE")
+
+def rightKey(event):
+    print("Right key pressed")
+
+frame = Frame(main, width=100, height=100)
+frame.bind('<Left>', leftKey)
+frame.bind('<Right>', rightKey)
+frame.pack()
+frame.mainloop()
