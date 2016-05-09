@@ -117,7 +117,7 @@ class HomePage(tk.Frame):
         button_quit.grid(row=15, column=3, pady=10, padx=10, sticky="se")
 
         self.update_interface()
-        # self.update_sensing()
+        self.update_sensing()
         print("this is happpening")
 
         #self.after(500, self.update_method)
@@ -134,7 +134,12 @@ class HomePage(tk.Frame):
         self.label5.configure(text="heating: " + str(heating(temperature, thermostat_temp)))
         print("doing it")
 
-        self.after(500, self.update_method)
+        self.after(500, self.update_interface)
+
+    def update_sensing(self):
+        print("updating at the same time")
+        self.after(500, self.update_sensing)
+
 
 def heating(temperature, thermostat_temp):
 
