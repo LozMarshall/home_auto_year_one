@@ -60,13 +60,13 @@ class App(tk.Tk):
         self.show_frame(HomePage)
 
         # access the instance with frame[HomePage]
-        self.after(200, self.update_method(self.frames[HomePage]))
+        self.after(200, update_method(self.frames[HomePage]))
         sleep(2)
-        self.after(200, self.update_method(self.frames[HomePage]))
+        self.after(200, update_method(self.frames[HomePage]))
         sleep(2)
-        self.after(200, self.update_method(self.frames[HomePage]))
+        self.after(200, update_method(self.frames[HomePage]))
         sleep(2)
-        self.after(200, self.update_method(self.frames[HomePage]))
+        self.after(200, update_method(self.frames[HomePage]))
         sleep(2)
 
 
