@@ -63,11 +63,16 @@ class App(tk.Tk):
         #update_method(self.frames[HomePage])
 
         print("going and going yeah no yeah")
+        """
         while True:
             update_method(self.frames[HomePage])
-            # self.update_idletasks()
+            self.update_idletasks()
             self.update()
             sleep(1)
+        """ # this kinda works but the gui lags like fuck
+
+        while True:
+            print("this is going on ")
 
         # self.after(200, self.update_method(self.frames[HomePage])) # this doesnt fucking work ffs cunts
         #print("last thing")
@@ -112,8 +117,8 @@ class HomePage(tk.Frame):
         button_page.grid(row=14, column=3, pady=10, padx=10, sticky="se")
         button_quit.grid(row=15, column=3, pady=10, padx=10, sticky="se")
 
-        # self.update_method()
-"""
+        self.update_method()
+
     def update_method(self):
         sense = _SenseHat(rpi)
         temperature = round(sense.temp_c, 1)
@@ -126,8 +131,8 @@ class HomePage(tk.Frame):
         self.label5.configure(text="heating: " + str(heating(temperature, thermostat_temp)))
         print("doing it")
 
-        #self.after(500, self.update_method)
-        """
+        self.after(500, self.update_method)
+
 
 
 def heating(temperature, thermostat_temp):
