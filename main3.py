@@ -62,7 +62,7 @@ class App(tk.Tk):
         # access the instance with frame[HomePage]
         # self.after(200, update_method(self.frames[HomePage]))
 
-
+        print("going and going yeah no yeah")
         # while True:
         #    update_method(self.frames[HomePage])
 
@@ -121,8 +121,9 @@ class HomePage(tk.Frame):
         self.label3.configure(text="humidity: " + str(round(sense.humidity, 1)) + " %")
         self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
         self.label5.configure(text="heating: " + str(heating(temperature, thermostat_temp)))
+        print("doing it")
 
-        self.after(200, self.update_method)
+        self.after(500, self.update_method)
 
 
 def heating(temperature, thermostat_temp):
