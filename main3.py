@@ -33,6 +33,8 @@ class App(tk.Tk):
         w, h = self.winfo_screenwidth(), self.winfo_screenheight()
         self.overrideredirect(1)
         self.geometry("%dx%d+0+0" % (w, h))
+        self.bind('<Left>', print("left"))
+        self.bind('<Right>', print("right"))
 
         container = tk.Frame(self)
 
@@ -118,8 +120,6 @@ class HomePage(tk.Frame):
 
     def update_sensing(self):
         print("updating at the same time")
-        self.bind('<Left>', print("left"))
-        self.bind('<Right>', print("right"))
 
         self.after(500, self.update_sensing)
 
