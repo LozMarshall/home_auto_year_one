@@ -27,14 +27,14 @@ def update_method(cont):
 
 
 class App(tk.Tk):
-    def __init__(self):
-        tk.Tk.__init__(self)
+    def __init__(self, master):
+        tk.Tk.__init__(self, master)
         self.config(cursor="none")
         w, h = self.winfo_screenwidth(), self.winfo_screenheight()
         self.overrideredirect(1)
         self.geometry("%dx%d+0+0" % (w, h))
-        self.bind('<Left>', print("left"))
-        self.bind('<Right>', print("right"))
+        self.master.bind('<Left>', self.leftKey)
+        self.master.bind('<Right>', self.rightKey)
 
         container = tk.Frame(self)
 
@@ -60,6 +60,12 @@ class App(tk.Tk):
             frame.columnconfigure(1, weight=1)
 
         self.show_frame(HomePage)
+
+    def leftKey(event):
+        print("Left key pressed")
+
+    def rightKey(event):
+        print("Right key pressed")
 
     def show_frame(self, cont):
         frame = self.frames[cont]
