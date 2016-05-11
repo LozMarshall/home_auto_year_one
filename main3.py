@@ -1,6 +1,7 @@
 from board import Board
 from sensehat import _SenseHat
 import tkinter as tk
+from tkinter import ttk
 
 
 class App(tk.Tk):
@@ -71,9 +72,9 @@ class HomePage(tk.Frame):
         ##########COLUMN 2 END#########
 
         ##########COLUMN 100 START#####
-        button_page = tk.Button(self, text="Help", anchor="w",
+        button_page = ttk.Button(self, text="Help", anchor="w",
                                 command=lambda: controller.show_frame(HelpPage))
-        button_quit = tk.Button(self, text="quit", anchor="w", command=self.quit)
+        button_quit = ttk.Button(self, text="quit", anchor="w", command=self.quit)
         ##########COLUMN 100 END#######
 
         ##########COLUMN 0 START - LABEL SETUP#########
