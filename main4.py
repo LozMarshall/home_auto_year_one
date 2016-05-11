@@ -123,7 +123,7 @@ class HomePage(tk.Frame):
         ##### self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
         ##### self.label5.configure(text="heating: " + str(heating(temperature, thermostat_temp)))
 
-        self.after(500, self.update_interface)  # METHOD UPDATES EVERY HALF SECOND WITHIN EVENT HANDLER
+        self.after(1500, self.update_interface)  # METHOD UPDATES EVERY HALF SECOND WITHIN EVENT HANDLER
                                                 # THIS IS NOT PROCEDURAL ANYTHING ELSE CAN RUN TOO
 
     def update_sensing(self):
