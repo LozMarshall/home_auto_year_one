@@ -112,7 +112,7 @@ class HomePage(tk.Frame):
         self.pressure = round(sense.pressure, 2)
         self.humidity = round(sense.humidity, 1)
 
-        self.after(250, self.update_sensors())
+        self.after(250, self.update_sensors)
 
     def update_interface(self):
         # thermostat_temp = self.tempscale.get()
