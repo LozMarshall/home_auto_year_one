@@ -49,9 +49,9 @@ class HomePage(tk.Frame):
         self.columnconfigure(1, weight=4)
 
         self.light_state = "off"
-        self.temperature = ""
-        self.humidity = ""
-        self.pressure = ""
+        self.temperature = 0
+        self.humidity = 0
+        self.pressure = 0
 
         number = 24
 
