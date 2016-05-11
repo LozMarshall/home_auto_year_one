@@ -50,11 +50,10 @@ class HomePage(tk.Frame):
         self.columnconfigure(1, weight=4)
 
         self.light_state = "off"
+        self.thermostat_temp = 24
         self.temperature = 0
         self.humidity = 0
         self.pressure = 0
-
-        number = 24
 
         ##########COLUMN 0 START - INITIALISING LABELS#########
         self.label = tk.Label(self)
@@ -71,7 +70,7 @@ class HomePage(tk.Frame):
 
         ##########COLUMN 2 START - INITIALISING#########
         self.tempscale = tk.Scale(self, from_=10, to=30, orient="horizontal")
-        self.tempscale.set(number)
+        self.tempscale.set(self.thermostat_temp)
 
         self.button_light = tk.Button(self, text="Lights on", width=25, anchor="w",
                                       command=lambda: self.light())
@@ -120,13 +119,13 @@ class HomePage(tk.Frame):
         self.after(500, self.update_sensors)
 
     def update_interface(self):
-        # thermostat_temp = self.tempscale.get()
+        thermostat_temp = self.tempscale.get()
 
         self.label.configure(text="temperature: " + str(self.temperature) + " \u2103")
         self.label2.configure(text="pressure: " + str(self.pressure) + " mbar")
         self.label3.configure(text="humidity: " + str(self.humidity) + " %")
-        ##### self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
-        ##### self.label5.configure(text="heating: " + str(heating(temperature, thermostat_temp)))
+        self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
+        self.label5.configure(text="heating: " + str(heating(self.temperature, thermostat_temp)))
 
         self.after(1200, self.update_interface)  # METHOD UPDATES EVERY HALF SECOND WITHIN EVENT HANDLER
                                                 # THIS IS NOT PROCEDURAL ANYTHING ELSE CAN RUN TOO
