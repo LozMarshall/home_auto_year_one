@@ -49,6 +49,10 @@ class HomePage(tk.Frame):
         self.columnconfigure(1, weight=4)
 
         self.light_state = "off"
+        self.temperature = ""
+        self.humidity = ""
+        self.pressure = ""
+
         number = 24
 
         ##########COLUMN 0 START - INITIALISING LABELS#########
@@ -98,17 +102,24 @@ class HomePage(tk.Frame):
         button_page.grid(row=14, column=3, pady=10, padx=10, sticky="se")
         button_quit.grid(row=15, column=3, pady=10, padx=10, sticky="se")
 
+        self.update_sensors()
         self.update_interface()
         self.update_sensing()
 
-    def update_interface(self):
+    def update_sensors(self):
         sense = _SenseHat(rpi)
-        temperature = round(sense.temp_c, 1)
+        self.temperature = round(sense.temp_c, 1)
+        self.pressure = round(sense.pressure, 2)
+        self.humidity = round(sense.humidity, 1)
+
+        self.after(250, self.update_sensors())
+
+    def update_interface(self):
         # thermostat_temp = self.tempscale.get()
 
-        self.label.configure(text="temperature: " + str(temperature) + " \u2103")
-        self.label2.configure(text="pressure: " + str(round(sense.pressure, 2)) + " mbar")
-        self.label3.configure(text="humidity: " + str(round(sense.humidity, 1)) + " %")
+        self.label.configure(text="temperature: " + str(self.temperature) + " \u2103")
+        self.label2.configure(text="pressure: " + str(round(self.pressure, 2)) + " mbar")
+        self.label3.configure(text="humidity: " + str(round(self.humidity, 1)) + " %")
         ##### self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
         ##### self.label5.configure(text="heating: " + str(heating(temperature, thermostat_temp)))
 
