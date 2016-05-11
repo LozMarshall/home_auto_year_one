@@ -48,16 +48,16 @@ class HomePage(tk.Frame):
         self.columnconfigure(0, weight=1)
         self.columnconfigure(1, weight=4)
 
-        self.sense = "off"
+        self.light_state = "off"
         number = 24
 
         ##########COLUMN 0 START - INITIALISING LABELS#########
-        self.label = tk.Label(self, text="temperature: ")
-        self.label2 = tk.Label(self, text="pressure: ")
-        self.label3 = tk.Label(self, text="humidity: ")
-        self.label4 = tk.Label(self, text="thermostat temperature: ")
-        self.label5 = tk.Label(self, text="heating: ")
-        self.label7 = tk.Label(self, text="lights: " + self.sense)
+        self.label = tk.Label(self)
+        self.label2 = tk.Label(self)
+        self.label3 = tk.Label(self)
+        self.label4 = tk.Label(self)
+        self.label5 = tk.Label(self)
+        self.label7 = tk.Label(self, text="lights: " + self.light_state)
         ##########COLUMN 0 END###########
 
         ##########COLUMN 1 START - INITIALISING LABELS#########
@@ -121,9 +121,9 @@ class HomePage(tk.Frame):
         self.after(200, self.update_sensing)
 
     def light(self):
-        self.sense = sense_led(self.sense)
+        self.light_state = sense_led(self.light_state)
 
-        if self.sense == "off":
+        if self.light_state == "off":
             self.button_light.configure(text="Lights on")
             self.label7.configure(text="lights: " + self.sense)
         elif self.sense == "on":
