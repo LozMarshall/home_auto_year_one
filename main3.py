@@ -17,8 +17,8 @@ class App(tk.Tk):
         # container.pack(side="top", fill="both", expand=True)
         container.grid(rowspan=5, columnspan=2, sticky="nsew")
 
-        container.columnconfigure(0, weight=1)
-        container.columnconfigure(1, weight=1)
+        self.columnconfigure(0, weight=1)
+        self.columnconfigure(1, weight=1)
 
         # container.grid_rowconfigure(0, weight=1)
         # container.grid_columnconfigure(0, weight=1)
@@ -57,6 +57,7 @@ class HomePage(tk.Frame):
         self.label3 = tk.Label(self, text="humidity: ")
         self.label4 = tk.Label(self, text="thermostat temperature: ")
         self.label5 = tk.Label(self, text="heating: ")
+        self.label7 = tk.Label(self, text="lights: ")
         ##########COLUMN 0 END###########
 
         ##########COLUMN 1 START - INITIALISING LABELS#########
@@ -75,7 +76,7 @@ class HomePage(tk.Frame):
         # button_page = tk.Button(self, text="Help", anchor="w",
         #                        command=lambda: controller.show_frame(HelpPage))
         button_page = ttk.Button(self, text="Help",
-                                command=lambda: controller.show_frame(HelpPage))
+                                 command=lambda: controller.show_frame(HelpPage))
         button_quit = ttk.Button(self, text="quit", command=self.quit)
         ##########COLUMN 100 END#######
 
