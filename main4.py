@@ -118,7 +118,7 @@ class HomePage(tk.Frame):
         # thermostat_temp = self.tempscale.get()
 
         self.label.configure(text="temperature: " + str(self.temperature) + " \u2103")
-        self.label2.configure(text="pressure: " + str(self.pressure, 2) + " mbar")
+        self.label2.configure(text="pressure: " + str(self.pressure) + " mbar")
         self.label3.configure(text="humidity: " + str(self.humidity) + " %")
         ##### self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
         ##### self.label5.configure(text="heating: " + str(heating(temperature, thermostat_temp)))
