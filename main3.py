@@ -102,7 +102,7 @@ class HomePage(tk.Frame):
         self.update_sensing()
 
     def update_interface(self):
-        #sense = _SenseHat(rpi)
+        sense = _SenseHat(rpi)
         temperature = round(sense.temp_c, 1)
         thermostat_temp = self.tempscale.get()
 
@@ -131,7 +131,7 @@ class HomePage(tk.Frame):
 
 
 def sense_led(state):
-    #sense = _SenseHat(rpi)
+    sense = _SenseHat(rpi)
     white = [255, 255, 255]
     black = [0, 0, 0]
 
@@ -146,7 +146,7 @@ def sense_led(state):
 
 
 def heating(temperature, thermostat_temp):
-    #sense = _SenseHat(rpi)
+    sense = _SenseHat(rpi)
     red = [255, 0, 0]
     black = [0, 0, 0]
     if thermostat_temp <= temperature:
@@ -174,7 +174,6 @@ class HelpPage(tk.Frame):
 
 
 rpi = Board()
-sense = _SenseHat(rpi)
 app = App()
 
 app.mainloop()
