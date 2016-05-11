@@ -2,6 +2,7 @@ from board import Board
 from sensehat import _SenseHat
 import tkinter as tk
 from tkinter import ttk
+from time import sleep
 
 
 class App(tk.Tk):
@@ -103,6 +104,7 @@ class HomePage(tk.Frame):
         button_quit.grid(row=15, column=3, pady=10, padx=10, sticky="se")
 
         self.update_sensors()
+        sleep(0.2)
         self.update_interface()
         self.update_sensing()
 
