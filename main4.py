@@ -65,7 +65,7 @@ class HomePage(tk.Frame):
         ##########COLUMN 1 END###########
 
         ##########COLUMN 2 START - INITIALISING#########
-        self.tempscale = tk.Scale(self, from_=10, to=30, orient="horizontal", command=lambda: self.thermostat_update())
+        self.tempscale = tk.Scale(self, from_=10, to=30, orient="horizontal")
         self.tempscale.set(number)
 
         self.button_light = tk.Button(self, text="Lights on", width=25, anchor="w",
@@ -99,7 +99,7 @@ class HomePage(tk.Frame):
         button_quit.grid(row=15, column=3, pady=10, padx=10, sticky="se")
 
         self.update_interface()
-        # self.update_sensing() # this is incase i want another event added to the program.
+        self.update_sensing()
 
     def update_interface(self):
         sense = _SenseHat(rpi)
@@ -114,12 +114,11 @@ class HomePage(tk.Frame):
 
         self.after(500, self.update_interface)  # METHOD UPDATES EVERY HALF SECOND WITHIN EVENT HANDLER
                                                 # THIS IS NOT PROCEDURAL ANYTHING ELSE CAN RUN TOO
-    """
-    def update_sensing(self):
-        print("updating at the same time")
 
-        self.after(500, self.update_sensing)
-    """
+    def update_sensing(self):
+        self.thermostat_update()
+
+        self.after(200, self.update_sensing)
 
     def light(self):
         self.sense = sense_led(self.sense)
