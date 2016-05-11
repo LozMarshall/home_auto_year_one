@@ -76,7 +76,7 @@ class HomePage(tk.Frame):
         #                        command=lambda: controller.show_frame(HelpPage))
         button_page = ttk.Button(self, text="Help",
                                 command=lambda: controller.show_frame(HelpPage))
-        button_quit = tk.Button(self, text="quit", anchor="w", command=self.quit)
+        button_quit = ttk.Button(self, text="quit", command=self.quit)
         ##########COLUMN 100 END#######
 
         ##########COLUMN 0 START - LABEL SETUP#########
