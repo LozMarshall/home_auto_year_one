@@ -106,7 +106,7 @@ class HomePage(tk.Frame):
         self.update_sensors()
         sleep(0.2)
         self.update_interface()
-        self.update_sensing()
+        # self.update_sensing()
 
     def update_sensors(self):
         sense = _SenseHat(rpi)
