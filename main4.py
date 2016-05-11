@@ -118,8 +118,8 @@ class HomePage(tk.Frame):
         # thermostat_temp = self.tempscale.get()
 
         self.label.configure(text="temperature: " + str(self.temperature) + " \u2103")
-        self.label2.configure(text="pressure: " + str(round(self.pressure, 2)) + " mbar")
-        self.label3.configure(text="humidity: " + str(round(self.humidity, 1)) + " %")
+        self.label2.configure(text="pressure: " + str(self.pressure, 2) + " mbar")
+        self.label3.configure(text="humidity: " + str(self.humidity) + " %")
         ##### self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
         ##### self.label5.configure(text="heating: " + str(heating(temperature, thermostat_temp)))
 
@@ -136,19 +136,16 @@ class HomePage(tk.Frame):
 
         if self.light_state == "off":
             self.button_light.configure(text="Lights on")
-            self.label7.configure(text="lights: " + self.sense)
-        elif self.sense == "on":
+            self.label7.configure(text="lights: " + self.light_state)
+        elif self.light_state == "on":
             self.button_light.configure(text="Lights off")
-            self.label7.configure(text="lights: " + self.sense)
+            self.label7.configure(text="lights: " + self.light_state)
 
     def thermostat_update(self):
-        sense = _SenseHat(rpi)
-
-        temperature = round(sense.temp_c, 1)
         thermostat_temp = self.tempscale.get()
 
         self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
-        self.label5.configure(text="heating: " + str(heating(temperature, thermostat_temp)))
+        self.label5.configure(text="heating: " + str(heating(self.temperature, thermostat_temp)))
 
 
 def sense_led(state):
