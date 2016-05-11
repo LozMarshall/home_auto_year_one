@@ -86,7 +86,7 @@ class HomePage(tk.Frame):
         self.label3.grid(row=2, column=0, pady=10, padx=10, sticky="w")
         self.label4.grid(row=3, column=0, pady=10, padx=10, sticky="w")
         self.label5.grid(row=4, column=0, pady=10, padx=10, sticky="w")
-        self.label7.grid(rpw=5, column=0, pady=10, padx=10, sticky="w")
+        self.label7.grid(row=5, column=0, pady=10, padx=10, sticky="w")
         ##########COLUMN 0 END#########################
 
         self.label6.grid(row=0, column=1, pady=10, padx=10, sticky="SW")
