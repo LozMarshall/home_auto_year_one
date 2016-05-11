@@ -124,8 +124,10 @@ class HomePage(tk.Frame):
         self.sense = sense_led(self.sense)
         if self.sense == "off":
             self.button_light.configure(text="Lights on")
+            self.label7.configure(text="lights: " + self.sense)
         elif self.sense == "on":
             self.button_light.configure(text="Lights off")
+            self.label7.configure(text="lights: " + self.sense)
 
 
 def sense_led(state):
