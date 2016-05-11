@@ -136,20 +136,24 @@ def sense_led(state):
     black = [0, 0, 0]
 
     if state == "on":
-        sense.led_all(black)
+        sense.led_1(black)
         print("LED off")
         return "off"
     elif state == "off":
-        sense.led_all(white)
+        sense.led_1(white)
         print("LED on")
         return "on"
 
 
 def heating(temperature, thermostat_temp):
-
+    sense = _SenseHat(rpi)
+    red = [255, 0, 0]
+    black = [0, 0, 0]
     if thermostat_temp <= temperature:
+        sense.led_2(black)
         return "OFF"
     else:
+        sense.led_2(red)
         return "ON"
 
 
