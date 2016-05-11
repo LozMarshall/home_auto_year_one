@@ -57,7 +57,7 @@ class HomePage(tk.Frame):
         self.label3 = tk.Label(self, text="humidity: ")
         self.label4 = tk.Label(self, text="thermostat temperature: ")
         self.label5 = tk.Label(self, text="heating: ")
-        self.label7 = tk.Label(self, text="lights: ")
+        self.label7 = tk.Label(self, text="lights: " + self.sense)
         ##########COLUMN 0 END###########
 
         ##########COLUMN 1 START - INITIALISING LABELS#########
