@@ -81,7 +81,7 @@ class HomePage(tk.Frame):
         #                        command=lambda: controller.show_frame(HelpPage))
         button_page = ttk.Button(self, text="Help",
                                  command=lambda: controller.show_frame(HelpPage))
-        button_quit = ttk.Button(self, text="quit", command=self.quit)
+        button_quit = ttk.Button(self, text="quit", command=self.close)
         ##########COLUMN 100 END#######
 
         ##########COLUMN 0 START - LABEL SETUP#########
@@ -160,6 +160,12 @@ class HomePage(tk.Frame):
 
         self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
         self.label5.configure(text="heating: " + str(heating(self.temperature, thermostat_temp)))
+
+    def close(self):
+        sense = _SenseHat(rpi)
+        sense.clear()
+        rpi.clean_up()
+        self.quit()
 
 
 def sense_led(state):
