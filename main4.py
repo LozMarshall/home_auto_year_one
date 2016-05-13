@@ -109,12 +109,22 @@ class HomePage(tk.Frame):
 
     def update_sensors(self):
         sense = _SenseHat(rpi)
+        # self.temperature = round(sense.temp_c, 1)
+        # self.pressure = round(sense.pressure, 2)
+        # self.humidity = round(sense.humidity, 1)
+        # print(self.temperature)
+        # print(self.pressure)
+        # print(self.humidity)
+
         self.temperature = round(sense.temp_c, 1)
+        while self.temperature == 0:
+            self.temperature = round(sense.temp_c, 1)
         self.pressure = round(sense.pressure, 2)
+        while self.pressure == 0:
+            self.pressure = round(sense.pressure, 2)
         self.humidity = round(sense.humidity, 1)
-        print(self.temperature)
-        print(self.pressure)
-        print(self.humidity)
+        while self.humidity == 0:
+            self.humidity = round(sense.humidity, 1)
 
         self.after(500, self.update_sensors)
 
