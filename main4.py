@@ -103,7 +103,7 @@ class HomePage(tk.Frame):
         button_quit.grid(row=15, column=3, pady=10, padx=10, sticky="se")
 
         self.update_sensors()
-        #sleep(0.2)
+        sleep(0.1)
         self.update_interface()
         # self.update_sensing()
 
