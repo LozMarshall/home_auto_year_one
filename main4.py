@@ -1,5 +1,6 @@
 from board import Board
 from sensehat import _SenseHat
+from rgbled import RGBLED
 import tkinter as tk
 from tkinter import ttk
 from time import sleep
@@ -147,6 +148,7 @@ class HomePage(tk.Frame):
 
     def light(self):
         self.light_state = sense_led(self.light_state)
+        gpi_led()
 
         if self.light_state == "off":
             self.button_light.configure(text="Lights on")
@@ -166,6 +168,14 @@ class HomePage(tk.Frame):
         sense.clear()
         rpi.clean_up()
         self.quit()
+
+
+def gpi_led():
+    pin1 = 26
+    pin2 = 19
+    pin3 = 13
+    led = RGBLED(rpi, pin1, pin2, pin3)
+    led.red_turn_on()
 
 
 def sense_led(state):
