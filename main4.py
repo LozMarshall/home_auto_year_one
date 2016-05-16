@@ -115,6 +115,9 @@ class HomePage(tk.Frame):
         self.pressure = round(sense.pressure, 2)
         self.humidity = round(sense.humidity, 1)
 
+        print(self.temperature)
+        print(self.pressure)
+        print(self.humidity)
         self.after(500, self.update_sensors)
 
     def update_interface(self):
