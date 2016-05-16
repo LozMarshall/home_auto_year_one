@@ -110,20 +110,18 @@ class HomePage(tk.Frame):
 
     def update_sensors(self):
         sense = _SenseHat(rpi)
+        p_temperature = self.temperature
+        # p_pressure = self.pressure
+        # p_humidity = self.humidity
         t_temperature = round(sense.temp_c, 1)
         t_pressure = round(sense.pressure, 2)
         t_humidity = round(sense.humidity, 1)
 
-        """
-        for t_temperature in range(0):
+        if abs(p_temperature - t_temperature) >= 5:
             t_temperature = round(sense.temp_c, 1)
-
-        for t_pressure in range(0):
-            t_pressure = round(sense.pressure, 2)
 
         for t_humidity in range(0):
             t_humidity = round(sense.humidity, 1)
-        """
 
         self.temperature = t_temperature
         self.pressure = t_pressure
