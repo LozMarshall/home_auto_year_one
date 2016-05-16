@@ -110,13 +110,24 @@ class HomePage(tk.Frame):
 
     def update_sensors(self):
         sense = _SenseHat(rpi)
-        # self.temperature = round(sense.temp_c, 1)
-        # self.pressure = round(sense.pressure, 2)
-        # self.humidity = round(sense.humidity, 1)
-        # print(self.temperature)
-        # print(self.pressure)
-        # print(self.humidity)
+        t_temperature = round(sense.temp_c, 1)
+        t_pressure = round(sense.pressure, 2)
+        t_humidity = round(sense.humidity, 1)
 
+        while t_temperature == 0:
+            t_temperature = round(sense.temp_c, 1)
+
+        while t_pressure == 0:
+            t_pressure = round(sense.pressure, 2)
+
+        while t_humidity == 0:
+            t_humidity = round(sense.humidity, 1)
+
+        self.temperature = t_temperature
+        self.pressure = t_pressure
+        self.humidity = t_humidity
+
+        """
         self.temperature = round(sense.temp_c, 1)
         if self.temperature == 0:
             self.temperature = round(sense.temp_c, 1)
@@ -125,7 +136,7 @@ class HomePage(tk.Frame):
             self.pressure = round(sense.pressure, 2)
         self.humidity = round(sense.humidity, 1)
         if self.humidity == 0:
-            self.humidity = round(sense.humidity, 1)
+            self.humidity = round(sense.humidity, 1)"""
 
         self.after(500, self.update_sensors)
 
@@ -176,7 +187,7 @@ def gpi_led():
     pin3 = 13
     led = RGBLED(rpi, pin1, pin2, pin3)
     led.red_turn_on()
-    #sleep(2)
+    sleep(2)
     #led.clear()
     #led.white_turn_on()
     #sleep(5)
