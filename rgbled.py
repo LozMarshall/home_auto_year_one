@@ -5,6 +5,7 @@ class RGBLED:
         self.green = green
         self.blue = blue
         self.pins = [self.red, self.green, self.blue]
+        self.setup()
 
     def setup(self):
         for pin in self.pins:
