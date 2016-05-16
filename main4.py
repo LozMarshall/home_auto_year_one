@@ -162,11 +162,11 @@ class HomePage(tk.Frame):
     def light(self):
         if self.light_state == "off":
             sense_led(self.light_state)
-            gpi_led(self.light_state, "red")
+            gpi_led(self.light_state, "green")
             self.light_state = "on"
         elif self.light_state == "on":
             sense_led(self.light_state)
-            gpi_led(self.light_state, "red")
+            gpi_led(self.light_state, "green")
             self.light_state = "off"
 
         if self.light_state == "off":
