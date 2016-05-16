@@ -114,13 +114,13 @@ class HomePage(tk.Frame):
         t_pressure = round(sense.pressure, 2)
         t_humidity = round(sense.humidity, 1)
 
-        while t_temperature == 0:
+        for t_temperature in range(0):
             t_temperature = round(sense.temp_c, 1)
 
-        while t_pressure == 0:
+        for t_pressure in range(0):
             t_pressure = round(sense.pressure, 2)
 
-        while t_humidity == 0:
+        for t_humidity in range(0):
             t_humidity = round(sense.humidity, 1)
 
         self.temperature = t_temperature
