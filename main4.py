@@ -117,7 +117,7 @@ class HomePage(tk.Frame):
         t_pressure = round(sense.pressure, 2)
         t_humidity = round(sense.humidity, 1)
 
-        if abs(p_temperature - t_temperature) >= 5:
+        while abs(p_temperature - t_temperature) >= 5:
             t_temperature = round(sense.temp_c, 1)
             print(abs(p_temperature - t_temperature))
 
