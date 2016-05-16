@@ -109,35 +109,11 @@ class HomePage(tk.Frame):
         # self.update_sensing()
 
     def update_sensors(self):
-        sense = _SenseHat(rpi)
-        p_temperature = self.temperature
-        # p_pressure = self.pressure
-        # p_humidity = self.humidity
-        t_temperature = round(sense.temp_c, 1)
-        t_pressure = round(sense.pressure, 2)
-        t_humidity = round(sense.humidity, 1)
+        # sense = _SenseHat(rpi)
 
-        while abs(p_temperature - t_temperature) >= 5:
-            t_temperature = round(sense.temp_c, 1)
-            print(abs(p_temperature - t_temperature))
-
-        for t_humidity in range(0):
-            t_humidity = round(sense.humidity, 1)
-
-        self.temperature = t_temperature
-        self.pressure = t_pressure
-        self.humidity = t_humidity
-
-        """
         self.temperature = round(sense.temp_c, 1)
-        if self.temperature == 0:
-            self.temperature = round(sense.temp_c, 1)
         self.pressure = round(sense.pressure, 2)
-        if self.pressure == 0:
-            self.pressure = round(sense.pressure, 2)
         self.humidity = round(sense.humidity, 1)
-        if self.humidity == 0:
-            self.humidity = round(sense.humidity, 1)"""
 
         self.after(500, self.update_sensors)
 
@@ -182,7 +158,7 @@ class HomePage(tk.Frame):
 #        self.label5.configure(text="heating: " + str(heating(self.temperature, thermostat_temp)))
 
     def close(self):
-        sense = _SenseHat(rpi)
+        # sense = _SenseHat(rpi)
         sense.clear()
         rpi.clean_up()
         self.quit()
@@ -206,7 +182,7 @@ def gpi_led(state, colour):
 
 
 def sense_led1(state):
-    sense = _SenseHat(rpi)
+    # sense = _SenseHat(rpi)
     white = [255, 255, 255]
     black = [0, 0, 0]
 
@@ -221,7 +197,7 @@ def sense_led1(state):
 
 
 def sense_led(state):
-    sense = _SenseHat(rpi)
+    # sense = _SenseHat(rpi)
     white = [255, 255, 255]
     black = [0, 0, 0]
 
@@ -232,7 +208,7 @@ def sense_led(state):
 
 
 def heating(temperature, thermostat_temp):
-    sense = _SenseHat(rpi)
+    # sense = _SenseHat(rpi)
     red = [255, 0, 0]
     black = [0, 0, 0]
     if thermostat_temp <= temperature:
@@ -260,6 +236,7 @@ class HelpPage(tk.Frame):
 
 
 rpi = Board()
+sense = _SenseHat(rpi)
 app = App()
 
 app.mainloop()
