@@ -176,11 +176,11 @@ def gpi_led():
     pin3 = 13
     led = RGBLED(rpi, pin1, pin2, pin3)
     led.red_turn_on()
-    sleep(2)
-    led.clear()
-    led.white_turn_on()
-    sleep(5)
-    led.clear()
+    #sleep(2)
+    #led.clear()
+    #led.white_turn_on()
+    #sleep(5)
+    #led.clear()
 
 
 def sense_led(state):
