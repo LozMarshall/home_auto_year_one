@@ -13,14 +13,13 @@ class LED:
     def turn_off(self):
         self.__board.GPIO.output(self.pin, self.__board.GPIO.LOW)
 
-"""
+
 #TEST PURPOSES ONLY#
 if __name__ == "__name__":
     from board import Board
     from time import sleep
     rpi = Board()
-    led = Led(rpi, 18)
+    led = LED(rpi, 19)
     led.turn_on()
     sleep(2)
     led.turn_off()
-"""
