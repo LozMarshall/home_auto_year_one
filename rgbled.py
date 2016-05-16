@@ -13,24 +13,24 @@ class RGBLED:
     def red_turn_on(self):
         self.clear()
         self.GPIO.output(self.red, self.GPIO.HIGH)
-        return "RED LED ON"
+        # return "RED LED ON"
 
     def green_turn_on(self):
         self.clear()
         self.GPIO.output(self.green, self.GPIO.HIGH)
-        return "GREEN LED ON"
+        # return "GREEN LED ON"
 
     def blue_turn_on(self):
         self.clear()
         self.GPIO.output(self.blue, self.GPIO.HIGH)
-        return "BLUE LED ON"
+        # return "BLUE LED ON"
 
     def white_turn_on(self):
         self.clear()
         self.GPIO.output(self.red, self.GPIO.HIGH)
         self.GPIO.output(self.green, self.GPIO.HIGH)
         self.GPIO.output(self.blue, self.GPIO.HIGH)
-        return "WHITE LED ON"
+        # return "WHITE LED ON"
 
     def clear(self):
         for pin in self.pins:
