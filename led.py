@@ -15,7 +15,7 @@ class LED:
 
 
 #TEST PURPOSES ONLY#
-if __name__ == "__name__":
+if __name__ == "__main__":
     from board import Board
     from time import sleep
     rpi = Board()
