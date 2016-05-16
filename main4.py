@@ -114,6 +114,7 @@ class HomePage(tk.Frame):
         t_pressure = round(sense.pressure, 2)
         t_humidity = round(sense.humidity, 1)
 
+        """
         for t_temperature in range(0):
             t_temperature = round(sense.temp_c, 1)
 
@@ -122,6 +123,7 @@ class HomePage(tk.Frame):
 
         for t_humidity in range(0):
             t_humidity = round(sense.humidity, 1)
+        """
 
         self.temperature = t_temperature
         self.pressure = t_pressure
@@ -152,14 +154,20 @@ class HomePage(tk.Frame):
         self.after(1200, self.update_interface)  # METHOD UPDATES EVERY HALF SECOND WITHIN EVENT HANDLER
                                                 # THIS IS NOT PROCEDURAL ANYTHING ELSE CAN RUN TOO
 
-    def update_sensing(self):
-        self.thermostat_update()
+#    def update_sensing(self):
+#        self.thermostat_update()
 
-        self.after(200, self.update_sensing)
+#        self.after(200, self.update_sensing)
 
     def light(self):
-        self.light_state = sense_led(self.light_state)
-        gpi_led()
+        if self.light_state == "off":
+            sense_led(self.light_state)
+            gpi_led(self.light_state, "red")
+            self.light_state = "on"
+        elif self.light_state == "on"
+            sense_led(self.light_state)
+            gpi_led(self.light_state, "red")
+            self.light_state = "off"
 
         if self.light_state == "off":
             self.button_light.configure(text="Lights on")
@@ -168,11 +176,11 @@ class HomePage(tk.Frame):
             self.button_light.configure(text="Lights off")
             self.label7.configure(text="lights: " + self.light_state)
 
-    def thermostat_update(self):
-        thermostat_temp = self.tempscale.get()
+#    def thermostat_update(self):
+#        thermostat_temp = self.tempscale.get()
 
-        self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
-        self.label5.configure(text="heating: " + str(heating(self.temperature, thermostat_temp)))
+#        self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
+#        self.label5.configure(text="heating: " + str(heating(self.temperature, thermostat_temp)))
 
     def close(self):
         sense = _SenseHat(rpi)
@@ -181,20 +189,24 @@ class HomePage(tk.Frame):
         self.quit()
 
 
-def gpi_led():
-    pin1 = 26
-    pin2 = 19
-    pin3 = 13
-    led = RGBLED(rpi, pin1, pin2, pin3)
-    led.red_turn_on()
-    sleep(2)
-    #led.clear()
-    #led.white_turn_on()
-    #sleep(5)
-    #led.clear()
+def gpi_led(state, colour):
+    red = 13
+    green = 19
+    blue = 26
+    led = RGBLED(rpi, red, green, blue)
+
+    if state == "off":
+        if colour == "red":
+            led.red_turn_on()
+        if colour == "green":
+            led.green_turn_on()
+        if colour == "blue":
+            led.blue_turn_on()
+    elif state == "on":
+        led.clear()
 
 
-def sense_led(state):
+def sense_led1(state):
     sense = _SenseHat(rpi)
     white = [255, 255, 255]
     black = [0, 0, 0]
@@ -207,6 +219,17 @@ def sense_led(state):
         sense.led_1(white)
         print("LED on")
         return "on"
+
+
+def sense_led(state):
+    sense = _SenseHat(rpi)
+    white = [255, 255, 255]
+    black = [0, 0, 0]
+
+    if state == "on":
+        sense.led_1(black)
+    elif state == "off":
+        sense.led_1(white)
 
 
 def heating(temperature, thermostat_temp):
