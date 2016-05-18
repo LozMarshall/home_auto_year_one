@@ -226,7 +226,7 @@ def heating(temperature, thermostat_temp):
     red = [255, 0, 0]
     black = [0, 0, 0]
 
-    pin = 20
+    pin = 16
     led = LED(rpi, pin)
     if thermostat_temp <= temperature:
         sense.led_2(black)
