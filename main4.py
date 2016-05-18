@@ -67,6 +67,9 @@ class HomePage(tk.Frame):
 
         ##########COLUMN 1 START - INITIALISING LABELS#########
         self.label6 = tk.Label(self, text="Set thermostat temperature: ")
+        self.label8 = tk.Label(self, text="Red: ")
+        self.label9 = tk.Label(self, text="Green: ")
+        self.label10 = tk.Label(self, text="Blue: ")
         ##########COLUMN 1 END###########
 
         ##########COLUMN 2 START - INITIALISING#########
@@ -75,6 +78,9 @@ class HomePage(tk.Frame):
 
         self.button_light = tk.Button(self, text="Lights on", width=25, anchor="w",
                                       command=lambda: self.light())
+        self.red_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal")
+        self.green_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal")
+        self.blue_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal")
         ##########COLUMN 2 END#########
 
         ##########COLUMN 100 START#####
@@ -95,10 +101,17 @@ class HomePage(tk.Frame):
         ##########COLUMN 0 END#########################
 
         self.label6.grid(row=0, column=1, pady=10, padx=10, sticky="SW")
+        self.label8.grid(row=2, column=1, pady=10, padx=10, sticky="E")
+        self.label9.grid(row=3, column=1, pady=10, padx=10, sticky="E")
+        self.label10.grid(row=4, column=1, pady=10, padx=10, sticky="E")
 
         self.tempscale.grid(row=0, column=2, pady=10, padx=10, sticky="W")
 
         self.button_light.grid(row=1, column=2, pady=10, padx=10, sticky="W")
+
+        self.red_scale.grid(row=2, column=2, pady=10, padx=10, sticky="E")
+        self.green_scale.grid(row=3, column=2, pady=10, padx=10, sticky="E")
+        self.blue_scale.grid(row=4, column=2, pady=10, padx=10, sticky="E")
 
         button_page.grid(row=14, column=3, pady=10, padx=10, sticky="se")
         button_quit.grid(row=15, column=3, pady=10, padx=10, sticky="se")
