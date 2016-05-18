@@ -1,6 +1,7 @@
 from board import Board
 from sensehat import _SenseHat
 from rgbled import RGBLED
+from led import LED
 import tkinter as tk
 from tkinter import ttk
 from time import sleep
@@ -117,9 +118,7 @@ class HomePage(tk.Frame):
         button_quit.grid(row=15, column=3, pady=10, padx=10, sticky="se")
 
         self.update_sensors()
-        # sleep(0.1)
         self.update_interface()
-        # self.update_sensing()
 
     def update_sensors(self):
         self.temperature = round(sense.temp_c, 1)
@@ -144,6 +143,10 @@ class HomePage(tk.Frame):
 #        self.thermostat_update()
 
 #        self.after(200, self.update_sensing)
+
+    def thermostat_update(self):
+        self.label4.configure(text="thermostat temperature: " + str(self.thermostat_temp) + " \u2103")
+        self.label5.configure(text="heating: " + str(heating(self.temperature, self.thermostat_temp)))
 
     def light(self):
         if self.light_state == "off":
@@ -222,11 +225,16 @@ def heating(temperature, thermostat_temp):
     # sense = _SenseHat(rpi)
     red = [255, 0, 0]
     black = [0, 0, 0]
+
+    pin = 20
+    led = LED(rpi, pin)
     if thermostat_temp <= temperature:
         sense.led_2(black)
+        led.turn_off()
         return "OFF"
     else:
         sense.led_2(red)
+        led.turn_on()
         return "ON"
 
 
