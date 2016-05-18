@@ -174,12 +174,15 @@ class HomePage(tk.Frame):
 
     def red_scale_update(self):
         self.red_scale_val = self.red_scale.get()
+        print("red update run")
 
     def green_scale_update(self):
         self.green_scale_val = self.green_scale.get()
+        print("green update run")
 
     def blue_scale_update(self):
         self.blue_scale_val = self.blue_scale.get()
+        print("blue update run")
 
    # def thermostat_update(self):
    #     thermostat_temp = self.tempscale.get()
