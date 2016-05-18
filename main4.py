@@ -119,6 +119,7 @@ class HomePage(tk.Frame):
 
         self.update_sensors()
         self.update_interface()
+        self.thermostat_update()
 
     def update_sensors(self):
         self.temperature = round(sense.temp_c, 1)
@@ -133,8 +134,8 @@ class HomePage(tk.Frame):
         self.label.configure(text="temperature: " + str(self.temperature) + " \u2103")
         self.label2.configure(text="pressure: " + str(self.pressure) + " mbar")
         self.label3.configure(text="humidity: " + str(self.humidity) + " %")
-        self.label4.configure(text="thermostat temperature: " + str(self.thermostat_temp) + " \u2103")
-        self.label5.configure(text="heating: " + str(heating(self.temperature, self.thermostat_temp)))
+        # self.label4.configure(text="thermostat temperature: " + str(self.thermostat_temp) + " \u2103")
+        # self.label5.configure(text="heating: " + str(heating(self.temperature, self.thermostat_temp)))
 
         self.after(1200, self.update_interface)  # METHOD UPDATES EVERY HALF SECOND WITHIN EVENT HANDLER
                                                 # THIS IS NOT PROCEDURAL ANYTHING ELSE CAN RUN TOO
@@ -147,6 +148,8 @@ class HomePage(tk.Frame):
     def thermostat_update(self):
         self.label4.configure(text="thermostat temperature: " + str(self.thermostat_temp) + " \u2103")
         self.label5.configure(text="heating: " + str(heating(self.temperature, self.thermostat_temp)))
+
+        self.after(500, self.thermostat_update)
 
     def light(self):
         if self.light_state == "off":
