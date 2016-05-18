@@ -56,6 +56,9 @@ class HomePage(tk.Frame):
         self.temperature = 0
         self.humidity = 0
         self.pressure = 0
+        self.red_scale_val = 0
+        self.green_scale_val = 0
+        self.blue_scale_val = 0
 
         ##########COLUMN 0 START - INITIALISING LABELS#########
         self.label = tk.Label(self)
@@ -80,9 +83,12 @@ class HomePage(tk.Frame):
 
         self.button_light = tk.Button(self, text="Lights on", width=25, anchor="w",
                                       command=lambda: self.light())
-        self.red_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal")
-        self.green_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal")
-        self.blue_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal")
+        self.red_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal",
+                                  command=self.red_scale_update)
+        self.green_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal",
+                                    command=self.green_scale_update)
+        self.blue_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal",
+                                   command=self.blue_scale_update)
         ##########COLUMN 2 END#########
 
         ##########COLUMN 100 START#####
@@ -118,9 +124,8 @@ class HomePage(tk.Frame):
         button_page.grid(row=14, column=3, pady=10, padx=10, sticky="se")
         button_quit.grid(row=15, column=3, pady=10, padx=10, sticky="se")
 
-        self.update_sensors()
-        self.update_interface()
-        # self.thermostat_update()
+        self.update_sensors()  # method that will become events
+        self.update_interface()  # method that will become events
 
     def update_sensors(self):
         self.temperature = round(sense.temp_c, 1)
@@ -128,6 +133,9 @@ class HomePage(tk.Frame):
         self.humidity = round(sense.humidity, 1)
         self.thermostat_temp = self.tempscale.get()
 
+        print(self.red_scale_val)
+        print(self.blue_scale_val)
+        print(self.green_scale_val)
         self.after(500, self.update_sensors)
 
     def update_interface(self):
@@ -140,11 +148,6 @@ class HomePage(tk.Frame):
 
         self.after(1200, self.update_interface)  # METHOD UPDATES EVERY HALF SECOND WITHIN EVENT HANDLER
                                                 # THIS IS NOT PROCEDURAL ANYTHING ELSE CAN RUN TOO
-
-#    def update_sensing(self):
-#        self.thermostat_update()
-
-#        self.after(200, self.update_sensing)
 
     def thermostat_update(self):
         self.label4.configure(text="thermostat temperature: " + str(self.thermostat_temp) + " \u2103")
@@ -168,6 +171,15 @@ class HomePage(tk.Frame):
         elif self.light_state == "on":
             self.button_light.configure(text="Lights off")
             self.label7.configure(text="lights: " + self.light_state)
+
+    def red_scale_update(self):
+        self.red_scale_val = self.red_scale.get()
+
+    def green_scale_update(self):
+        self.green_scale_val = self.green_scale.get()
+
+    def blue_scale_update(self):
+        self.blue_scale_val = self.blue_scale.get()
 
    # def thermostat_update(self):
    #     thermostat_temp = self.tempscale.get()
@@ -226,7 +238,6 @@ def sense_led(state):
 
 
 def heating(temperature, thermostat_temp):
-    # sense = _SenseHat(rpi)
     red = [255, 0, 0]
     black = [0, 0, 0]
 
