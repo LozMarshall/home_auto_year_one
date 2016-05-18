@@ -74,8 +74,9 @@ class HomePage(tk.Frame):
         ##########COLUMN 1 END###########
 
         ##########COLUMN 2 START - INITIALISING#########
-        self.tempscale = tk.Scale(self, from_=10, to=30, length=200, orient="horizontal")
-        self.tempscale.set(self.thermostat_temp)
+        self.tempscale = tk.Scale(self, from_=10, to=30, length=200, orient="horizontal",
+                                  command= lambda: self.thermostat_update())
+        # self.tempscale.set(self.thermxostat_temp)
 
         self.button_light = tk.Button(self, text="Lights on", width=25, anchor="w",
                                       command=lambda: self.light())
@@ -119,7 +120,7 @@ class HomePage(tk.Frame):
 
         self.update_sensors()
         self.update_interface()
-        self.thermostat_update()
+        # self.thermostat_update()
 
     def update_sensors(self):
         self.temperature = round(sense.temp_c, 1)
