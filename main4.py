@@ -117,13 +117,12 @@ class HomePage(tk.Frame):
         self.after(500, self.update_sensors)
 
     def update_interface(self):
-        thermostat_temp = self.tempscale.get()
 
         self.label.configure(text="temperature: " + str(self.temperature) + " \u2103")
         self.label2.configure(text="pressure: " + str(self.pressure) + " mbar")
         self.label3.configure(text="humidity: " + str(self.humidity) + " %")
-        self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
-        self.label5.configure(text="heating: " + str(heating(self.temperature, thermostat_temp)))
+        self.label4.configure(text="thermostat temperature: " + str(self.thermostat_temp) + " \u2103")
+        self.label5.configure(text="heating: " + str(heating(self.temperature, self.thermostat_temp)))
 
         self.after(1200, self.update_interface)  # METHOD UPDATES EVERY HALF SECOND WITHIN EVENT HANDLER
                                                 # THIS IS NOT PROCEDURAL ANYTHING ELSE CAN RUN TOO
@@ -150,11 +149,11 @@ class HomePage(tk.Frame):
             self.button_light.configure(text="Lights off")
             self.label7.configure(text="lights: " + self.light_state)
 
-   def thermostat_update(self):
-       thermostat_temp = self.tempscale.get()
-
-       self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
-       self.label5.configure(text="heating: " + str(heating(self.temperature, thermostat_temp)))
+   # def thermostat_update(self):
+   #     thermostat_temp = self.tempscale.get()
+   #
+   #     self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
+   #     self.label5.configure(text="heating: " + str(heating(self.temperature, thermostat_temp)))
 
     def close(self):
         # sense = _SenseHat(rpi)
