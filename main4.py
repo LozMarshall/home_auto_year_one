@@ -104,20 +104,15 @@ class HomePage(tk.Frame):
         button_quit.grid(row=15, column=3, pady=10, padx=10, sticky="se")
 
         self.update_sensors()
-        sleep(0.1)
+        # sleep(0.1)
         self.update_interface()
         # self.update_sensing()
 
     def update_sensors(self):
-        # sense = _SenseHat(rpi)
-
         self.temperature = round(sense.temp_c, 1)
         self.pressure = round(sense.pressure, 2)
         self.humidity = round(sense.humidity, 1)
 
-        print(self.temperature)
-        print(self.pressure)
-        print(self.humidity)
         self.after(500, self.update_sensors)
 
     def update_interface(self):
