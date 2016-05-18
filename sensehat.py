@@ -6,17 +6,23 @@ class _SenseHat:
         self.board = board_object
         self.colour = colour
         self.sense = SenseHat()
-        self.temp_c = self.__temp_c()
+        # self.temp_c = self.__temp_c()
         self.pressure = self.__pressure()
         self.humidity = self.__humidity()
 
     def magnetometer_on(self):
         self.sense.set_imu_config(True, False, False)  # gyroscope only
 
-    def __temp_c(self):
+    @property
+    def temp_c(self):
         print("temp method has been ran")
         return (self.sense.temp + self.sense.get_temperature_from_humidity() +
                 self.sense.get_temperature_from_pressure())/3
+
+    # def __temp_c(self):
+    #     print("temp method has been ran")
+    #     return (self.sense.temp + self.sense.get_temperature_from_humidity() +
+    #             self.sense.get_temperature_from_pressure()) / 3
 
     def __pressure(self):
         return self.sense.pressure
