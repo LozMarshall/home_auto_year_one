@@ -70,7 +70,7 @@ class HomePage(tk.Frame):
         ##########COLUMN 1 END###########
 
         ##########COLUMN 2 START - INITIALISING#########
-        self.tempscale = tk.Scale(self, from_=10, to=30, orient="horizontal")
+        self.tempscale = tk.Scale(self, from_=10, to=30, length=200, orient="horizontal")
         self.tempscale.set(self.thermostat_temp)
 
         self.button_light = tk.Button(self, text="Lights on", width=25, anchor="w",
@@ -112,6 +112,7 @@ class HomePage(tk.Frame):
         self.temperature = round(sense.temp_c, 1)
         self.pressure = round(sense.pressure, 2)
         self.humidity = round(sense.humidity, 1)
+        self.thermostat_temp = self.tempscale.get()
 
         self.after(500, self.update_sensors)
 
@@ -149,11 +150,11 @@ class HomePage(tk.Frame):
             self.button_light.configure(text="Lights off")
             self.label7.configure(text="lights: " + self.light_state)
 
-#    def thermostat_update(self):
-#        thermostat_temp = self.tempscale.get()
+   def thermostat_update(self):
+       thermostat_temp = self.tempscale.get()
 
-#        self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
-#        self.label5.configure(text="heating: " + str(heating(self.temperature, thermostat_temp)))
+       self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
+       self.label5.configure(text="heating: " + str(heating(self.temperature, thermostat_temp)))
 
     def close(self):
         # sense = _SenseHat(rpi)
