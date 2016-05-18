@@ -14,6 +14,7 @@ class _SenseHat:
         self.sense.set_imu_config(True, False, False)  # gyroscope only
 
     def __temp_c(self):
+        print("temp method has been ran")
         return (self.sense.temp + self.sense.get_temperature_from_humidity() +
                 self.sense.get_temperature_from_pressure())/3
 
