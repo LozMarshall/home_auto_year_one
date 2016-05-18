@@ -76,7 +76,7 @@ class HomePage(tk.Frame):
         ##########COLUMN 2 START - INITIALISING#########
         self.tempscale = tk.Scale(self, from_=10, to=30, length=200, orient="horizontal",
                                   command=self.thermostat_update())
-        self.tempscale.set(self.thermostat_temp)
+        # self.tempscale.set(self.thermostat_temp) #use this to load temperature previously from the home auto
 
         self.button_light = tk.Button(self, text="Lights on", width=25, anchor="w",
                                       command=lambda: self.light())
