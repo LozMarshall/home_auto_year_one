@@ -90,7 +90,7 @@ class HomePage(tk.Frame):
         # self.blue_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal",
         #                            command=lambda: self.blue_scale_update)
         self.red_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal",
-                                  command=self.red_scale_update())
+                                  command=self.red_scale_update)
 
         self.green_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal")
         self.blue_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal")
@@ -178,10 +178,10 @@ class HomePage(tk.Frame):
             self.button_light.configure(text="Lights off")
             self.label7.configure(text="lights: " + self.light_state)
 
-    def red_scale_update(self):
+    def red_scale_update(self, val):
         # self.red_scale_val = self.red_scale.get()
         # print("red update run")
-        print(self.red_scale.get())
+        print(val)
 
     def green_scale_update(self):
         self.green_scale_val = self.green_scale.get()
