@@ -83,17 +83,12 @@ class HomePage(tk.Frame):
 
         self.button_light = tk.Button(self, text="Lights on", width=25, anchor="w",
                                       command=lambda: self.light())
-        # self.red_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal",
-        #                           command=lambda: self.red_scale_update) #doesnt work
-        # self.green_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal",
-        #                             command=lambda: self.green_scale_update)
-        # self.blue_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal",
-        #                            command=lambda: self.blue_scale_update)
         self.red_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal",
                                   command=self.red_scale_update)
-
-        self.green_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal")
-        self.blue_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal")
+        self.green_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal",
+                                    command=self.green_scale_update)
+        self.blue_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal",
+                                   command=self.blue_scale_update)
         ##########COLUMN 2 END#########
 
         ##########COLUMN 100 START#####
@@ -179,16 +174,15 @@ class HomePage(tk.Frame):
             self.label7.configure(text="lights: " + self.light_state)
 
     def red_scale_update(self, val):
-        # self.red_scale_val = self.red_scale.get()
-        # print("red update run")
-        print(val)
+        self.red_scale_val = val
+        print("red update run")
 
-    def green_scale_update(self):
-        self.green_scale_val = self.green_scale.get()
+    def green_scale_update(self, val):
+        self.green_scale_val = val
         print("green update run")
 
-    def blue_scale_update(self):
-        self.blue_scale_val = self.blue_scale.get()
+    def blue_scale_update(self, val):
+        self.blue_scale_val = val
         print("blue update run")
 
     def close(self):
