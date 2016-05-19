@@ -99,7 +99,7 @@ class HomePage(tk.Frame):
         button_quit.grid(row=15, column=3, pady=10, padx=10, sticky="se")
 
         self.update_interface()
-        self.update_sensing()
+        # self.update_sensing() # this is incase i want another event added to the program.
 
     def update_interface(self):
         sense = _SenseHat(rpi)
@@ -114,11 +114,12 @@ class HomePage(tk.Frame):
 
         self.after(500, self.update_interface)  # METHOD UPDATES EVERY HALF SECOND WITHIN EVENT HANDLER
                                                 # THIS IS NOT PROCEDURAL ANYTHING ELSE CAN RUN TOO
-
+    """
     def update_sensing(self):
         print("updating at the same time")
 
         self.after(500, self.update_sensing)
+    """
 
     def light(self):
         self.sense = sense_led(self.sense)
