@@ -90,7 +90,7 @@ class HomePage(tk.Frame):
         # self.blue_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal",
         #                            command=lambda: self.blue_scale_update)
         self.red_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal",
-                                  command=self.red_scale_update(self.red_scale))
+                                  command=self.red_scale_update())
 
         self.green_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal")
         self.blue_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal")
