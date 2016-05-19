@@ -90,7 +90,7 @@ class HomePage(tk.Frame):
         # self.blue_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal",
         #                            command=lambda: self.blue_scale_update)
         self.red_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal",
-                                  command=lambda: self.red_scale_update())
+                                  command=lambda: self.red_scale_update(self.red_scale))
 
         self.green_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal")
         self.blue_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal")
@@ -181,7 +181,7 @@ class HomePage(tk.Frame):
     def red_scale_update(self):
         # self.red_scale_val = self.red_scale.get()
         # print("red update run")
-        print(self.red_scale.get)
+        print(self.red_scale.get())
 
     def green_scale_update(self):
         self.green_scale_val = self.green_scale.get()
@@ -192,7 +192,6 @@ class HomePage(tk.Frame):
         print("blue update run")
 
     def close(self):
-        # sense = _SenseHat(rpi)
         sense.clear()
         rpi.clean_up()
         self.quit()
