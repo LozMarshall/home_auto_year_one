@@ -181,7 +181,7 @@ class HomePage(tk.Frame):
     def red_scale_update(self):
         # self.red_scale_val = self.red_scale.get()
         # print("red update run")
-        print(self.red_scale.get())
+        print(self.red_scale.get)
 
     def green_scale_update(self):
         self.green_scale_val = self.green_scale.get()
@@ -190,12 +190,6 @@ class HomePage(tk.Frame):
     def blue_scale_update(self):
         self.blue_scale_val = self.blue_scale.get()
         print("blue update run")
-
-   # def thermostat_update(self):
-   #     thermostat_temp = self.tempscale.get()
-   #
-   #     self.label4.configure(text="thermostat temperature: " + str(thermostat_temp) + " \u2103")
-   #     self.label5.configure(text="heating: " + str(heating(self.temperature, thermostat_temp)))
 
     def close(self):
         # sense = _SenseHat(rpi)
