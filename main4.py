@@ -84,11 +84,11 @@ class HomePage(tk.Frame):
         self.button_light = tk.Button(self, text="Lights on", width=25, anchor="w",
                                       command=lambda: self.light())
         self.red_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal",
-                                  command=self.red_scale_update) #doesnt work
+                                  command=lambda: self.red_scale_update) #doesnt work
         self.green_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal",
-                                    command=self.green_scale_update)
+                                    command=lambda: self.green_scale_update)
         self.blue_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal",
-                                   command=self.blue_scale_update)
+                                   command=lambda: self.blue_scale_update)
         ##########COLUMN 2 END#########
 
         ##########COLUMN 100 START#####
