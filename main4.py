@@ -136,6 +136,7 @@ class HomePage(tk.Frame):
         self.pressure = round(sense.pressure, 2)
         self.humidity = round(sense.humidity, 1)
         self.thermostat_temp = self.tempscale.get()
+        self.red_scale_val = self.red_scale.get()
 
         print(self.red_scale_val)
         print(self.blue_scale_val)
