@@ -134,9 +134,6 @@ class HomePage(tk.Frame):
         self.thermostat_temp = self.tempscale.get()
         self.red_scale_val = self.red_scale.get()
 
-        print(self.red_scale_val)
-        print(self.blue_scale_val)
-        print(self.green_scale_val)
         self.after(500, self.update_sensors)
 
     def update_interface(self):
@@ -175,15 +172,15 @@ class HomePage(tk.Frame):
 
     def red_scale_update(self, val):
         self.red_scale_val = val
-        print("red update run")
+        print("red update run" + str(self.red_scale_val))
 
     def green_scale_update(self, val):
         self.green_scale_val = val
-        print("green update run")
+        print("green update run" + str(self.green_scale_val))
 
     def blue_scale_update(self, val):
         self.blue_scale_val = val
-        print("blue update run")
+        print("blue update run" + str(self.blue_scale_val))
 
     def close(self):
         sense.clear()
