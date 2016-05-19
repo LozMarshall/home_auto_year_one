@@ -134,7 +134,7 @@ class HomePage(tk.Frame):
         self.thermostat_temp = self.tempscale.get()
         self.red_scale_val = self.red_scale.get()
 
-        print("printing from the update sensors method" + str(self.red_scale_val))
+        print(self.red_scale_val)
         print(self.blue_scale_val)
         print(self.green_scale_val)
         self.after(500, self.update_sensors)
