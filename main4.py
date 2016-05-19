@@ -89,7 +89,8 @@ class HomePage(tk.Frame):
         #                             command=lambda: self.green_scale_update)
         # self.blue_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal",
         #                            command=lambda: self.blue_scale_update)
-        self.red_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal")
+        self.red_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal",
+                                  command=self.red_scale_update())
 
         self.green_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal")
         self.blue_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal")
@@ -138,7 +139,7 @@ class HomePage(tk.Frame):
         self.thermostat_temp = self.tempscale.get()
         self.red_scale_val = self.red_scale.get()
 
-        print(self.red_scale_val)
+        print("printing from the update sensors method" + self.red_scale_val)
         print(self.blue_scale_val)
         print(self.green_scale_val)
         self.after(500, self.update_sensors)
@@ -178,8 +179,9 @@ class HomePage(tk.Frame):
             self.label7.configure(text="lights: " + self.light_state)
 
     def red_scale_update(self):
-        self.red_scale_val = self.red_scale.get()
-        print("red update run")
+        # self.red_scale_val = self.red_scale.get()
+        # print("red update run")
+        print(self.red_scale.get())
 
     def green_scale_update(self):
         self.green_scale_val = self.green_scale.get()
