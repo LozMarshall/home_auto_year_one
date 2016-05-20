@@ -158,17 +158,17 @@ class HomePage(tk.Frame):
 
     def light(self):
         if self.light_state == "off":
-            # sense_led(self.light_state)
+            self.light_state = "on"
             self.sense_led(self.light_state)
             gpi_led(self.light_state, "green")
             print("state off: " + self.light_state)
-            self.light_state = "on"
+
         elif self.light_state == "on":
+            self.light_state = "off"
             # sense_led(self.light_state)
             self.sense_led(self.light_state)
             gpi_led(self.light_state, "green")
             print("state on: " + self.light_state)
-            self.light_state = "off"
 
         if self.light_state == "off":
             self.button_light.configure(text="Lights on")
