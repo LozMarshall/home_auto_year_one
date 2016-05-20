@@ -56,9 +56,9 @@ class HomePage(tk.Frame):
         self.temperature = 0
         self.humidity = 0
         self.pressure = 0
-        self.red_scale_val = 255
-        self.green_scale_val = 255
-        self.blue_scale_val = 255
+        self.red_scale_val = 0
+        self.green_scale_val = 0
+        self.blue_scale_val = 0
 
         ##########COLUMN 0 START - INITIALISING LABELS#########
         self.label = tk.Label(self)
