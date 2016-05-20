@@ -172,17 +172,17 @@ class HomePage(tk.Frame):
 
     def red_scale_update(self, val):
         self.red_scale_val = val
-        sense_led(self.light_state)
+        #sense_led(self.light_state)
         print("red update run " + str(self.red_scale_val))
 
     def green_scale_update(self, val):
         self.green_scale_val = val
-        sense_led(self.light_state)
+        #sense_led(self.light_state)
         print("green update run " + str(self.green_scale_val))
 
     def blue_scale_update(self, val):
         self.blue_scale_val = val
-        sense_led(self.light_state)
+        #sense_led(self.light_state)
         print("blue update run " + str(self.blue_scale_val))
 
     def close(self):
