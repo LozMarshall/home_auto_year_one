@@ -130,6 +130,8 @@ class HomePage(tk.Frame):
         self.update_sensors()  # method that will become events
         self.update_interface()  # method that will become events
 
+    # update sensors method is run as an event every 0.5 seconds and updating variables within the class
+    # method is called at the end of the HomePage initialisation, then is run by the event handler
     def update_sensors(self):
         self.temperature = round(sense.temp_c, 1)
         self.pressure = round(sense.pressure, 2)
@@ -137,67 +139,69 @@ class HomePage(tk.Frame):
         self.thermostat_temp = self.tempscale.get()
         self.red_scale_val = self.red_scale.get()
 
+        print("update sensors method run - refreshing variables every 0.5s")
+
         self.after(500, self.update_sensors)
 
+    # update interface method is run as an event after being called at the end of the initialisation
+    # the method runs every 1.2 seconds so that the interface isn't updating at too high of a rate
     def update_interface(self):
-
         self.label.configure(text="temperature: " + str(self.temperature) + " \u2103")
         self.label2.configure(text="pressure: " + str(self.pressure) + " mbar")
         self.label3.configure(text="humidity: " + str(self.humidity) + " %")
-        # self.label4.configure(text="thermostat temperature: " + str(self.thermostat_temp) + " \u2103")
-        # self.label5.configure(text="heating: " + str(heating(self.temperature, self.thermostat_temp)))
 
-        self.after(1200, self.update_interface)  # METHOD UPDATES EVERY HALF SECOND WITHIN EVENT HANDLER
-                                                # THIS IS NOT PROCEDURAL ANYTHING ELSE CAN RUN TOO
+        print("update interface method run - refreshing temp, pressure and humidity variable every 1.2s")
 
+        self.after(1200, self.update_interface)  # function to run method in the event handler
+
+    # thermostat update method is called when the SET TEMPERATURE slider is toggled
     def thermostat_update(self):
         self.label4.configure(text="thermostat temperature: " + str(self.thermostat_temp) + " \u2103")
         self.label5.configure(text="heating: " + str(heating(self.temperature, self.thermostat_temp)))
 
-        self.after(500, self.thermostat_update)
+        self.after(500, self.thermostat_update)  # function to run method in the event handler
 
+    # light method is called from toggling the turn lights on button
+    # the default state of the lights is off, so when the program runs the state changes to on and runs the methods
+    # for the sense-hat LED matrix and the rpi GPIO rgbLED method
     def light(self):
         if self.light_state == "off":
             self.light_state = "on"
             self.sense_led(self.light_state)
             gpi_led(self.light_state, "green")
-            print("state off: " + self.light_state)
+            # if the light state is off at the if statement, it is changed to on and then runs the method for sense-hat
+            # and GPIO LED's to turn on
 
         elif self.light_state == "on":
             self.light_state = "off"
-            # sense_led(self.light_state)
             self.sense_led(self.light_state)
             gpi_led(self.light_state, "green")
-            print("state on: " + self.light_state)
+            # if the light state is on when the button is pressed again, the state is changed to off and then runs the
+            # sense-hat and gpi LED's to turn off
 
         if self.light_state == "off":
             self.button_light.configure(text="Lights on")
             self.label7.configure(text="lights: " + self.light_state)
+            # if the light state is off, change the text on the button to lights on and change the status of the light
+            # on the left hand side "lights: off"
+
         elif self.light_state == "on":
             self.button_light.configure(text="Lights off")
             self.label7.configure(text="lights: " + self.light_state)
 
     def red_scale_update(self, val):
         self.red_scale_val = val
-        # sense.led_all([self.red_scale_val, self.green_scale_val, self.blue_scale_val])
         self.sense_led(self.light_state)
-        print("red update run " + str(self.red_scale_val))
-        print(self.light_state)
 
     def green_scale_update(self, val):
         self.green_scale_val = val
         self.sense_led(self.light_state)
-        # sense_led(self.light_state)
-        print("green update run " + str(self.green_scale_val))
 
     def blue_scale_update(self, val):
         self.blue_scale_val = val
         self.sense_led(self.light_state)
-        # sense_led(self.light_state)
-        print("blue update run " + str(self.blue_scale_val))
 
     def sense_led(self, state):
-        # sense = _SenseHat(rpi)
         colour = [int(self.red_scale_val), int(self.green_scale_val), int(self.blue_scale_val)]
         black = [0, 0, 0]
 
