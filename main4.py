@@ -139,7 +139,7 @@ class HomePage(tk.Frame):
 
         self.update_sensors()  # method that will become events
         self.update_interface()  # method that will become events
-        self.update_pir_pir()  # method called that runs and gets integrated into event handler
+        self.update_pir_sensor()  # method called that runs and gets integrated into event handler
 
     # update sensors method is run as an event every 0.5 seconds and updating variables within the class
     # method is called at the end of the HomePage initialisation, then is run by the event handler
