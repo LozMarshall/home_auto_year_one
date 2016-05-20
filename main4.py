@@ -5,6 +5,7 @@ from led import LED
 import tkinter as tk
 from tkinter import ttk
 from pir import PIR
+from buzzer import Buzzer
 
 
 class App(tk.Tk):
@@ -167,7 +168,9 @@ class HomePage(tk.Frame):
 
     def update_pir_sensor(self):
         pir = PIR(rpi, 6)  # passing in board object and pin number of the pir
-        print(pir.motion_detect())
+        buzz = Buzzer(rpi, 20)
+        if pir.motion_detect():
+            buzz.buzz()
         self.after(1000, self.update_pir_sensor)
 
     # thermostat update method is called when the SET TEMPERATURE slider is toggled

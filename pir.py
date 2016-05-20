@@ -9,5 +9,5 @@ class PIR:
 
     def motion_detect(self):
         if self.__board.GPIO.input(self.pin):
-            return "Motion detected"
+            return True
 
