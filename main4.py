@@ -156,10 +156,12 @@ class HomePage(tk.Frame):
     def light(self):
         if self.light_state == "off":
             # sense_led(self.light_state)
+            self.sense_led(self.light_state)
             gpi_led(self.light_state, "green")
             self.light_state = "on"
         elif self.light_state == "on":
             # sense_led(self.light_state)
+            self.sense_led(self.light_state)
             gpi_led(self.light_state, "green")
             self.light_state = "off"
 
@@ -194,9 +196,9 @@ class HomePage(tk.Frame):
         black = [0, 0, 0]
 
         if state == "on":
-            sense.led_1(black)
+            sense.led_all(black)
         elif state == "off":
-            sense.led_1(colour)
+            sense.led_all(colour)
 
     def close(self):
         sense.clear()
