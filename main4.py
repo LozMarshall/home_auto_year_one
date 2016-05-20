@@ -85,10 +85,13 @@ class HomePage(tk.Frame):
                                       command=lambda: self.light())
         self.red_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal",
                                   command=self.red_scale_update)
+        self.red_scale.set(255)
         self.green_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal",
                                     command=self.green_scale_update)
+        self.green_scale.set(255)
         self.blue_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal",
                                    command=self.blue_scale_update)
+        self.blue_scale.set(255)
         ##########COLUMN 2 END#########
 
         ##########COLUMN 100 START#####
