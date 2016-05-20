@@ -192,7 +192,7 @@ class HomePage(tk.Frame):
 
     def sense_led(self, state):
         # sense = _SenseHat(rpi)
-        colour = [self.red_scale_val, self.green_scale_val, self.blue_scale_val]
+        colour = [int(self.red_scale_val), int(self.green_scale_val), int(self.blue_scale_val)]
         black = [0, 0, 0]
 
         if state == "on":
