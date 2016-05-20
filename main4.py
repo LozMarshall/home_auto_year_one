@@ -56,9 +56,9 @@ class HomePage(tk.Frame):
         self.temperature = 0
         self.humidity = 0
         self.pressure = 0
-        self.red_scale_val = 0
-        self.green_scale_val = 0
-        self.blue_scale_val = 0
+        self.red_scale_val = 255
+        self.green_scale_val = 255
+        self.blue_scale_val = 255
 
         ##########COLUMN 0 START - INITIALISING LABELS#########
         self.label = tk.Label(self)
@@ -175,18 +175,18 @@ class HomePage(tk.Frame):
     def red_scale_update(self, val):
         self.red_scale_val = val
         # sense.led_all([self.red_scale_val, self.green_scale_val, self.blue_scale_val])
-        self.light()
+        self.sense_led(self.light_state)
         print("red update run " + str(self.red_scale_val))
 
     def green_scale_update(self, val):
         self.green_scale_val = val
-        self.light()
+        self.sense_led(self.light_state)
         # sense_led(self.light_state)
         print("green update run " + str(self.green_scale_val))
 
     def blue_scale_update(self, val):
         self.blue_scale_val = val
-        self.light()
+        self.sense_led(self.light_state)
         # sense_led(self.light_state)
         print("blue update run " + str(self.blue_scale_val))
 
