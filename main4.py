@@ -201,9 +201,9 @@ class HomePage(tk.Frame):
         colour = [int(self.red_scale_val), int(self.green_scale_val), int(self.blue_scale_val)]
         black = [0, 0, 0]
 
-        if state == "on":
+        if state == "off":
             sense.led_all(black)
-        elif state == "off":
+        elif state == "on":
             sense.led_all(colour)
 
     def close(self):
@@ -218,14 +218,14 @@ def gpi_led(state, colour):
     blue = 26
     led = RGBLED(rpi, red, green, blue)
 
-    if state == "off":
+    if state == "on":
         if colour == "red":
             led.red_turn_on()
         if colour == "green":
             led.green_turn_on()
         if colour == "blue":
             led.blue_turn_on()
-    elif state == "on":
+    elif state == "off":
         led.clear()
 
 
