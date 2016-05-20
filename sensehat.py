@@ -12,7 +12,6 @@ class _SenseHat:
 
     @property
     def temp_c(self):
-        print("temp method has been ran")
         return (self.sense.temp + self.sense.get_temperature_from_humidity() +
                 self.sense.get_temperature_from_pressure())/3
 
