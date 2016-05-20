@@ -4,7 +4,7 @@ from rgbled import RGBLED
 from led import LED
 import tkinter as tk
 from tkinter import ttk
-from time import sleep
+from pir import PIR
 
 
 class App(tk.Tk):
@@ -59,6 +59,7 @@ class HomePage(tk.Frame):
         self.red_scale_val = 0
         self.green_scale_val = 0
         self.blue_scale_val = 0
+        print("Stating variables initialised")
 
         ##########COLUMN 0 START - INITIALISING LABELS#########
         self.label = tk.Label(self)
@@ -67,6 +68,7 @@ class HomePage(tk.Frame):
         self.label4 = tk.Label(self)
         self.label5 = tk.Label(self)
         self.label7 = tk.Label(self, text="lights: " + self.light_state)
+        print("Left hand side statistic labels initialised")
         ##########COLUMN 0 END###########
 
         ##########COLUMN 1 START - INITIALISING LABELS#########
@@ -74,24 +76,32 @@ class HomePage(tk.Frame):
         self.label8 = tk.Label(self, text="Red: ")
         self.label9 = tk.Label(self, text="Green: ")
         self.label10 = tk.Label(self, text="Blue: ")
+        print("Middle labels for thermostat and RGB initialised")
         ##########COLUMN 1 END###########
 
         ##########COLUMN 2 START - INITIALISING#########
         self.tempscale = tk.Scale(self, from_=10, to=30, length=200, orient="horizontal",
                                   command=self.thermostat_update())
-        # self.tempscale.set(self.thermostat_temp) #use this to load temperature previously from the home auto
+        print("Thermostat scale initialised")
 
         self.button_light = tk.Button(self, text="Lights on", width=25, anchor="w",
                                       command=lambda: self.light())
+        print("'Turn on light' button initialised")
+
         self.red_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal",
                                   command=self.red_scale_update)
         self.red_scale.set(255)
+        print("Red scale initialised and set to 255")
+
         self.green_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal",
                                     command=self.green_scale_update)
         self.green_scale.set(255)
+        print("Green scale initialised and set to 255")
+
         self.blue_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal",
                                    command=self.blue_scale_update)
         self.blue_scale.set(255)
+        print("Blue scale initialised and set to 255")
         ##########COLUMN 2 END#########
 
         ##########COLUMN 100 START#####
@@ -129,6 +139,7 @@ class HomePage(tk.Frame):
 
         self.update_sensors()  # method that will become events
         self.update_interface()  # method that will become events
+        self.update_pir_pir()  # method called that runs and gets integrated into event handler
 
     # update sensors method is run as an event every 0.5 seconds and updating variables within the class
     # method is called at the end of the HomePage initialisation, then is run by the event handler
@@ -153,6 +164,11 @@ class HomePage(tk.Frame):
         print("update interface method run - refreshing temp, pressure and humidity variable every 1.2s")
 
         self.after(1200, self.update_interface)  # function to run method in the event handler
+
+    def update_pir_sensor(self):
+        pir = PIR(rpi, 6)  # passing in board object and pin number of the pir
+        print(pir.motion_detect())
+        self.after(1000, self.update_pir_sensor)
 
     # thermostat update method is called when the SET TEMPERATURE slider is toggled
     def thermostat_update(self):
@@ -296,3 +312,6 @@ sense = _SenseHat(rpi)
 app = App()
 
 app.mainloop()
+
+# buzzer pin = 20
+# pir pin = 6
