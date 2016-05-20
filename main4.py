@@ -158,11 +158,13 @@ class HomePage(tk.Frame):
             # sense_led(self.light_state)
             self.sense_led(self.light_state)
             gpi_led(self.light_state, "green")
+            print("state off: " + self.light_state)
             self.light_state = "on"
         elif self.light_state == "on":
             # sense_led(self.light_state)
             self.sense_led(self.light_state)
             gpi_led(self.light_state, "green")
+            print("state on: " + self.light_state)
             self.light_state = "off"
 
         if self.light_state == "off":
@@ -193,7 +195,6 @@ class HomePage(tk.Frame):
     def sense_led(self, state):
         # sense = _SenseHat(rpi)
         colour = [int(self.red_scale_val), int(self.green_scale_val), int(self.blue_scale_val)]
-        print(colour)
         black = [0, 0, 0]
 
         if state == "on":
