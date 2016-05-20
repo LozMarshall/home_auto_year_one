@@ -172,7 +172,7 @@ class HomePage(tk.Frame):
 
     def red_scale_update(self, val):
         self.red_scale_val = val
-        #sense_led(self.light_state)
+        sense.led_all(self.red_scale_val, self.green_scale_val, self.blue_scale_val)
         print("red update run " + str(self.red_scale_val))
 
     def green_scale_update(self, val):
@@ -223,9 +223,9 @@ def sense_led1(state):
         return "on"
 
 
-def sense_led(state, red, green, blue):
+def sense_led(state):
     # sense = _SenseHat(rpi)
-    white = [red, green, blue]
+    white = [255, 255, 255]
     black = [0, 0, 0]
 
     if state == "on":
