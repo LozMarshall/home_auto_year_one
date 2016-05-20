@@ -10,6 +10,12 @@ class Buzzer:
     def setup(self):
         self.__board.GPIO.setup(self.pin, self.__board.GPIO.OUT)
 
+    def buzz_on(self):
+        self.__board.GPIO.output(self.pin, self.__board.GPIO.HIGH)
+
+    def buzz_off(self):
+        self.__board.GPIO.output(self.pin, self.__board.GPIO.LOW)
+
     def buzz(self):
         self.__board.GPIO.output(self.pin, self.__board.GPIO.HIGH)
         sleep(0.2)
