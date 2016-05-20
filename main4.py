@@ -155,11 +155,11 @@ class HomePage(tk.Frame):
 
     def light(self):
         if self.light_state == "off":
-            sense_led(self.light_state)
+            # sense_led(self.light_state)
             gpi_led(self.light_state, "green")
             self.light_state = "on"
         elif self.light_state == "on":
-            sense_led(self.light_state)
+            # sense_led(self.light_state)
             gpi_led(self.light_state, "green")
             self.light_state = "off"
 
@@ -232,17 +232,17 @@ def sense_led(state):
 
 
 def heating(temperature, thermostat_temp):
-    red = [255, 0, 0]
-    black = [0, 0, 0]
+    # red = [255, 0, 0]
+    # black = [0, 0, 0]
 
     pin = 16
     led = LED(rpi, pin)
     if thermostat_temp <= temperature:
-        sense.led_2(black)
+        # sense.led_2(black)
         led.turn_off()
         return "OFF"
     else:
-        sense.led_2(red)
+        # sense.led_2(red)
         led.turn_on()
         return "ON"
 
