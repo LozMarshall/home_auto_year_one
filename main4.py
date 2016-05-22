@@ -151,7 +151,7 @@ class HomePage(tk.Frame):
         cfgfile = open("config.ini", 'w')
 
         self.config.add_section('Person')
-        self.config.set('Person', 'HasEyes', True)
+        self.config.set('Person', 'HasEyes', 'true')
         self.config.set('Person', 'Age', '50')
         self.config.write(cfgfile)
         cfgfile.close()
