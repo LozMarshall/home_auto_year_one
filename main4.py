@@ -99,17 +99,17 @@ class HomePage(tk.Frame):
         self.red_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal",
                                   command=self.red_scale_update)
         self.red_scale.set(self.red_scale_val)
-        print("Red scale initialised and set to 255")
+        print("Blue scale initialised and set to parameter from config file")
 
         self.green_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal",
                                     command=self.green_scale_update)
         self.green_scale.set(self.green_scale_val)
-        print("Green scale initialised and set to 255")
+        print("Blue scale initialised and set to parameter from config file")
 
         self.blue_scale = tk.Scale(self, from_=0, to=255, length=225, orient="horizontal",
                                    command=self.blue_scale_update)
         self.blue_scale.set(self.blue_scale_val)
-        print("Blue scale initialised and set to 255")
+        print("Blue scale initialised and set to parameter from config file")
         ##########COLUMN 2 END#########
 
         ##########COLUMN 100 START#####
@@ -145,32 +145,33 @@ class HomePage(tk.Frame):
         button_page.grid(row=14, column=3, pady=10, padx=10, sticky="se")
         button_quit.grid(row=15, column=3, pady=10, padx=10, sticky="se")
 
-
-
         self.update_sensors()  # method that will become events
         self.update_interface()  # method that will become events
         self.update_pir_sensor()  # method called that runs and gets integrated into event handler
 
     def config_manager(self):
-        cfgfile = open("config.ini", 'w')
+        cfg_file = open("config.ini", 'w')
+        selector = "Default"
 
         if os.path.isfile('config.ini'):
-            self.config.add_section('Default')
-            self.config.set('Default', 'thermostat_temp', '20')
-            self.config.set('Default', 'light_status', 'off')
-            self.config.set('Default', 'red', '255')
-            self.config.set('Default', 'green', '255')
-            self.config.set('Default', 'blue', '255')
-            self.config.write(cfgfile)
-            cfgfile.close()
+            if not self.config.has_section('Profile_1'):
+                for S in ('Default', 'Profile_1'):
+                    self.config.add_section('Default')
+                    self.config.set('%s' % S, 'thermostat_temp', '20')
+                    self.config.set('%s' % S, 'light_status', 'off')
+                    self.config.set('%s' % S, 'red', '255')
+                    self.config.set('%s' % S, 'green', '255')
+                    self.config.set('%s' % S, 'blue', '255')
+                    self.config.write(cfg_file)
+                    cfg_file.close()
+            else:
+                selector = "Profile_1"
 
-        # self.config.read_string('config.ini')
-
-        self.thermostat_temp = int(self.config['Default']['thermostat_temp'])
-        self.light_state = self.config['Default']['light_status']
-        self.red_scale_val = self.config['Default']['red']
-        self.green_scale_val = self.config['Default']['green']
-        self.blue_scale_val = self.config['Default']['blue']
+        self.thermostat_temp = int(self.config['%s' % selector]['thermostat_temp'])
+        self.light_state = self.config['%s' % selector]['light_status']
+        self.red_scale_val = int(self.config['%s' % selector]['red'])
+        self.green_scale_val = int(self.config['%s' % selector]['green'])
+        self.blue_scale_val = int(self.config['%s' % selector]['blue'])
 
     # update sensors method is run as an event every 0.5 seconds and updating variables within the class
     # method is called at the end of the HomePage initialisation, then is run by the event handler
