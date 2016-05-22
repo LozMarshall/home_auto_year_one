@@ -55,8 +55,8 @@ class HomePage(tk.Frame):
         self.columnconfigure(0, weight=1)
         self.columnconfigure(1, weight=4)
 
-        self.light_state = "off"
-        self.thermostat_temp = 24
+        self.light_state = ''
+        self.thermostat_temp = ''
         self.temperature = 0
         self.humidity = 0
         self.pressure = 0
@@ -162,12 +162,15 @@ class HomePage(tk.Frame):
                     self.config.set('%s' % S, 'red', '255')
                     self.config.set('%s' % S, 'green', '255')
                     self.config.set('%s' % S, 'blue', '255')
+                    print("looping in the config setup")
                 self.config.write(cfg_file)
                 cfg_file.close()
             else:
                 selector = "Profile_1"
 
+        print("updating the variables")
         self.thermostat_temp = int(self.config['%s' % selector]['thermostat_temp'])
+        print("thermostat temp input: " + str(self.thermostat_temp))
         self.light_state = self.config['%s' % selector]['light_status']
         self.red_scale_val = int(self.config['%s' % selector]['red'])
         self.green_scale_val = int(self.config['%s' % selector]['green'])
