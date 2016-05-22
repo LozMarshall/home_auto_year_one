@@ -8,6 +8,7 @@ from buzzer import Buzzer
 import tkinter as tk
 from tkinter import ttk
 import configparser
+import os.path
 
 
 class App(tk.Tk):
@@ -54,9 +55,6 @@ class HomePage(tk.Frame):
         self.columnconfigure(0, weight=1)
         self.columnconfigure(1, weight=4)
 
-        self.config = configparser.ConfigParser()
-        self.config_manager()
-
         self.light_state = "off"
         self.thermostat_temp = 24
         self.temperature = 0
@@ -66,6 +64,9 @@ class HomePage(tk.Frame):
         self.green_scale_val = 0
         self.blue_scale_val = 0
         print("Stating variables initialised")
+
+        self.config = configparser.ConfigParser()
+        self.config_manager()
 
         ##########COLUMN 0 START - INITIALISING LABELS#########
         self.label = tk.Label(self)
@@ -150,12 +151,23 @@ class HomePage(tk.Frame):
     def config_manager(self):
         cfgfile = open("config.ini", 'w')
 
-        self.config.add_section('Person')
-        self.config.set('Person', 'HasEyes', 'true')
-        self.config.set('Person', 'Age', '50')
-        self.config.write(cfgfile)
-        cfgfile.close()
+        if os.path.isfile('config.ini'):
+            self.config.add_section('Default')
+            self.config.set('Default', 'thermostat_temp', '20')
+            self.config.set('Default', 'lights_status', 'off')
+            self.config.set('Default', 'red', '255')
+            self.config.set('Default', 'green', '255')
+            self.config.set('Default', 'blue', '255')
+            self.config.write(cfgfile)
+            cfgfile.close()
 
+        self.config.read_string('config.ini')
+
+        self.thermostat_temp = int(self.config['Default']['thermostat_temp'])
+        self.light_state = self.config['Default']['light_status']
+        self.red_scale_val = self.config['Default']['red']
+        self.green_scale_val = self.config['Default']['green']
+        self.blue_scale_val = self.config['Default']['blue']
 
     # update sensors method is run as an event every 0.5 seconds and updating variables within the class
     # method is called at the end of the HomePage initialisation, then is run by the event handler
