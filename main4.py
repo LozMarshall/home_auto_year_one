@@ -2,10 +2,12 @@ from board import Board
 from sensehat import _SenseHat
 from rgbled import RGBLED
 from led import LED
-import tkinter as tk
-from tkinter import ttk
 from pir import PIR
 from buzzer import Buzzer
+
+import tkinter as tk
+from tkinter import ttk
+import configparser
 
 
 class App(tk.Tk):
@@ -51,6 +53,9 @@ class HomePage(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.columnconfigure(0, weight=1)
         self.columnconfigure(1, weight=4)
+
+        self.config = configparser.ConfigParser()
+        self.config_manager()
 
         self.light_state = "off"
         self.thermostat_temp = 24
@@ -141,6 +146,16 @@ class HomePage(tk.Frame):
         self.update_sensors()  # method that will become events
         self.update_interface()  # method that will become events
         self.update_pir_sensor()  # method called that runs and gets integrated into event handler
+
+    def config_manager(self):
+        cfgfile = open("config.ini", 'w')
+
+        self.config.add_section('Person')
+        self.config.set('Person', 'HasEyes', True)
+        self.config.set('Person', 'Age', 50)
+        self.config.write(cfgfile)
+        cfgfile.close()
+
 
     # update sensors method is run as an event every 0.5 seconds and updating variables within the class
     # method is called at the end of the HomePage initialisation, then is run by the event handler
@@ -312,6 +327,7 @@ class HelpPage(tk.Frame):
 
 rpi = Board()
 sense = _SenseHat(rpi)
+
 app = App()
 
 app.mainloop()
