@@ -154,6 +154,7 @@ class HomePage(tk.Frame):
         selector = "Default"
 
         if os.path.isfile('config.ini'):
+            print(os.path.isfile('config.ini'))
             if not self.config.has_section('Profile_1'):
                 for S in ('Default', 'Profile_1'):
                     self.config.add_section('%s' % S)
