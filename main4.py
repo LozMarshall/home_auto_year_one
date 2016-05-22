@@ -89,6 +89,7 @@ class HomePage(tk.Frame):
         ##########COLUMN 2 START - INITIALISING#########
         self.tempscale = tk.Scale(self, from_=10, to=30, length=200, orient="horizontal",
                                   command=self.thermostat_update())
+        self.tempscale.set(self.thermostat_temp)
         print("Thermostat scale initialised")
 
         self.button_light = tk.Button(self, text="Lights on", width=25, anchor="w",
@@ -143,6 +144,8 @@ class HomePage(tk.Frame):
 
         button_page.grid(row=14, column=3, pady=10, padx=10, sticky="se")
         button_quit.grid(row=15, column=3, pady=10, padx=10, sticky="se")
+
+
 
         self.update_sensors()  # method that will become events
         self.update_interface()  # method that will become events
