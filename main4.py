@@ -171,6 +171,7 @@ class HomePage(tk.Frame):
         else:
             selector = "Profile_1"
 
+        self.config.read("./config.ini")
         print("updating the variables")
         self.thermostat_temp = int(self.config['%s' % selector]['thermostat_temp'])
         print("thermostat temp input: " + str(self.thermostat_temp))
