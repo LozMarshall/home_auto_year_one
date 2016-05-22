@@ -154,7 +154,7 @@ class HomePage(tk.Frame):
         selector = "Default"
 
         if not os.path.isfile("./config"):
-            print("does the file exist " + str(os.path.isfile('./config.ini')))
+            print("does the file exist " + str(os.path.isfile('./config')))
             if not self.config.has_section('Profile_1'):
                 print(self.config.has_section('Profile_1'))
                 for S in ('Default', 'Profile_1'):
