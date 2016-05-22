@@ -155,9 +155,8 @@ class HomePage(tk.Frame):
 
         if not file_exist:
             cfg_file = open("config.ini", 'w')
-            print("going through loop if file doesnt exist")
+
             if not self.config.has_section('Profile_1'):
-                print(self.config.has_section('Profile_1'))
                 for S in ('Default', 'Profile_1'):
                     self.config.add_section('%s' % S)
                     self.config.set('%s' % S, 'thermostat_temp', '20')
@@ -165,7 +164,6 @@ class HomePage(tk.Frame):
                     self.config.set('%s' % S, 'red', '255')
                     self.config.set('%s' % S, 'green', '255')
                     self.config.set('%s' % S, 'blue', '255')
-                    print("looping in the config setup")
                 self.config.write(cfg_file)
                 cfg_file.close()
         else:
