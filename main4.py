@@ -156,14 +156,14 @@ class HomePage(tk.Frame):
         if os.path.isfile('config.ini'):
             if not self.config.has_section('Profile_1'):
                 for S in ('Default', 'Profile_1'):
-                    self.config.add_section('Default')
+                    self.config.add_section('%s' % S)
                     self.config.set('%s' % S, 'thermostat_temp', '20')
                     self.config.set('%s' % S, 'light_status', 'off')
                     self.config.set('%s' % S, 'red', '255')
                     self.config.set('%s' % S, 'green', '255')
                     self.config.set('%s' % S, 'blue', '255')
-                    self.config.write(cfg_file)
-                    cfg_file.close()
+                self.config.write(cfg_file)
+                cfg_file.close()
             else:
                 selector = "Profile_1"
 
