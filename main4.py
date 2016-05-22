@@ -151,11 +151,10 @@ class HomePage(tk.Frame):
 
     def config_manager(self):
         selector = "Default"
+        file_exist = os.path.isfile("./config.ini")
 
-        if not os.path.isfile("./config.ini"):
-            print("does the file exist " + str(os.path.isfile('./config.ini')))
+        if not file_exist:
             cfg_file = open("config.ini", 'w')
-            print("does the file exist " + str(os.path.isfile('./config.ini')))
             if not self.config.has_section('Profile_1'):
                 print(self.config.has_section('Profile_1'))
                 for S in ('Default', 'Profile_1'):
@@ -168,8 +167,8 @@ class HomePage(tk.Frame):
                     print("looping in the config setup")
                 self.config.write(cfg_file)
                 cfg_file.close()
-            else:
-                selector = "Profile_1"
+        else:
+            selector = "Profile_1"
 
         print("updating the variables")
         self.thermostat_temp = int(self.config['%s' % selector]['thermostat_temp'])
