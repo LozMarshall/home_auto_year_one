@@ -154,14 +154,14 @@ class HomePage(tk.Frame):
         if os.path.isfile('config.ini'):
             self.config.add_section('Default')
             self.config.set('Default', 'thermostat_temp', '20')
-            self.config.set('Default', 'lights_status', 'off')
+            self.config.set('Default', 'light_status', 'off')
             self.config.set('Default', 'red', '255')
             self.config.set('Default', 'green', '255')
             self.config.set('Default', 'blue', '255')
             self.config.write(cfgfile)
             cfgfile.close()
 
-        self.config.read_string('config.ini')
+        # self.config.read_string('config.ini')
 
         self.thermostat_temp = int(self.config['Default']['thermostat_temp'])
         self.light_state = self.config['Default']['light_status']
