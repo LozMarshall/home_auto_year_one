@@ -263,7 +263,21 @@ class HomePage(tk.Frame):
     def close(self):
         sense.clear()
         rpi.clean_up()
+        # call save method for variables
+        self.config_save()
         self.quit()
+
+    def config_save(self):
+        cfg_file = open("config.ini", 'w')
+
+        self.config.set('Profile_1', 'thermostat_temp', '%s' % self.thermostat_temp)
+        self.config.set('Profile_1', 'light_status', '%s' % self.light_state)
+        self.config.set('Profile_1', 'red', '%s' % self.red_scale_val)
+        self.config.set('Profile_1', 'green', '%s' % self.green_scale_val)
+        self.config.set('Profile_1', 'blue', '%s' % self.blue_scale_val)
+
+        self.config.write(cfg_file)
+        cfg_file.close()
 
 
 def gpi_led(state, colour):
