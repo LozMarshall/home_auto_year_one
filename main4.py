@@ -150,11 +150,12 @@ class HomePage(tk.Frame):
         self.update_pir_sensor()  # method called that runs and gets integrated into event handler
 
     def config_manager(self):
-        cfg_file = open("config.ini", 'w')
         selector = "Default"
 
-        if not os.path.isfile("./config"):
-            print("does the file exist " + str(os.path.isfile('./config')))
+        if not os.path.isfile("./config.ini"):
+            print("does the file exist " + str(os.path.isfile('./config.ini')))
+            cfg_file = open("config.ini", 'w')
+            print("does the file exist " + str(os.path.isfile('./config.ini')))
             if not self.config.has_section('Profile_1'):
                 print(self.config.has_section('Profile_1'))
                 for S in ('Default', 'Profile_1'):
