@@ -10,11 +10,11 @@ class LDR:
 
     def setup(self):
         self.__board.GPIO.setup(self.pin, self.__board.GPIO.OUT)
-
-    def sensor_read(self):
         self.__board.GPIO.output(self.pin, self.__board.GPIO.LOW)
         sleep(0.1)
         self.__board.GPIO.setup(self.pin, self.__board.GPIO.IN)
+
+    def sensor_read(self):
         if self.__board.GPIO.input(self.pin) == self.__board.GPIO.LOW:
             self.reading += 1
         return self.reading
