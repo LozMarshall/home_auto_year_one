@@ -149,23 +149,50 @@ class HomePage(tk.Frame):
         self.update_interface()  # method that will become events
         self.update_pir_sensor()  # method called that runs and gets integrated into event handler
 
+    # def config_manager(self):
+    #     selector = "Default"
+    #     file_exist = os.path.isfile("./config.ini")
+    #
+    #     if not file_exist:
+    #         cfg_file = open("config.ini", 'w')
+    #
+    #         if not self.config.has_section('Profile_1'):
+    #             for S in ('Default', 'Profile_1'):
+    #                 self.config.add_section('%s' % S)
+    #                 self.config.set('%s' % S, 'thermostat_temp', '20')
+    #                 self.config.set('%s' % S, 'light_status', 'off')
+    #                 self.config.set('%s' % S, 'red', '255')
+    #                 self.config.set('%s' % S, 'green', '255')
+    #                 self.config.set('%s' % S, 'blue', '255')
+    #             self.config.write(cfg_file)
+    #             cfg_file.close()
+    #     else:
+    #         selector = "Profile_1"
+    #
+    #     self.config.read("./config.ini")
+    #     print("updating the variables")
+    #     self.thermostat_temp = int(self.config['%s' % selector]['thermostat_temp'])
+    #     print("thermostat temp input: " + str(self.thermostat_temp))
+    #     self.light_state = self.config['%s' % selector]['light_status']
+    #     self.red_scale_val = int(self.config['%s' % selector]['red'])
+    #     self.green_scale_val = int(self.config['%s' % selector]['green'])
+    #     self.blue_scale_val = int(self.config['%s' % selector]['blue'])
+
     def config_manager(self):
         selector = "Default"
         file_exist = os.path.isfile("./config.ini")
 
-        if not file_exist:
+        if not file_exist or self.config.has_section('Profile_1'):
             cfg_file = open("config.ini", 'w')
-
-            if not self.config.has_section('Profile_1'):
-                for S in ('Default', 'Profile_1'):
-                    self.config.add_section('%s' % S)
-                    self.config.set('%s' % S, 'thermostat_temp', '20')
-                    self.config.set('%s' % S, 'light_status', 'off')
-                    self.config.set('%s' % S, 'red', '255')
-                    self.config.set('%s' % S, 'green', '255')
-                    self.config.set('%s' % S, 'blue', '255')
-                self.config.write(cfg_file)
-                cfg_file.close()
+            for S in ('Default', 'Profile_1'):
+                self.config.add_section('%s' % S)
+                self.config.set('%s' % S, 'thermostat_temp', '20')
+                self.config.set('%s' % S, 'light_status', 'off')
+                self.config.set('%s' % S, 'red', '255')
+                self.config.set('%s' % S, 'green', '255')
+                self.config.set('%s' % S, 'blue', '255')
+            self.config.write(cfg_file)
+            cfg_file.close()
         else:
             selector = "Profile_1"
 
