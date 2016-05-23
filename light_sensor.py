@@ -8,6 +8,7 @@ class LDR:
         self.reading = 0
 
     def sensor_read(self):
+        self.reading = 0
         self.__board.GPIO.setup(self.pin, self.__board.GPIO.OUT)
         self.__board.GPIO.output(self.pin, self.__board.GPIO.LOW)
 
