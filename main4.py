@@ -115,6 +115,9 @@ class HomePage(tk.Frame):
         ##########COLUMN 100 START#####
         # button_page = tk.Button(self, text="Help", anchor="w",
         #                        command=lambda: controller.show_frame(HelpPage))
+        button_save_config = ttk.Button(self, text="Save config",
+                                        command=lambda: self.config_save())
+
         button_page = ttk.Button(self, text="Help",
                                  command=lambda: controller.show_frame(HelpPage))
         button_quit = ttk.Button(self, text="quit", command=self.close)
@@ -183,13 +186,13 @@ class HomePage(tk.Frame):
         file_exist = os.path.isfile("./config.ini")
 
         if not file_exist:
-            open("config.ini", 'w')
+            open("./config.ini", 'w')
 
-        self.config.read_file(open('config.ini'))
+        self.config.read_file(open('./config.ini'))
 
         if not self.config.has_section('Profile_1'):
-            open("config.ini", 'r+').close()
-            cfg_file = open("config.ini", 'w')
+            open("./config.ini", 'r+').close()
+            cfg_file = open("./config.ini", 'w')
             for S in ('Default', 'Profile_1'):
                 self.config.add_section('%s' % S)
                 self.config.set('%s' % S, 'thermostat_temp', '20')
