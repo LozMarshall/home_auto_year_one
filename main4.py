@@ -188,7 +188,8 @@ class HomePage(tk.Frame):
         self.config.read_file(open('config.ini'))
 
         if not self.config.has_section('Profile_1'):
-            cfg_file = open("config.ini", 'w')
+            cfg_file = open("config.ini", 'w+')
+            cfg_file.truncate()
             for S in ('Default', 'Profile_1'):
                 self.config.add_section('%s' % S)
                 self.config.set('%s' % S, 'thermostat_temp', '20')
