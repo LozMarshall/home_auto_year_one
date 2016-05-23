@@ -182,7 +182,12 @@ class HomePage(tk.Frame):
         selector = "Default"
         file_exist = os.path.isfile("./config.ini")
 
-        if not file_exist or self.config.has_section('Profile_1'):
+        if not file_exist:
+            open("config.ini", 'w')
+
+        self.config.read_file(open('config.ini'))
+
+        if not self.config.has_section('Profile_1'):
             cfg_file = open("config.ini", 'w')
             for S in ('Default', 'Profile_1'):
                 self.config.add_section('%s' % S)
@@ -193,6 +198,7 @@ class HomePage(tk.Frame):
                 self.config.set('%s' % S, 'blue', '255')
             self.config.write(cfg_file)
             cfg_file.close()
+
         else:
             selector = "Profile_1"
 
