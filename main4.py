@@ -151,9 +151,9 @@ class HomePage(tk.Frame):
         self.green_scale.grid(row=3, column=2, pady=10, padx=10, sticky="E")
         self.blue_scale.grid(row=4, column=2, pady=10, padx=10, sticky="E")
 
-        button_save_config.grid(row=10, column=3, pady=10, padx=10, sticky="se")
-        button_page.grid(row=11, column=3, pady=10, padx=10, sticky="se")
-        button_quit.grid(row=12, column=3, pady=10, padx=10, sticky="se")
+        button_save_config.grid(row=6, column=3, pady=10, padx=10, sticky="se")
+        button_page.grid(row=7, column=3, pady=10, padx=10, sticky="se")
+        button_quit.grid(row=8, column=3, pady=10, padx=10, sticky="se")
 
         self.update_sensors()  # method that will become events
         self.update_interface()  # method that will become events
