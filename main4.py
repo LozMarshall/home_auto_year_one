@@ -219,10 +219,9 @@ class HomePage(tk.Frame):
         self.after(1200, self.update_interface)  # function to run method in the event handler
 
     def update_pir_sensor(self):
-        # pir = PIR(rpi, 6)  # passing in board object and pin number of the pir
-        buzz = Buzzer(rpi, 20)
-        if pir.motion_detect():
-            buzz.buzz()
+        if self.pir_var.get() == 1:
+            if pir.motion_detect():
+                buzz.buzz()
         self.after(1000, self.update_pir_sensor)
 
     # thermostat update method is called when the SET TEMPERATURE slider is toggled
@@ -382,7 +381,8 @@ class HelpPage(tk.Frame):
 rpi = Board()
 sense = _SenseHat(rpi)
 
-pir = PIR(rpi, 6)
+pir = PIR(rpi, 6)  # passing in board object and pin number of the pir
+buzz = Buzzer(rpi, 20)
 ldr = LDR(rpi, 21)
 
 app = App()
