@@ -79,7 +79,7 @@ class HomePage(tk.Frame):
         self.label5 = tk.Label(self)
         self.label7 = tk.Label(self, text="lights: " + self.light_state)
         self.pir_toggle = tk.Checkbutton(self, text="Motion sensor toggle (on/off)", variable=self.pir_var,
-                                         command=self.pir_state())
+                                         command=self.pir_state)
         print("Left hand side statistic labels initialised")
         ##########COLUMN 0 END###########
 
