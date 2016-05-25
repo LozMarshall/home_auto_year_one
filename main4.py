@@ -79,6 +79,7 @@ class HomePage(tk.Frame):
         self.label5 = tk.Label(self)
         self.label7 = tk.Label(self, text="lights: " + self.light_state)
         self.label11 = tk.Label(self, text="Visibility: " + str(self.ldr_value))
+        self.label12 = tk.Label(self, text="(0 to 1 = light to dark)")
         self.pir_toggle = tk.Checkbutton(self, text="Motion sensor toggle (on/off)", variable=self.pir_var,
                                          command=self.pir_state)
         print("Left hand side statistic labels initialised")
@@ -136,8 +137,9 @@ class HomePage(tk.Frame):
         self.label4.grid(row=3, column=0, pady=10, padx=10, sticky="w")
         self.label5.grid(row=4, column=0, pady=10, padx=10, sticky="w")
         self.label7.grid(row=5, column=0, pady=10, padx=10, sticky="w")
-        self.label11.grid(row=7, column=0, pady=10, padx=10, sticky="e")
-        self.pir_toggle.grid(row=6, column=0, pady=10, padx=10, sticky="e")
+        self.label11.grid(row=6, column=0, pady=10, padx=10, sticky="w")
+        self.label12.grid(row=7, column=0, pady=10, padx=10, sticky="w")
+        self.pir_toggle.grid(row=8, column=0, pady=10, padx=10, sticky="e")
         ##########COLUMN 0 END#########################
 
         self.label6.grid(row=0, column=1, pady=10, padx=10, sticky="SW")
@@ -217,7 +219,7 @@ class HomePage(tk.Frame):
         self.label.configure(text="temperature: " + str(self.temperature) + " \u2103")
         self.label2.configure(text="pressure: " + str(self.pressure) + " mbar")
         self.label3.configure(text="humidity: " + str(self.humidity) + " %")
-        self.label11.configure(text="Visibility:  " + str(self.ldr_value) + "  (0 to 1 = light to dark)")
+        self.label11.configure(text="Visibility:  " + str(self.ldr_value))
 
         print("update interface method run - refreshing temp, pressure and humidity variable every 1.2s")
 
