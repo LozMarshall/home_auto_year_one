@@ -12,8 +12,8 @@ class _SenseHat:
 
     @property
     def temp_c(self):
-        return (self.sense.temp + self.sense.get_temperature_from_humidity() +
-                self.sense.get_temperature_from_pressure())/3
+        return (self.sense.get_temperature_from_humidity() +
+                self.sense.get_temperature_from_pressure())/2
 
     @property
     def pressure(self):
