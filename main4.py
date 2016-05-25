@@ -65,7 +65,7 @@ class HomePage(tk.Frame):
         self.red_scale_val = 0
         self.green_scale_val = 0
         self.blue_scale_val = 0
-        self.pir_var = "onvalue"
+        self.pir_var = tk.IntVar()
         print("Stating variables initialised")
 
         self.config = configparser.ConfigParser()
@@ -78,8 +78,8 @@ class HomePage(tk.Frame):
         self.label4 = tk.Label(self)
         self.label5 = tk.Label(self)
         self.label7 = tk.Label(self, text="lights: " + self.light_state)
-        self.pir_toggle = tk.Checkbutton(self, text="Motion sensor toggle (on/off)", variable=self.pir_var)
-        print(self.pir_var)
+        self.pir_toggle = tk.Checkbutton(self, text="Motion sensor toggle (on/off)", variable=self.pir_var,
+                                         command=self.pir_state())
         print("Left hand side statistic labels initialised")
         ##########COLUMN 0 END###########
 
@@ -202,7 +202,6 @@ class HomePage(tk.Frame):
         self.thermostat_temp = self.tempscale.get()
         self.red_scale_val = self.red_scale.get()
         self.ldr_value = ldr.sensor_read()
-        print(self.pir_var)
 
         print("update sensors method run - refreshing variables every 0.5s")
 
@@ -281,6 +280,9 @@ class HomePage(tk.Frame):
             sense.led_all(black)
         elif state == "on":
             sense.led_all(colour)
+
+    def pir_state(self, event):
+        print(self.pir_var.get())
 
     def close(self):
         sense.clear()
