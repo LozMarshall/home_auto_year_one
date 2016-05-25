@@ -78,7 +78,6 @@ class HomePage(tk.Frame):
         self.label4 = tk.Label(self)
         self.label5 = tk.Label(self)
         self.label7 = tk.Label(self, text="lights: " + self.light_state)
-        # self.pir_var.set(1)
         self.pir_toggle = tk.Checkbutton(self, text="Motion sensor toggle (on/off)", variable=self.pir_var,
                                          command=self.pir_state)
         print("Left hand side statistic labels initialised")
@@ -194,7 +193,6 @@ class HomePage(tk.Frame):
         self.red_scale_val = int(self.config['%s' % selector]['red'])
         self.green_scale_val = int(self.config['%s' % selector]['green'])
         self.blue_scale_val = int(self.config['%s' % selector]['blue'])
-        # self.pir_var = tk.IntVar(self.config['%s' % selector]['pir_state'])
         self.pir_var.set(int(self.config['%s' % selector]['pir_state']))
 
     # update sensors method is run as an event every 0.5 seconds and updating variables within the class
@@ -302,6 +300,7 @@ class HomePage(tk.Frame):
         self.config.set('Profile_1', 'red', '%s' % self.red_scale_val)
         self.config.set('Profile_1', 'green', '%s' % self.green_scale_val)
         self.config.set('Profile_1', 'blue', '%s' % self.blue_scale_val)
+        self.config.set('Profile_1', 'pir_state', '%s' % self.pir_var.get())
 
         self.config.write(cfg_file)
         cfg_file.close()
