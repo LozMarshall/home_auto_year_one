@@ -202,6 +202,7 @@ class HomePage(tk.Frame):
         self.thermostat_temp = self.tempscale.get()
         self.red_scale_val = self.red_scale.get()
         self.ldr_value = ldr.sensor_read()
+        print(self.pir_var)
 
         print("update sensors method run - refreshing variables every 0.5s")
 
