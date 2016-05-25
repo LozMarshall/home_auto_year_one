@@ -179,7 +179,7 @@ class HomePage(tk.Frame):
                 self.config.set('%s' % S, 'red', '255')
                 self.config.set('%s' % S, 'green', '255')
                 self.config.set('%s' % S, 'blue', '255')
-                self.config.set('%s' % S, 'pir_state', 1)
+                self.config.set('%s' % S, 'pir_state', '1')
             self.config.write(cfg_file)
             cfg_file.close()
 
@@ -194,7 +194,8 @@ class HomePage(tk.Frame):
         self.red_scale_val = int(self.config['%s' % selector]['red'])
         self.green_scale_val = int(self.config['%s' % selector]['green'])
         self.blue_scale_val = int(self.config['%s' % selector]['blue'])
-        self.pir_var = tk.IntVar(self.config['%s' % selector]['pir_state'])
+        # self.pir_var = tk.IntVar(self.config['%s' % selector]['pir_state'])
+        self.pir_var.set(int(self.config['%s' % selector]['pir_state']))
 
     # update sensors method is run as an event every 0.5 seconds and updating variables within the class
     # method is called at the end of the HomePage initialisation, then is run by the event handler
