@@ -281,7 +281,7 @@ class HomePage(tk.Frame):
         elif state == "on":
             sense.led_all(colour)
 
-    def pir_state(self, event):
+    def pir_state(self):
         print(self.pir_var.get())
 
     def close(self):
