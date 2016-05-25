@@ -61,9 +61,11 @@ class HomePage(tk.Frame):
         self.temperature = 0
         self.humidity = 0
         self.pressure = 0
+        self.ldr_value = 0
         self.red_scale_val = 0
         self.green_scale_val = 0
         self.blue_scale_val = 0
+        self.pir_var = bool
         print("Stating variables initialised")
 
         self.config = configparser.ConfigParser()
@@ -76,6 +78,8 @@ class HomePage(tk.Frame):
         self.label4 = tk.Label(self)
         self.label5 = tk.Label(self)
         self.label7 = tk.Label(self, text="lights: " + self.light_state)
+        self.pir_toggle = tk.Checkbutton(self, text="Motion sensor toggle (on/off)", variable=self.pir_var)
+        print(self.pir_var)
         print("Left hand side statistic labels initialised")
         ##########COLUMN 0 END###########
 
@@ -131,6 +135,7 @@ class HomePage(tk.Frame):
         self.label4.grid(row=3, column=0, pady=10, padx=10, sticky="w")
         self.label5.grid(row=4, column=0, pady=10, padx=10, sticky="w")
         self.label7.grid(row=5, column=0, pady=10, padx=10, sticky="w")
+        self.pir_toggle.grid(row=6, column=0, pady=10, padx=10, sticky="w")
         ##########COLUMN 0 END#########################
 
         self.label6.grid(row=0, column=1, pady=10, padx=10, sticky="SW")
@@ -196,7 +201,7 @@ class HomePage(tk.Frame):
         self.humidity = round(sense.humidity, 1)
         self.thermostat_temp = self.tempscale.get()
         self.red_scale_val = self.red_scale.get()
-        print(ldr.sensor_read())
+        self.ldr_value = ldr.sensor_read()
 
         print("update sensors method run - refreshing variables every 0.5s")
 
