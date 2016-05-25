@@ -202,9 +202,9 @@ class HomePage(tk.Frame):
         self.pressure = round(sense.pressure, 2)
         self.humidity = round(sense.humidity, 1)
         self.thermostat_temp = self.tempscale.get()
-        self.red_scale_val = self.red_scale.get()
+        # self.red_scale_val = self.red_scale.get()
         self.ldr_value = ldr.sensor_read()
-        print(self.ldr_value)
+        # print(self.ldr_value)
         print("update sensors method run - refreshing variables every 0.5s")
 
         self.after(500, self.update_sensors)
