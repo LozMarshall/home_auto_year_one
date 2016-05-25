@@ -136,6 +136,7 @@ class HomePage(tk.Frame):
         self.label4.grid(row=3, column=0, pady=10, padx=10, sticky="w")
         self.label5.grid(row=4, column=0, pady=10, padx=10, sticky="w")
         self.label7.grid(row=5, column=0, pady=10, padx=10, sticky="w")
+        self.label11.grid(row=7, column=0, pady=10, padx=10, sticky="e")
         self.pir_toggle.grid(row=6, column=0, pady=10, padx=10, sticky="e")
         ##########COLUMN 0 END#########################
 
