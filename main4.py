@@ -65,7 +65,7 @@ class HomePage(tk.Frame):
         self.red_scale_val = 0
         self.green_scale_val = 0
         self.blue_scale_val = 0
-        self.pir_var = bool
+        self.pir_var = "onvalue"
         print("Stating variables initialised")
 
         self.config = configparser.ConfigParser()
