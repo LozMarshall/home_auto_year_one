@@ -217,7 +217,7 @@ class HomePage(tk.Frame):
         self.label.configure(text="temperature: " + str(self.temperature) + " \u2103")
         self.label2.configure(text="pressure: " + str(self.pressure) + " mbar")
         self.label3.configure(text="humidity: " + str(self.humidity) + " %")
-        self.label11.configure(text="Visibility: " + str(self.ldr_value) + " (0 to 1 = light to dark")
+        self.label11.configure(text="Visibility:  " + str(self.ldr_value) + "  (0 to 1 = light to dark)")
 
         print("update interface method run - refreshing temp, pressure and humidity variable every 1.2s")
 
