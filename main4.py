@@ -1,3 +1,8 @@
+import os.path
+import tkinter as tk
+from tkinter import ttk
+import configparser
+
 from board import Board
 from sensehat import _SenseHat
 from rgbled import RGBLED
@@ -5,11 +10,6 @@ from led import LED
 from pir import PIR
 from buzzer import Buzzer
 from light_sensor import LDR
-
-import tkinter as tk
-from tkinter import ttk
-import configparser
-import os.path
 
 
 class App(tk.Tk):
