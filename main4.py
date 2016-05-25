@@ -135,7 +135,7 @@ class HomePage(tk.Frame):
         self.label4.grid(row=3, column=0, pady=10, padx=10, sticky="w")
         self.label5.grid(row=4, column=0, pady=10, padx=10, sticky="w")
         self.label7.grid(row=5, column=0, pady=10, padx=10, sticky="w")
-        self.pir_toggle.grid(row=6, column=0, pady=10, padx=10, sticky="w")
+        self.pir_toggle.grid(row=6, column=0, pady=10, padx=10, sticky="e")
         ##########COLUMN 0 END#########################
 
         self.label6.grid(row=0, column=1, pady=10, padx=10, sticky="SW")
@@ -151,9 +151,9 @@ class HomePage(tk.Frame):
         self.green_scale.grid(row=3, column=2, pady=10, padx=10, sticky="E")
         self.blue_scale.grid(row=4, column=2, pady=10, padx=10, sticky="E")
 
-        button_save_config.grid(row=13, column=3, pady=10, padx=10, sticky="se")
-        button_page.grid(row=14, column=3, pady=10, padx=10, sticky="se")
-        button_quit.grid(row=15, column=3, pady=10, padx=10, sticky="se")
+        button_save_config.grid(row=10, column=3, pady=10, padx=10, sticky="se")
+        button_page.grid(row=11, column=3, pady=10, padx=10, sticky="se")
+        button_quit.grid(row=12, column=3, pady=10, padx=10, sticky="se")
 
         self.update_sensors()  # method that will become events
         self.update_interface()  # method that will become events
