@@ -219,7 +219,7 @@ class HomePage(tk.Frame):
         self.after(1200, self.update_interface)  # function to run method in the event handler
 
     def update_pir_sensor(self):
-        pir = PIR(rpi, 6)  # passing in board object and pin number of the pir
+        # pir = PIR(rpi, 6)  # passing in board object and pin number of the pir
         buzz = Buzzer(rpi, 20)
         if pir.motion_detect():
             buzz.buzz()
@@ -382,7 +382,7 @@ class HelpPage(tk.Frame):
 rpi = Board()
 sense = _SenseHat(rpi)
 
-
+pir = PIR(rpi, 6)
 ldr = LDR(rpi, 21)
 
 app = App()
