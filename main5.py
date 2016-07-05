@@ -375,20 +375,20 @@ class HelpPage(tk.Frame):
         self.columnconfigure(0, weight=1)
         self.columnconfigure(1, weight=4)
 
-        self.label = tk.Label(self, text="Help page: ")
-        self.label2 = tk.Label(self, text="", wraplengt=25)
+        self.label = tk.Label(self, text="Help page: ").pack()
+        self.label2 = tk.Label(self, text="").pack()
         self.label3 = tk.Label(self, text="The left hand side of the display shows you live readings from sensors. It "
                                           "is to ensure you have selected the correct settings and you can see readings"
-                                          "from inside your house.", wraplengt=25)
+                                          "from inside your house.").pack()
         self.label4 = tk.Label(self, text="There is also an option at the button to toggle on/off motion sensing. "
-                                          "This will turn off PIR functionality and stop the buzzer from making noise.",
-                               wraplengt=25)
-        self.label5 = tk.Label(self, text="", wraplengt=25)
+                                          "This will turn off PIR functionality and stop the buzzer from making noise."
+                               ).pack()
+        self.label5 = tk.Label(self, text="").pack()
         self.label6 = tk.Label(self, text="The right hand side allows options to be changed. This includes: Thermostat"
-                                          ", LED preferences, LED switch, help button, save config button and quit.",
-                               wraplengt=25)
-        self.label7 = tk.Label(self, text="", wraplengt=25)
-        self.label8 = tk.Label(self, text="", wraplengt=25)
+                                          ", LED preferences, LED switch, help button, save config button and quit."
+                               ).pack()
+        self.label7 = tk.Label(self, text="").pack()
+        self.label8 = tk.Label(self, text="").pack()
 
         button_page = ttk.Button(self, text="Home", command=lambda: controller.show_frame(HomePage))
         button_quit = ttk.Button(self, text="quit", command=self.quit)
