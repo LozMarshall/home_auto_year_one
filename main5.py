@@ -389,13 +389,16 @@ class HelpPage(tk.Frame):
         self.label8 = tk.Label(self, text="")
 
         button_page = ttk.Button(self, text="Home", command=lambda: controller.show_frame(HomePage))
-        button_quit = ttk.Button(self, text="quit", anchor="sw", command=self.quit)
+        button_quit = ttk.Button(self, text="quit", command=self.quit)
 
         self.label.grid(row=0, column=0, pady=10, padx=10, sticky="se")
         self.label2.grid(row=1, column=0, pady=10, padx=10, sticky="se")
         self.label3.grid(row=2, column=0, pady=10, padx=10, sticky="se")
-        self.label4.grid(row=1, column=1, pady=10, padx=10, sticky="se")
-        self.label5.grid(row=1, column=1, pady=10, padx=10, sticky="se")
+        self.label4.grid(row=3, column=0, pady=10, padx=10, sticky="se")
+        self.label5.grid(row=4, column=0, pady=10, padx=10, sticky="se")
+        self.label6.grid(row=5, column=0, pady=10, padx=10, sticky="se")
+        self.label7.grid(row=6, column=0, pady=10, padx=10, sticky="se")
+        self.label8.grid(row=7, column=0, pady=10, padx=10, sticky="se")
 
         button_page.grid(row=3, column=1, pady=10, padx=10, sticky="se")
         button_quit.grid(row=4, column=1, pady=10, padx=10, sticky="se")
